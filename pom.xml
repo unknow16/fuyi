@@ -11,6 +11,7 @@
 
     <modules>
         <module>fuyi-common</module>
+        <module>fuyi-framework</module>
         <module>fuyi-upms</module>
     </modules>
 
