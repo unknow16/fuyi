@@ -17,7 +17,11 @@
             <artifactId>fuyi-upms-rpc-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.fuyi</groupId>
+            <artifactId>fuyi-upms-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>com.fuyi</groupId>
             <artifactId>fuyi-upms-dao-mapper</artifactId>
@@ -27,6 +31,8 @@
 
     <build>
         <plugins>
+
+            <!-- mybatis generator plugin -->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
