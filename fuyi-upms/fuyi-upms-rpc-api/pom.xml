@@ -17,5 +17,10 @@
             <artifactId>fuyi-upms-dao-entity</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.fuyi</groupId>
+            <artifactId>fuyi-framework-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

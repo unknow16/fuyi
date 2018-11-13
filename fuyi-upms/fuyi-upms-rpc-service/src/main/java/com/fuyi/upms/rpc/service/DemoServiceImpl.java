@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
         protocol = "${dubbo.protocol.id}",
         registry = "${dubbo.registry.id}"
 )
-public class DefaultDemoService implements DemoService {
+class DemoServiceImpl implements DemoService {
 
     @Autowired
     private TestUserMapper testUserMapper;

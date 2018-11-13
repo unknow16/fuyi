@@ -4,9 +4,11 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @MapperScan("com.fuyi.upms.dao.mapper")
+@ComponentScan("com.fuyi.*")
 public class UpmsServiceBootApplication {
     public static void main(String[] args) {
 

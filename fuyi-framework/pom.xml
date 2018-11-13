@@ -19,6 +19,7 @@
     <modules>
         <module>fuyi-framework-service</module>
         <module>fuyi-framework-web</module>
+        <module>fuyi-framework-api</module>
     </modules>
 
     <properties>
@@ -32,11 +33,7 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.alibaba.boot</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>${springboot.dubbo.version}</version>
-        </dependency>
+
     </dependencies>
 
 </project>

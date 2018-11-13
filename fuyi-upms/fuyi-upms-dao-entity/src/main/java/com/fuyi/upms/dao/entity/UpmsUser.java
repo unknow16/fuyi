@@ -1,6 +1,9 @@
 package com.fuyi.upms.dao.entity;
 
-public class UpmsUser {
+import java.io.Serializable;
+
+public class UpmsUser implements Serializable {
+
     private Integer userId;
 
     private String username;

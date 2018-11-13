@@ -17,5 +17,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>${springboot.dubbo.version}</version>
+        </dependency>
     </dependencies>
 </project>
