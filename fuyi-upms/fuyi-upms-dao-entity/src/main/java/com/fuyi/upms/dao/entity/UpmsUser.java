@@ -1,6 +1,7 @@
 package com.fuyi.upms.dao.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class UpmsUser implements Serializable {
 
@@ -25,6 +26,16 @@ public class UpmsUser implements Serializable {
     private Byte locked;
 
     private Long ctime;
+
+    private List<UpmsRole> roles;
+
+    public List<UpmsRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<UpmsRole> roles) {
+        this.roles = roles;
+    }
 
     public Integer getUserId() {
         return userId;

@@ -18,6 +18,7 @@
         <module>fuyi-upms-dao-mapper</module>
         <module>fuyi-upms-dao-entity</module>
         <module>fuyi-upms-web</module>
+        <module>fuyi-upms-alone</module>
     </modules>
 
 
