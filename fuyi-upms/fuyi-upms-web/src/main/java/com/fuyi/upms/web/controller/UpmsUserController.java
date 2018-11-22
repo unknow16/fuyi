@@ -15,7 +15,7 @@ import java.util.Map;
 
 @RestController
 @Api(value = "用户管理", description = "用户管理")
-@RequestMapping("/manage/user")
+@RequestMapping("/user")
 public class UpmsUserController {
 
     @Reference(version = "${demo.service.version}",

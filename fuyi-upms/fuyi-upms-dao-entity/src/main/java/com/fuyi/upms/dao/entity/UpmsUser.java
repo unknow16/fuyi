@@ -5,6 +5,26 @@ import java.util.List;
 
 public class UpmsUser implements Serializable {
 
+    public UpmsUser() {}
+
+    public UpmsUser(Integer userId, String username, String password, String salt,
+                    String realname, String avatar, String phone,
+                    String email, Byte sex, Byte locked, Long ctime,
+                    List<UpmsRole> roles) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.salt = salt;
+        this.realname = realname;
+        this.avatar = avatar;
+        this.phone = phone;
+        this.email = email;
+        this.sex = sex;
+        this.locked = locked;
+        this.ctime = ctime;
+        this.roles = roles;
+    }
+
     private Integer userId;
 
     private String username;

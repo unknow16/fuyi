@@ -1,6 +1,8 @@
 package com.fuyi.upms.alone.auth;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fuyi.upms.dao.entity.UpmsRole;
+import com.fuyi.upms.dao.entity.UpmsUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,49 +15,49 @@ import java.util.List;
 /**
  * spring security中定义的用户对象
  */
-public class UserDetailsImpl implements UserDetails {
+public class UserDetailsImpl extends UpmsUser implements UserDetails {
 
-    private String username;
-    private String password;
-    private Byte locked;
-    private List<UpmsRole> roleList;
-
-    public UserDetailsImpl(String username, String password, Byte locked, List<UpmsRole> roleList) {
-        this.username = username;
-        this.password = password;
-        this.locked = locked;
-        this.roleList = roleList;
+    protected UserDetailsImpl(UpmsUser upmsUser) {
+        super(upmsUser.getUserId(), upmsUser.getUsername(), upmsUser.getPassword(),
+                upmsUser.getSalt(), upmsUser.getRealname(), upmsUser.getAvatar(),
+                upmsUser.getPhone(), upmsUser.getEmail(), upmsUser.getSex(),
+                upmsUser.getLocked(), upmsUser.getCtime(), upmsUser.getRoles());
     }
 
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        for (UpmsRole role : this.roleList) {
+        for (UpmsRole role : super.getRoles()) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
         return authorities;
     }
 
+    @JsonIgnore
     @Override
     public String getPassword() {
-        return this.password;
+        return super.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return this.username;
+        return super.getUsername();
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
@@ -63,6 +65,6 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return this.locked == 0 ? true : false;
+        return super.getLocked() == 0;
     }
 }

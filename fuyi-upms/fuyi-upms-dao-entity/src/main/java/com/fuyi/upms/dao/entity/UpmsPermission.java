@@ -1,5 +1,7 @@
 package com.fuyi.upms.dao.entity;
 
+import java.util.List;
+
 public class UpmsPermission {
     private Integer permissionId;
 
@@ -22,6 +24,16 @@ public class UpmsPermission {
     private Long ctime;
 
     private Long orders;
+
+    private List<UpmsRole> roles;
+
+    public List<UpmsRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<UpmsRole> roles) {
+        this.roles = roles;
+    }
 
     public Integer getPermissionId() {
         return permissionId;
