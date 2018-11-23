@@ -27,6 +27,16 @@ public class UpmsPermission {
 
     private List<UpmsRole> roles;
 
+    private List<UpmsPermission> children;
+
+    public List<UpmsPermission> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<UpmsPermission> children) {
+        this.children = children;
+    }
+
     public List<UpmsRole> getRoles() {
         return roles;
     }

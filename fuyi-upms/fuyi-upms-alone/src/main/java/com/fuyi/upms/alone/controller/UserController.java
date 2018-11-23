@@ -27,8 +27,8 @@ public class UserController {
     @ApiOperation(value = "用户列表")
     @RequestMapping(value = "/list", method = RequestMethod.POST)
     public Object list(
-            @RequestParam(required = false, defaultValue = "0", value = "page") int page,
-            @RequestParam(required = false, defaultValue = "10", value = "size") int size,
+            @RequestParam(required = false, defaultValue = "0", value = "pageNum") int pageNum,
+            @RequestParam(required = false, defaultValue = "10", value = "pageSize") int pageSize,
             @RequestParam(required = false, defaultValue = "", value = "query") String query,
             @RequestParam(required = false, value = "sort") String sort,
             @RequestParam(required = false, value = "order") String order) {
@@ -42,7 +42,7 @@ public class UserController {
             upmsUserExample.or()
                     .andUsernameLike("%" + query + "%");
         }
-        List<UpmsUser> rows = upmsUserService.selectByExampleForOffsetPage(upmsUserExample, page, size);
+        List<UpmsUser> rows = upmsUserService.selectByExampleForStartPage(upmsUserExample, pageNum, pageSize);
         long total = upmsUserService.countByExample(upmsUserExample);
         Map<String, Object> result = new HashMap<>();
         result.put("rows", rows);

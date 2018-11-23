@@ -12,7 +12,7 @@
     <artifactId>fuyi-framework-service</artifactId>
 
     <properties>
-        <mybatis-pagehelper.version>5.0.1</mybatis-pagehelper.version>
+        <springboot.mybatis-pagehelper.version>1.2.10</springboot.mybatis-pagehelper.version>
     </properties>
 
     <dependencies>
@@ -46,8 +46,8 @@
         </dependency>
         <dependency>
             <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <version>${mybatis-pagehelper.version}</version>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>${springboot.mybatis-pagehelper.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

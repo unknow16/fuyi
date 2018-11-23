@@ -8,6 +8,15 @@ import java.util.List;
 public interface UserService {
 
     /**
+     * 根据条件查询记录并按页码分页
+     * @param example 条件
+     * @param pageNum 页数
+     * @param pageSize 每页记录数
+     * @return
+     */
+    List<UpmsUser> selectByExampleForStartPage(UpmsUserExample example, Integer pageNum, Integer pageSize);
+
+    /**
      * 根据条件查询记录并按最后记录数分页
      * @param example 条件
      * @param offset 跳过数量

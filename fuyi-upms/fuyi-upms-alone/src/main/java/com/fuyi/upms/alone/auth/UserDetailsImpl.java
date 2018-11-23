@@ -63,6 +63,7 @@ public class UserDetailsImpl extends UpmsUser implements UserDetails {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
         return super.getLocked() == 0;

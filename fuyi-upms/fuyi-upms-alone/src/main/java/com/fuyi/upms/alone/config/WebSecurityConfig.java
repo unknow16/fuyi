@@ -2,12 +2,8 @@ package com.fuyi.upms.alone.config;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fuyi.upms.alone.auth.AuthenticationAccessDeniedHandler;
-import com.fuyi.upms.alone.auth.UrlAccessDecisionManager;
-import com.fuyi.upms.alone.auth.UrlFilterInvocationSecurityMetadataSource;
-import com.fuyi.upms.alone.auth.UserDetailsServiceImpl;
+import com.fuyi.upms.alone.auth.*;
 import com.fuyi.upms.alone.bean.RespBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.*;
@@ -17,20 +13,12 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.io.PrintWriter;
 
 @Configuration
@@ -57,6 +45,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new AuthenticationAccessDeniedHandler();
     }
 
+    @Bean
+    AuthenticationEntryPoint authenticationEntryPoint() {
+        return new UserAuthenticationEntryPoint();
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsServiceImpl())
@@ -65,7 +58,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/index.html", "/static/**", "/login_p");
+        web.ignoring().antMatchers("/", "/index.html", "/swagger-ui.html", "/static/**", "/login_p")
+                    // swagger start
+                    .antMatchers("/swagger-ui.html")
+                    .antMatchers("/swagger-resources/**")
+                    .antMatchers("/images/**")
+                    .antMatchers("/webjars/**")
+                    .antMatchers("/v2/api-docs")
+                    .antMatchers("/configuration/ui")
+                    .antMatchers("/configuration/security");
+                    // swagger end;
     }
 
     @Override
@@ -80,7 +82,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     }
                 })
                 .and()
-                .formLogin().loginPage("/login_p").loginProcessingUrl("/login")
+                .formLogin().loginPage("/loginPage").loginProcessingUrl("/login")
                 .usernameParameter("username").passwordParameter("password")
                 .failureHandler( (req, resp, e) -> {
                         resp.setContentType("application/json;charset=utf-8");
@@ -109,8 +111,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler( (request, response, authentication) -> {
                         response.setContentType("application/json;charset=utf-8");
                         RespBean respBean = RespBean.ok("登录成功!", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+
+                        ObjectMapper om = new ObjectMapper();
                         PrintWriter writer = response.getWriter();
-                        writer.write(JSON.toJSONString(respBean));
+                        writer.write(om.writeValueAsString(respBean));
                         writer.flush();
                         writer.close();
                 })
@@ -119,6 +123,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().permitAll()
                 .and()
                 .csrf().disable()
-                .exceptionHandling().accessDeniedHandler(accessDeniedHandler());
+                .exceptionHandling()
+
+                 // 出现AuthenticationException异常，即登录认证失败时，自定义返回信息
+                .authenticationEntryPoint(authenticationEntryPoint())
+
+                 // 鉴权失败时，自定义返回信息
+                .accessDeniedHandler(accessDeniedHandler());
     }
 }

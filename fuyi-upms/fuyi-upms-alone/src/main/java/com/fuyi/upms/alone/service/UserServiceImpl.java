@@ -16,6 +16,13 @@ public class UserServiceImpl implements UserService {
     private UpmsUserMapper upmsUserMapper;
 
     @Override
+    public List<UpmsUser> selectByExampleForStartPage(UpmsUserExample example, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize, false);
+        List<UpmsUser> upmsUsers = upmsUserMapper.selectByExample(example);
+        return upmsUsers;
+    }
+
+    @Override
     public List<UpmsUser> selectByExampleForOffsetPage(UpmsUserExample example, Integer offset, Integer limit) {
         PageHelper.offsetPage(offset, limit, false);
         List<UpmsUser> upmsUsers = upmsUserMapper.selectByExample(example);
