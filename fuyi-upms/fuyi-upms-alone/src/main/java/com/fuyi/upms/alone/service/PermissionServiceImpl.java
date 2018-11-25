@@ -2,10 +2,9 @@ package com.fuyi.upms.alone.service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.fuyi.upms.dao.entity.UpmsPermission;
-import com.fuyi.upms.dao.entity.UpmsRole;
-import com.fuyi.upms.dao.entity.UpmsRolePermission;
-import com.fuyi.upms.dao.entity.UpmsRolePermissionExample;
+import com.fuyi.framework.service.annotation.BaseServiceAnnotation;
+import com.fuyi.framework.service.base.BaseServiceImpl;
+import com.fuyi.upms.dao.entity.*;
 import com.fuyi.upms.dao.mapper.UpmsPermissionMapper;
 import com.fuyi.upms.dao.mapper.UpmsRolePermissionMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,8 @@ import java.util.List;
  * @Version 1.0
  */
 @Service
-public class PermissionServiceImpl implements PermissionService {
+@BaseServiceAnnotation
+public class PermissionServiceImpl extends BaseServiceImpl<UpmsPermissionMapper, UpmsPermission, UpmsPermissionExample> implements PermissionService {
 
     @Autowired
     private UpmsRolePermissionMapper upmsRolePermissionMapper;

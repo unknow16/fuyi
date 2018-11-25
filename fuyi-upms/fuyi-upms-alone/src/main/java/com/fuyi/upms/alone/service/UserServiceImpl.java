@@ -2,13 +2,13 @@ package com.fuyi.upms.alone.service;
 
 import com.fuyi.framework.service.annotation.BaseServiceAnnotation;
 import com.fuyi.framework.service.base.BaseServiceImpl;
-import com.fuyi.upms.dao.entity.UpmsUser;
-import com.fuyi.upms.dao.entity.UpmsUserExample;
-import com.fuyi.upms.dao.mapper.UpmsUserMapper;
+import com.fuyi.upms.dao.entity.*;
+import com.fuyi.upms.dao.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,6 +18,17 @@ public class UserServiceImpl extends BaseServiceImpl<UpmsUserMapper, UpmsUser, U
     @Autowired
     private UpmsUserMapper upmsUserMapper;
 
+    @Autowired
+    private UpmsUserRoleMapper upmsUserRoleMapper;
+
+    @Autowired
+    private UpmsRoleMapper upmsRoleMapper;
+
+    @Autowired
+    private UpmsUserOrganizationMapper upmsUserOrganizationMapper;
+
+    @Autowired
+    private UpmsOrganizationMapper upmsOrganizationMapper;
 
     @Override
     public UpmsUser createUser(UpmsUser upmsUser) {
@@ -38,5 +49,33 @@ public class UserServiceImpl extends BaseServiceImpl<UpmsUserMapper, UpmsUser, U
         upmsUser.setCtime(time);
         upmsUserMapper.insertSelective(upmsUser);
         return upmsUser;
+    }
+
+    @Override
+    public List<UpmsRole> selectUserRoles(int userId) {
+        UpmsUserRoleExample upmsUserRoleExample = new UpmsUserRoleExample();
+        upmsUserRoleExample.createCriteria().andUserIdEqualTo(userId);
+        List<UpmsUserRole> upmsUserRoles = upmsUserRoleMapper.selectByExample(upmsUserRoleExample);
+
+        List<UpmsRole> roles = new ArrayList<>(upmsUserRoles.size());
+        for (UpmsUserRole upmsUserRole : upmsUserRoles) {
+            UpmsRole upmsRole = upmsRoleMapper.selectByPrimaryKey(upmsUserRole.getRoleId());
+            roles.add(upmsRole);
+        }
+        return roles;
+    }
+
+    @Override
+    public List<UpmsOrganization> selectUserOrganizations(int userId) {
+        UpmsUserOrganizationExample upmsUserOrganizationExample = new UpmsUserOrganizationExample();
+        upmsUserOrganizationExample.createCriteria().andUserIdEqualTo(userId);
+        List<UpmsUserOrganization> upmsUserOrganizations = upmsUserOrganizationMapper.selectByExample(upmsUserOrganizationExample);
+
+        List<UpmsOrganization> organizations = new ArrayList<>(upmsUserOrganizations.size());
+        for(UpmsUserOrganization userOrganization : upmsUserOrganizations) {
+            UpmsOrganization upmsOrganization = upmsOrganizationMapper.selectByPrimaryKey(userOrganization.getOrganizationId());
+            organizations.add(upmsOrganization);
+        }
+        return organizations;
     }
 }

@@ -1,7 +1,10 @@
 package com.fuyi.upms.alone.controller;
 
+import com.fuyi.upms.alone.auth.UserDetailsImpl;
 import com.fuyi.upms.alone.bean.RespBean;
 import com.fuyi.upms.alone.service.UserService;
+import com.fuyi.upms.dao.entity.UpmsOrganization;
+import com.fuyi.upms.dao.entity.UpmsRole;
 import com.fuyi.upms.dao.entity.UpmsUser;
 import com.fuyi.upms.dao.entity.UpmsUserExample;
 import io.swagger.annotations.Api;
@@ -10,13 +13,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 @RestController
 @Api(value = "用户管理", description = "用户管理")
@@ -83,4 +85,26 @@ public class UserController {
         return result;
     }
 
+    @ApiOperation(value = "用户角色")
+    @RequestMapping(value = "/roles", method = RequestMethod.GET)
+    public Object roles() {
+        UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<UpmsRole> roles = upmsUserService.selectUserRoles(principal.getUserId());
+        return roles;
+    }
+
+    @ApiOperation(value = "用户组织")
+    @RequestMapping(value = "/orgs", method = RequestMethod.GET)
+    public Object orgs() {
+        UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<UpmsOrganization> organizations = upmsUserService.selectUserOrganizations(principal.getUserId());
+        return organizations;
+    }
+
+    @ApiOperation(value = "用户权限")
+    @RequestMapping(value = "/permissions", method = RequestMethod.GET)
+    public Object permissions() {
+        //UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return null;
+    }
 }
