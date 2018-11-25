@@ -48,7 +48,7 @@ public class PermissionServiceImpl implements PermissionService {
                     JSONObject folder = new JSONObject();
                     folder.put("id", upmsPermissionFolder.getPermissionId());
                     folder.put("path", upmsPermissionFolder.getUri());
-                    folder.put("component", "");
+                    folder.put("component", upmsPermissionFolder.getPermissionValue());
                     folder.put("name", upmsPermissionFolder.getName());
                     folder.put("iconCls", upmsPermissionFolder.getIcon());
                     folders.add(folder);
@@ -66,7 +66,7 @@ public class PermissionServiceImpl implements PermissionService {
                         JSONObject menu = new JSONObject();
                         menu.put("id", upmsPermissionMenu.getPermissionId());
                         menu.put("path", upmsPermissionMenu.getUri());
-                        menu.put("component", "");
+                        menu.put("component", upmsPermissionMenu.getPermissionValue());
                         menu.put("name", upmsPermissionMenu.getName());
                         menu.put("iconCls", upmsPermissionMenu.getIcon());
                         menus.add(menu);
@@ -83,7 +83,7 @@ public class PermissionServiceImpl implements PermissionService {
                             JSONObject button = new JSONObject();
                             button.put("id", upmsPermissionButton.getPermissionId());
                             button.put("path", upmsPermissionButton.getUri());
-                            button.put("component", "");
+                            button.put("component", upmsPermissionButton.getPermissionValue());
                             button.put("name", upmsPermissionButton.getName());
                             button.put("iconCls", upmsPermissionButton.getIcon());
                             buttons.add(button);

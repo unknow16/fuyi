@@ -30,11 +30,11 @@ public class PermissionController {
     private PermissionService permissionService;
 
     @ApiOperation(value = "获取用户权限")
-    @RequestMapping(value = "/initMenu", method = RequestMethod.POST)
+    @RequestMapping(value = "/initMenu", method = RequestMethod.GET)
     public Object selectPermissionByUserRoleId() {
         UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Object permissionList = permissionService.selectPermissionByUserRoleId(principal.getRoles());
-        return RespBean.ok("获取用户权限成功", permissionList);
+        return permissionList;
     }
 
 }

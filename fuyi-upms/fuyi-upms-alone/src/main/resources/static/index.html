@@ -5,21 +5,17 @@
     <title>fuyi-upms</title>
     <style>
         .login-container {
-            margin: 180px auto;
-
-        }
-
-        .login-form {
-            margin: 5px auto;
+            margin: 100px auto;
+            width: 500px;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h1>fuyi-upms</h1>
-        <form action="/login" method="post" class="login-form">
-            <input type="text" name="username" /> <br/>
-            <input type="text" name="password" /> <br/>
+        <form action="/login" method="post">
+            用户名：<input type="text" name="username" /> <br/>
+            密码：<input type="text" name="password" /> <br/>
             <input type="submit" value="登录">
         </form>
     </div>
