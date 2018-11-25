@@ -1,6 +1,5 @@
 package com.fuyi.upms.alone.config;
 
-import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fuyi.upms.alone.auth.*;
 import com.fuyi.upms.alone.bean.RespBean;
@@ -15,7 +14,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
@@ -50,10 +49,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new UserAuthenticationEntryPoint();
     }
 
+    /**
+     * new BCryptPasswordEncoder()
+     * NoOpPasswordEncoder.getInstance()
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsServiceImpl())
-                .passwordEncoder(NoOpPasswordEncoder.getInstance());
+                .passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override

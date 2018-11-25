@@ -84,5 +84,12 @@
             <artifactId>jackson-annotations</artifactId>
             <version>2.9.7</version>
         </dependency>
+
+        <!-- validator -->
+        <dependency>
+            <groupId>com.baidu.unbiz</groupId>
+            <artifactId>fluent-validator</artifactId>
+            <version>1.0.9</version>
+        </dependency>
     </dependencies>
 </project>

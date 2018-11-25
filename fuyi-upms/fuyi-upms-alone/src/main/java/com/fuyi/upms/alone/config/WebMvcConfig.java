@@ -20,5 +20,6 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     protected void addViewControllers(ViewControllerRegistry registry) {
 
         registry.addViewController("/").setViewName("index");
+        registry.addViewController("/").setViewName("index");
     }
 }
