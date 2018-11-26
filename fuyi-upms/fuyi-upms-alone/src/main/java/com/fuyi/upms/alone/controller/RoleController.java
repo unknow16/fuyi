@@ -2,6 +2,7 @@ package com.fuyi.upms.alone.controller;
 
 import com.fuyi.upms.alone.auth.UserDetailsImpl;
 import com.fuyi.upms.alone.bean.RespBean;
+import com.fuyi.upms.alone.service.PermissionService;
 import com.fuyi.upms.alone.service.RoleService;
 import com.fuyi.upms.dao.entity.UpmsRole;
 import com.fuyi.upms.dao.entity.UpmsRoleExample;
@@ -30,6 +31,9 @@ public class RoleController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private PermissionService permissionService;
 
     @ApiOperation(value = "新增角色")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -84,8 +88,22 @@ public class RoleController {
 
     @ApiOperation(value = "该角色拥有的权限")
     @RequestMapping(value = "/permission/{id}", method = RequestMethod.GET)
-    public Object permissions(@PathVariable String id) {
-        return null;
+    public Object permissions(@PathVariable int id) {
+        Map<String, Object> result = new HashMap<>();
+
+        Object checkedPermission = permissionService.selectPermissionListByRoleId(id);
+        result.put("checkedPermission", checkedPermission);
+
+        Object allPermission = permissionService.selectPermissionTree();
+        result.put("allPermission", allPermission);
+        return result;
+    }
+
+    @ApiOperation(value = "更新该角色拥有的权限")
+    @RequestMapping(value = "/permission/{roleId}", method = RequestMethod.POST)
+    public Object permissions(@PathVariable int roleId, @RequestBody Integer[] ids) {
+        int count = roleService.updateRolePermissin(roleId, ids);
+        return RespBean.ok("角色更新成功", count);
     }
 
 }

@@ -16,5 +16,23 @@ import java.util.List;
  */
 public interface PermissionService extends BaseService<UpmsPermission, UpmsPermissionExample> {
 
+    /**
+     * 根据用户角色列表获取其权限
+     * @param roles
+     * @return
+     */
     Object selectPermissionByUserRoleId(List<UpmsRole> roles);
+
+    /**
+     * 获取权限树数据
+     * @return
+     */
+    Object selectPermissionTree();
+
+    /**
+     * 获取该角色关联的权限
+     * @param roleId 角色id
+     * @return
+     */
+    Object selectPermissionListByRoleId(int roleId);
 }

@@ -5,4 +5,6 @@ import com.fuyi.upms.dao.entity.UpmsRole;
 import com.fuyi.upms.dao.entity.UpmsRoleExample;
 
 public interface RoleService extends BaseService<UpmsRole, UpmsRoleExample> {
+
+    int updateRolePermissin(Integer roleId, Integer[] ids);
 }
