@@ -1,4 +1,4 @@
-package com.fuyi.framework.service.base;
+package com.fuyi.framework.api.base;
 
 /**
  * 系统接口

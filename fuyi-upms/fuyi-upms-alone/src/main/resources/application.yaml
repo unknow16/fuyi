@@ -1,10 +1,6 @@
 spring:
   profiles:
     active: test
-  datasource:
-    url: jdbc:mysql://192.168.11.190:3306/fuyi?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
-    username: root
-    password: 123456
 
 mybatis:
   config-location: classpath:mybatis-config.xml

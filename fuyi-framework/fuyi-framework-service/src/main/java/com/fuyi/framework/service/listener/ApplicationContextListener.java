@@ -1,7 +1,7 @@
 package com.fuyi.framework.service.listener;
 
 import com.fuyi.framework.service.annotation.BaseServiceAnnotation;
-import com.fuyi.framework.service.base.BaseInterface;
+import com.fuyi.framework.api.base.BaseInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
@@ -40,6 +40,7 @@ public class ApplicationContextListener implements ApplicationListener<ContextRe
 
             // 系统入口初始化
             Map<String, BaseInterface> baseInterfaceBeans = contextRefreshedEvent.getApplicationContext().getBeansOfType(BaseInterface.class);
+            LOGGER.debug(">>>>> 系统开始初始化 <<<<<");
             for(Object service : baseInterfaceBeans.values()) {
                 LOGGER.debug(">>>>> {}.init()", service.getClass().getName());
                 try {
