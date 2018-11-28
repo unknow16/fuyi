@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
+    <!-- 设置上下文名称，每个logger都关联到logger上下文，默认上下文名称为default -->
+    <contextName>default</contextName>
+
     <!-- 文件输出格式 -->
     <property name="log_pattern" value="%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) |-%-5level [%thread] %c [%L] -| %msg%n" />
     <!-- test文件路径 -->
@@ -77,7 +80,7 @@
         <logger name="java.sql.Statement" level="DEBUG"/>
         <logger name="java.sql.PreparedStatement" level="DEBUG"/>
 
-        <root level="error">
+        <root level="info">
             <appender-ref ref="testFileAppender" />
             <appender-ref ref="consoleAppender" />
         </root>

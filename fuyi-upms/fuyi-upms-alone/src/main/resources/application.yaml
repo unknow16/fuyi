@@ -1,6 +1,9 @@
 spring:
   profiles:
     active: test
+  devtools:
+    restart:
+      additional-paths: classpath:application.yaml
 
 mybatis:
   config-location: classpath:mybatis-config.xml
