@@ -13,6 +13,8 @@
         <module>fuyi-common</module>
         <module>fuyi-framework</module>
         <module>fuyi-upms</module>
+        <module>fuyi-pay</module>
+        <module>fuyi-shop</module>
     </modules>
 
     <!-- 华为Maven镜像 当然你也可以用阿里的-->
