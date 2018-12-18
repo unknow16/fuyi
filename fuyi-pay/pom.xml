@@ -12,7 +12,6 @@
     <artifactId>fuyi-pay</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>fuyi-pay-alone</module>
         <module>fuyi-pay-merchant</module>
         <module>fuyi-pay-manager</module>
         <module>fuyi-pay-gateway</module>
