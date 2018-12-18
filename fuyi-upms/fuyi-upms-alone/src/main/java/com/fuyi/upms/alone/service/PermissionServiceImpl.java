@@ -117,7 +117,7 @@ public class PermissionServiceImpl extends BaseServiceImpl<UpmsPermissionMapper,
         JSONArray systems = new JSONArray();
         if (upmsSystems != null && upmsSystems.size() > 0) {
             for (UpmsSystem upmsSystem : upmsSystems) {
-                net.sf.json.JSONObject system = new net.sf.json.JSONObject();
+                JSONObject system = new JSONObject();
                 system.put("id", upmsSystem.getSystemId());
                 system.put("name", upmsSystem.getTitle());
                 systems.add(system);

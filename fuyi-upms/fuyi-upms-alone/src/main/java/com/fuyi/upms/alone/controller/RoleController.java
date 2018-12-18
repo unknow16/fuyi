@@ -103,7 +103,7 @@ public class RoleController {
     @RequestMapping(value = "/permission/{roleId}", method = RequestMethod.POST)
     public Object permissions(@PathVariable int roleId, @RequestBody Integer[] ids) {
         int count = roleService.updateRolePermissin(roleId, ids);
-        return RespBean.ok("角色更新成功", count);
+        return RespBean.ok("角色权限更新成功", count);
     }
 
 }
