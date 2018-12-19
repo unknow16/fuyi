@@ -30,4 +30,12 @@ public interface UserService extends BaseService<UpmsUser, UpmsUserExample> {
      * @return
      */
     List<UpmsOrganization> selectUserOrganizations(int userId);
+
+    /**
+     * 分配角色
+     * @param userId 用户id
+     * @param roleIds 角色id列表
+     * @return
+     */
+    int assignRoles(Integer userId, Integer[] roleIds);
 }

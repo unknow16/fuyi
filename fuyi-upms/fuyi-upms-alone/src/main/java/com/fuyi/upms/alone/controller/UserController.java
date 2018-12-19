@@ -93,6 +93,14 @@ public class UserController {
         return roles;
     }
 
+    @ApiOperation(value = "分配角色")
+    @RequestMapping(value = "/assignRoles", method = RequestMethod.POST)
+    public Object assignRoles(@RequestBody Integer[] roleIds) {
+        UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        int count = upmsUserService.assignRoles(principal.getUserId(), roleIds);
+        return RespBean.ok("分配角色成功", count);
+    }
+
     @ApiOperation(value = "用户组织")
     @RequestMapping(value = "/orgs", method = RequestMethod.GET)
     public Object orgs() {
@@ -101,10 +109,5 @@ public class UserController {
         return organizations;
     }
 
-    @ApiOperation(value = "用户权限")
-    @RequestMapping(value = "/permissions", method = RequestMethod.GET)
-    public Object permissions() {
-        //UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return null;
-    }
+
 }

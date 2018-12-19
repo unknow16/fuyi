@@ -80,4 +80,17 @@ public class UserServiceImpl extends BaseServiceImpl<UpmsUserMapper, UpmsUser, U
         }
         return organizations;
     }
+
+    @Override
+    @Transactional
+    public int assignRoles(Integer userId, Integer[] roleIds) {
+        int count = 0;
+        for (int i = 0; i < roleIds.length; i++) {
+            UpmsUserRole upmsUserRole = new UpmsUserRole();
+            upmsUserRole.setUserId(userId);
+            upmsUserRole.setRoleId(roleIds[i]);
+            count += upmsUserRoleMapper.insert(upmsUserRole);
+        }
+        return count;
+    }
 }

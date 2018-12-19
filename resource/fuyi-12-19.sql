@@ -1,19 +1,46 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 190
-Source Server Version : 50718
-Source Host           : 192.168.11.190:3306
+Source Server         : localhost
+Source Server Version : 50712
+Source Host           : localhost:3306
 Source Database       : fuyi
 
 Target Server Type    : MYSQL
-Target Server Version : 50718
+Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2018-12-19 01:18:02
+Date: 2018-12-19 18:51:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for shop_item
+-- ----------------------------
+DROP TABLE IF EXISTS `shop_item`;
+CREATE TABLE `shop_item` (
+  `item_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '商品id',
+  `item_name` varchar(200) DEFAULT NULL COMMENT '商品名称',
+  `sell_point` varchar(200) DEFAULT NULL COMMENT '商品卖点',
+  `cat_id` int(11) DEFAULT NULL COMMENT '商品分类',
+  `audit_status` tinyint(4) DEFAULT NULL COMMENT '审核状态',
+  `show_status` tinyint(4) DEFAULT NULL COMMENT '上下架状态',
+  `imgs` varchar(500) DEFAULT NULL COMMENT '上传图片：最多5张图片的存储地址，用分隔符逗号分开。',
+  `on_sale_time` datetime DEFAULT NULL COMMENT '上架时间',
+  `check_time` datetime DEFAULT NULL COMMENT '审核时间',
+  `update_user_id` bigint(20) DEFAULT NULL COMMENT '更新用户id',
+  `item_sort` int(11) DEFAULT NULL COMMENT '排序',
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`item_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='商品表';
+
+-- ----------------------------
+-- Records of shop_item
+-- ----------------------------
+INSERT INTO `shop_item` VALUES ('1', '三星 Note II (N7100) 云石白 联通3G手机', '经典回顾！超值价格值得拥有。', '560', '1', '1', null, '2018-12-19 18:22:50', '2018-12-19 18:22:54', '1', '1', '2018-12-19 18:22:59', '2018-12-19 18:23:01');
+INSERT INTO `shop_item` VALUES ('2', '华为 P6 (P6-C00) 黑 电信3G手机 双卡双待双通', '经典旗舰！雅然天成纤薄之美，强悍四核，前置500万美颜自拍,，2GB RAM+16GB ROM大内存！<a  target=\"blank\"  href=\"http://sale.jd.com/act/0akd8u5vomz.html\">【买卡上京东，省钱又轻松】点击有惊喜！</a>', '560', '1', '1', null, '2018-12-19 18:24:00', '2018-12-19 18:24:03', '1', '1', '2018-12-19 18:24:06', '2018-12-19 18:24:09');
 
 -- ----------------------------
 -- Table structure for shop_item_cat
@@ -1268,11 +1295,11 @@ CREATE TABLE `upms_organization` (
 -- ----------------------------
 -- Records of upms_organization
 -- ----------------------------
-INSERT INTO `upms_organization` VALUES ('1', null, '总部', '北京总部', '1');
-INSERT INTO `upms_organization` VALUES ('4', null, '河北分部', '河北石家庄', '1488122466236');
-INSERT INTO `upms_organization` VALUES ('5', null, '河南分部', '河南郑州', '1488122480265');
-INSERT INTO `upms_organization` VALUES ('6', null, '湖北分部', '湖北武汉', '1488122493265');
-INSERT INTO `upms_organization` VALUES ('7', null, '湖南分部', '湖南长沙', '1488122502752');
+INSERT INTO `upms_organization` VALUES ('1', '0', '总部', '北京总部', '1');
+INSERT INTO `upms_organization` VALUES ('4', '0', '河北分部', '河北石家庄', '1488122466236');
+INSERT INTO `upms_organization` VALUES ('5', '0', '河南分部', '河南郑州', '1488122480265');
+INSERT INTO `upms_organization` VALUES ('6', '0', '湖北分部', '湖北武汉', '1488122493265');
+INSERT INTO `upms_organization` VALUES ('7', '0', '湖南分部', '湖南长沙', '1488122502752');
 
 -- ----------------------------
 -- Table structure for upms_permission
@@ -1291,24 +1318,25 @@ CREATE TABLE `upms_permission` (
   `ctime` bigint(20) DEFAULT NULL COMMENT '创建时间',
   `orders` bigint(20) DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`permission_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COMMENT='权限';
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COMMENT='权限';
 
 -- ----------------------------
 -- Records of upms_permission
 -- ----------------------------
-INSERT INTO `upms_permission` VALUES ('1', '9901', '0', '系统组织管理', '1', 'Home', '/manage', 'fa fa-user-circle-o', '1', '1', '1');
+INSERT INTO `upms_permission` VALUES ('1', '9901', '0', '系统组织管理', '1', 'Home', '/manage', 'fa fa-cog fa-spin fa-lg', '1', '1', '1');
 INSERT INTO `upms_permission` VALUES ('2', '9901', '1', '系统管理', '2', 'upms/System', '/manage/system', '', '1', '2', '2');
 INSERT INTO `upms_permission` VALUES ('3', '9901', '1', '组织管理', '2', 'upms/Organization', '/manage/organization', '', '1', '3', '3');
-INSERT INTO `upms_permission` VALUES ('4', '9901', '0', '角色用户管理', '1', 'Home', '/manage', 'fa fa-camera-retro', '1', '4', '4');
-INSERT INTO `upms_permission` VALUES ('5', '9901', '4', '角色管理', '2', 'upms/Role', '/manage/role', 'fa fa-camera-retro', '1', '6', '6');
+INSERT INTO `upms_permission` VALUES ('4', '9901', '0', '角色用户管理', '1', 'Home', '/manage', 'fa fa-bank fa-lg', '1', '4', '4');
+INSERT INTO `upms_permission` VALUES ('5', '9901', '4', '角色管理', '2', 'upms/Role', '/manage/role', '', '1', '6', '6');
 INSERT INTO `upms_permission` VALUES ('6', '9901', '4', '用户管理', '2', 'upms/User', '/manage/user', '', '1', '5', '5');
-INSERT INTO `upms_permission` VALUES ('7', '9901', '0', '权限资源管理', '1', 'Home', '/manage', 'fa fa-camera-retro', '1', '7', '7');
-INSERT INTO `upms_permission` VALUES ('12', '9901', '0', '其他数据管理', '1', 'Home', '/', 'fa fa-camera-retro', '1', '12', '12');
+INSERT INTO `upms_permission` VALUES ('7', '9901', '0', '权限资源管理', '1', 'Home', '/manage', 'fa fa-line-chart fa-lg', '1', '7', '7');
+INSERT INTO `upms_permission` VALUES ('12', '9901', '0', '其他数据管理', '1', 'Home', '/', 'fa fa-motorcycle fa-lg', '1', '12', '12');
 INSERT INTO `upms_permission` VALUES ('14', '9901', '12', '会话管理', '2', 'upms:session:read', '/manage/session/index', '', '1', '14', '14');
 INSERT INTO `upms_permission` VALUES ('15', '9901', '12', '日志记录', '2', 'upms:log:read', '/manage/log/index', '', '1', '15', '15');
 INSERT INTO `upms_permission` VALUES ('39', '9901', '7', '权限管理', '2', 'upms/Permission', '/manage/permission', null, '1', '39', '39');
-INSERT INTO `upms_permission` VALUES ('101', '9902', '0', '商品信息管理', '1', 'Home', '/shop/itemcat', 'fa fa-camera-retro', '1', '1545147076673', '1545147076673');
-INSERT INTO `upms_permission` VALUES ('102', '9902', '101', '商品分类', '2', 'shop/ItemCat', '/shop/itemcat', 'fa fa-camera-retro', '1', '1545147129230', '1545147129230');
+INSERT INTO `upms_permission` VALUES ('101', '9902', '0', '商品信息管理', '1', 'Home', '/shop/itemcat', 'fa fa-shopping-cart fa-lg', '1', '1545147076673', '1545147076673');
+INSERT INTO `upms_permission` VALUES ('102', '9902', '101', '商品分类', '2', 'shop/ItemCat', '/shop/itemcat', '', '1', '1545147129230', '1545147129230');
+INSERT INTO `upms_permission` VALUES ('103', '9902', '101', '商品管理', '2', 'shop/Item', '/shop', '1', '1', '1545216074481', '1545216074481');
 
 -- ----------------------------
 -- Table structure for upms_role
@@ -1322,7 +1350,7 @@ CREATE TABLE `upms_role` (
   `ctime` bigint(20) NOT NULL COMMENT '创建时间',
   `orders` bigint(20) NOT NULL COMMENT '排序',
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='角色';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COMMENT='角色';
 
 -- ----------------------------
 -- Records of upms_role
@@ -1342,24 +1370,11 @@ CREATE TABLE `upms_role_permission` (
   PRIMARY KEY (`role_permission_id`),
   KEY `FK_Reference_23` (`role_id`),
   CONSTRAINT `FK_Reference_23` FOREIGN KEY (`role_id`) REFERENCES `upms_role` (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=334 DEFAULT CHARSET=utf8mb4 COMMENT='角色权限关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=356 DEFAULT CHARSET=utf8mb4 COMMENT='角色权限关联表';
 
 -- ----------------------------
 -- Records of upms_role_permission
 -- ----------------------------
-INSERT INTO `upms_role_permission` VALUES ('1', '1', '1');
-INSERT INTO `upms_role_permission` VALUES ('2', '1', '2');
-INSERT INTO `upms_role_permission` VALUES ('3', '1', '3');
-INSERT INTO `upms_role_permission` VALUES ('4', '1', '4');
-INSERT INTO `upms_role_permission` VALUES ('5', '1', '5');
-INSERT INTO `upms_role_permission` VALUES ('6', '1', '6');
-INSERT INTO `upms_role_permission` VALUES ('7', '1', '7');
-INSERT INTO `upms_role_permission` VALUES ('8', '1', '12');
-INSERT INTO `upms_role_permission` VALUES ('9', '1', '14');
-INSERT INTO `upms_role_permission` VALUES ('10', '1', '15');
-INSERT INTO `upms_role_permission` VALUES ('11', '1', '39');
-INSERT INTO `upms_role_permission` VALUES ('12', '1', '101');
-INSERT INTO `upms_role_permission` VALUES ('13', '1', '102');
 INSERT INTO `upms_role_permission` VALUES ('321', '2', '1');
 INSERT INTO `upms_role_permission` VALUES ('322', '2', '2');
 INSERT INTO `upms_role_permission` VALUES ('323', '2', '3');
@@ -1371,8 +1386,23 @@ INSERT INTO `upms_role_permission` VALUES ('328', '2', '39');
 INSERT INTO `upms_role_permission` VALUES ('329', '2', '12');
 INSERT INTO `upms_role_permission` VALUES ('330', '2', '14');
 INSERT INTO `upms_role_permission` VALUES ('331', '2', '15');
-INSERT INTO `upms_role_permission` VALUES ('332', '3', '101');
-INSERT INTO `upms_role_permission` VALUES ('333', '3', '102');
+INSERT INTO `upms_role_permission` VALUES ('339', '1', '1');
+INSERT INTO `upms_role_permission` VALUES ('340', '1', '2');
+INSERT INTO `upms_role_permission` VALUES ('341', '1', '3');
+INSERT INTO `upms_role_permission` VALUES ('342', '1', '4');
+INSERT INTO `upms_role_permission` VALUES ('343', '1', '5');
+INSERT INTO `upms_role_permission` VALUES ('344', '1', '101');
+INSERT INTO `upms_role_permission` VALUES ('345', '1', '6');
+INSERT INTO `upms_role_permission` VALUES ('346', '1', '102');
+INSERT INTO `upms_role_permission` VALUES ('347', '1', '7');
+INSERT INTO `upms_role_permission` VALUES ('348', '1', '39');
+INSERT INTO `upms_role_permission` VALUES ('349', '1', '103');
+INSERT INTO `upms_role_permission` VALUES ('350', '1', '12');
+INSERT INTO `upms_role_permission` VALUES ('351', '1', '14');
+INSERT INTO `upms_role_permission` VALUES ('352', '1', '15');
+INSERT INTO `upms_role_permission` VALUES ('353', '3', '101');
+INSERT INTO `upms_role_permission` VALUES ('354', '3', '102');
+INSERT INTO `upms_role_permission` VALUES ('355', '3', '103');
 
 -- ----------------------------
 -- Table structure for upms_system
@@ -1391,7 +1421,7 @@ CREATE TABLE `upms_system` (
   `ctime` bigint(20) DEFAULT NULL COMMENT '创建时间',
   `orders` bigint(20) DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`system_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COMMENT='系统';
+) ENGINE=InnoDB AUTO_INCREMENT=9903 DEFAULT CHARSET=utf8mb4 COMMENT='系统';
 
 -- ----------------------------
 -- Records of upms_system
@@ -1416,14 +1446,14 @@ CREATE TABLE `upms_user` (
   `locked` tinyint(4) DEFAULT NULL COMMENT '状态(0:正常,1:锁定)',
   `ctime` bigint(20) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COMMENT='用户';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COMMENT='用户';
 
 -- ----------------------------
 -- Records of upms_user
 -- ----------------------------
-INSERT INTO `upms_user` VALUES ('1', 'root', '$2a$10$fW046n2TyWfqDbGkV.rObOsWbhXbZ10OwzPdGEgBiiCsu9Ii/bTCC', null, 'root', null, '17538142003', '469741414@qq.com', '1', '0', '1');
-INSERT INTO `upms_user` VALUES ('2', 'upms', '$2a$10$Dl8IGxSxwDNIDDak/6cfA.n4VDp9TCcrol/Cj.nAA5pSPxM8iYrqG', null, 'upms', null, 'aa', 'a', '1', '0', '1545149218981');
-INSERT INTO `upms_user` VALUES ('3', 'shop', '$2a$10$44mDJsTzBkhOToUd5VKExOHsUPEaYempkXQy0ImHhUL5mQnWwaCPG', null, 'shop', null, 'bb', 'bb', '1', '0', '1545149355987');
+INSERT INTO `upms_user` VALUES ('1', 'root', '$2a$10$fW046n2TyWfqDbGkV.rObOsWbhXbZ10OwzPdGEgBiiCsu9Ii/bTCC', null, '超级管理员', null, '17538142003', '469741414@qq.com', '1', '0', '1');
+INSERT INTO `upms_user` VALUES ('2', 'upms', '$2a$10$Dl8IGxSxwDNIDDak/6cfA.n4VDp9TCcrol/Cj.nAA5pSPxM8iYrqG', null, '权限系统管理员', null, '13353682823', '13353682823@qq.com', '1', '0', '1545149218981');
+INSERT INTO `upms_user` VALUES ('3', 'shop', '$2a$10$44mDJsTzBkhOToUd5VKExOHsUPEaYempkXQy0ImHhUL5mQnWwaCPG', null, '电商管理员', null, '13353682823', '13353682823@qq.com', '1', '0', '1545149355987');
 INSERT INTO `upms_user` VALUES ('4', 'fuyi4', 'fuyi', '', '付一4', '', '17538142003', '469741414@qq.com', '1', '0', '1');
 INSERT INTO `upms_user` VALUES ('5', 'fuyi5', 'fuyi', '', '付一555', '', '17538142003', '469741414@qq.com', '1', '0', '1');
 INSERT INTO `upms_user` VALUES ('6', 'fuyi6', 'fuyi', '', '付一6', '', '17538142003', '469741414@qq.com', '1', '0', '1');
@@ -1432,7 +1462,7 @@ INSERT INTO `upms_user` VALUES ('8', 'fuyi8', 'fuyi', '', '付一8', '', '175381
 INSERT INTO `upms_user` VALUES ('9', 'fuyi9', 'fuyi', '', '付一9', '', '17538142003', '469741414@qq.com', '1', '0', '1');
 INSERT INTO `upms_user` VALUES ('10', 'fuyi10', 'fuyi', '', '付一10', '', '17538142003', '469741414@qq.com', '1', '0', '1');
 INSERT INTO `upms_user` VALUES ('11', 'fuyi11', 'fuyi', '', '付一11', '', '17538142003', '469741414@qq.com', '1', '0', '1');
-INSERT INTO `upms_user` VALUES ('12', 'fuyi12', 'fuyi', '', '1222', '', '17538142003', '469741414@qq.com', '1', '0', '1');
+INSERT INTO `upms_user` VALUES ('24', 'bbb', '$2a$10$d28UZo5ANTCV9mT/GJUSSOZKUzSZnXgmFmJiL0nnFmzWoNDFrMRSC', null, 'bbb', null, 'bbb', 'bbb', '2', '0', '1545189335480');
 
 -- ----------------------------
 -- Table structure for upms_user_organization
@@ -1501,7 +1531,7 @@ CREATE TABLE `upms_user_role` (
   `user_id` int(10) unsigned NOT NULL COMMENT '用户编号',
   `role_id` int(10) DEFAULT NULL COMMENT '角色编号',
   PRIMARY KEY (`user_role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COMMENT='用户角色关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COMMENT='用户角色关联表';
 
 -- ----------------------------
 -- Records of upms_user_role
@@ -1509,3 +1539,6 @@ CREATE TABLE `upms_user_role` (
 INSERT INTO `upms_user_role` VALUES ('1', '1', '1');
 INSERT INTO `upms_user_role` VALUES ('2', '2', '2');
 INSERT INTO `upms_user_role` VALUES ('3', '3', '3');
+INSERT INTO `upms_user_role` VALUES ('11', '1', '1');
+INSERT INTO `upms_user_role` VALUES ('12', '1', '2');
+INSERT INTO `upms_user_role` VALUES ('13', '1', '3');
