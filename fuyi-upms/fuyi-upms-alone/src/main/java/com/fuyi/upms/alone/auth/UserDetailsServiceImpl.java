@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * spring security 中从db获取userDetail的Service
+ */
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired

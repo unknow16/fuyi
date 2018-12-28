@@ -9,22 +9,38 @@ public class BaseResult {
     /**
      * 状态码：1成功，其他为失败
      */
-    public int code;
+    private int code;
 
     /**
      * 成功为success，其他为失败原因
      */
-    public String message;
+    private String message;
 
     /**
      * 数据结果集
      */
-    public Object data;
+    private Object data;
 
     public BaseResult(int code, String message, Object data) {
         this.code = code;
         this.message = message;
         this.data = data;
+    }
+
+    public static BaseResult ok(String msg, Object obj) {
+        return new BaseResult(200, msg, obj);
+    }
+
+    public static BaseResult ok(String msg) {
+        return new BaseResult(200, msg, null);
+    }
+
+    public static BaseResult error(String msg, Object obj) {
+        return new BaseResult(500, msg, obj);
+    }
+
+    public static BaseResult error(String msg) {
+        return new BaseResult(500, msg, null);
     }
 
     public int getCode() {
