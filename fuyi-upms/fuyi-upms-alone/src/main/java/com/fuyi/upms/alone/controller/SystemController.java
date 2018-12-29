@@ -1,5 +1,6 @@
 package com.fuyi.upms.alone.controller;
 
+import com.fuyi.framework.web.base.BaseResult;
 import com.fuyi.upms.alone.bean.RespBean;
 import com.fuyi.upms.alone.service.SystemService;
 import com.fuyi.upms.dao.entity.UpmsSystem;
@@ -18,7 +19,7 @@ import java.util.Map;
 
 @Api(value = "系统管理", description = "系统管理")
 @RestController
-@RequestMapping("/manage/system")
+@RequestMapping("/upms/system")
 public class SystemController {
     private static final Logger LOGGER = LoggerFactory.getLogger(SystemController.class);
 
@@ -51,8 +52,8 @@ public class SystemController {
     }
 
     @ApiOperation(value = "系统列表")
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public Object list(
+    @RequestMapping(value = "/list")
+    public BaseResult list(
             @RequestParam(required = false, defaultValue = "0", value = "pageNum") int pageNum,
             @RequestParam(required = false, defaultValue = "10", value = "pageSize") int pageSize,
             @RequestParam(required = false, defaultValue = "", value = "query") String query,
@@ -73,6 +74,6 @@ public class SystemController {
         Map<String, Object> result = new HashMap<>();
         result.put("rows", rows);
         result.put("total", total);
-        return result;
+        return BaseResult.ok(result);
     }
 }
