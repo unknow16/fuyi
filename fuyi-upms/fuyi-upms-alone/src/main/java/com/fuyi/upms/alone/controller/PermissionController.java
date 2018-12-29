@@ -1,5 +1,6 @@
 package com.fuyi.upms.alone.controller;
 
+import com.fuyi.framework.web.base.BaseResult;
 import com.fuyi.upms.alone.auth.UserDetailsImpl;
 import com.fuyi.upms.alone.bean.RespBean;
 import com.fuyi.upms.alone.service.PermissionService;
@@ -27,7 +28,7 @@ import java.util.Map;
  */
 @RestController
 @Api(value = "权限管理", description = "权限管理")
-@RequestMapping("/manage/permission")
+@RequestMapping("/permission")
 public class PermissionController {
 
     @Autowired
@@ -35,10 +36,10 @@ public class PermissionController {
 
     @ApiOperation(value = "获取用户权限")
     @RequestMapping(value = "/initMenu", method = RequestMethod.GET)
-    public Object selectPermissionByUserRoleId() {
+    public BaseResult selectPermissionByUserRoleId() {
         UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Object permissionList = permissionService.selectPermissionByUserRoleId(principal.getRoles());
-        return permissionList;
+        return BaseResult.ok(permissionList);
     }
 
     @ApiOperation(value = "新增权限")

@@ -30,7 +30,7 @@ public class AuthController {
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthRequest request) throws AuthenticationException {
         final String token = authService.login(request.getUsername(), request.getPassword());
 
-        return ResponseEntity.ok(BaseResult.ok(new JwtAuthResponse(token)));
+        return ResponseEntity.ok(BaseResult.ok("登录成功", new JwtAuthResponse(token)));
     }
 
     @RequestMapping(value = "/refreshToken", method = RequestMethod.GET)
