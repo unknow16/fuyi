@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * 获取访问当前请求需要的角色（可能有多个），传递到AccessDecisionManager，在AccessDecisionManager中与当前登陆用户拥有的角色比较
+ */
 public class UrlFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
     @Autowired
@@ -32,6 +35,9 @@ public class UrlFilterInvocationSecurityMetadataSource implements FilterInvocati
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
         String requestUrl = ((FilterInvocation) o).getRequestUrl();
         AntPathMatcher antPathMatcher = new AntPathMatcher();
+//        if (antPathMatcher.match("/auth/**", requestUrl)) {
+//
+//        }
 
         List<UpmsPermission> upmsPermissions = upmsPermissionMapper.selectByExample(new UpmsPermissionExample());
         for(UpmsPermission upmsPermission : upmsPermissions) {

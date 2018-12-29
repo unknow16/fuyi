@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fuyi.framework.web.base.BaseResult;
 import com.fuyi.upms.alone.auth.*;
 import com.fuyi.upms.alone.bean.RespBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -13,24 +14,86 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
 @Configuration
+@EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /**
+     * 通过自定义userDetailsService 来实现查询数据库，手机，二维码等多种验证方式
+     * @return
+     */
     @Bean
-    UserDetailsServiceImpl userDetailsServiceImpl() {
+    @Override
+    protected UserDetailsService userDetailsService() {
+        // 采用一个自定义的实现UserDetailsService接口的类
         return new UserDetailsServiceImpl();
+    }
+
+    /**
+     * 装载BCrypt密码编码器
+     */
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    /**
+     * Spring Boot 2 配置，这里要bean 注入， 不然会报该类未注入
+     */
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        AuthenticationManager authenticationManager = super.authenticationManagerBean();
+        return authenticationManager;
+    }
+
+    /**
+     * 用户验证
+     *
+     * new BCryptPasswordEncoder()
+     * NoOpPasswordEncoder.getInstance()
+     */
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        //auth.passwordEncoder(new BCryptPasswordEncoder());
+        super.configure(auth);
+    }
+
+    /**
+     * 自动注入AuthenticationManagerBuilder来构建AuthenticationManager
+     */
+    @Autowired
+    public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+        authenticationManagerBuilder
+                // 设置UserDetailsService
+                .userDetailsService(userDetailsService())
+                // 使用BCrypt进行密码的hash
+                .passwordEncoder(passwordEncoder());
+    }
+
+    /**
+     * 截取请求头中的token，解析出用户名，查询用户信息，放入SecurityContextHolder
+     */
+    @Bean
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationFilter();
     }
 
     @Bean
@@ -43,26 +106,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new UrlAccessDecisionManager();
     }
 
-    @Bean
-    AuthenticationAccessDeniedHandler accessDeniedHandler() {
-        return new AuthenticationAccessDeniedHandler();
-    }
-
-    @Bean
-    AuthenticationEntryPoint authenticationEntryPoint() {
-        return new UserAuthenticationEntryPoint();
-    }
-
-    /**
-     * new BCryptPasswordEncoder()
-     * NoOpPasswordEncoder.getInstance()
-     */
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsServiceImpl())
-                .passwordEncoder(new BCryptPasswordEncoder());
-    }
-
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/", "/index.html", "/swagger-ui.html", "/static/**", "/login_p")
@@ -73,8 +116,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/webjars/**")
                     .antMatchers("/v2/api-docs")
                     .antMatchers("/configuration/ui")
-                    .antMatchers("/configuration/security");
+                    .antMatchers("/configuration/security")
                     // swagger end;
+
+                    // 允许对于网站静态资源的无授权访问
+                    .antMatchers(
+                        HttpMethod.GET,
+                        "/",
+                        "/*.html",
+                        "/favicon.ico",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js"
+                    )
+
+                    // jwt 认证接口
+                    .antMatchers("/auth/**");
     }
 
     @Override
@@ -87,11 +144,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         object.setAccessDecisionManager(urlAccessDecisionManager());
                         return object;
                     }
-                })
-                .and()
+                }).and()
                 .csrf().disable() // 由于使用的是JWT，我们这里不需要csrf
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and() // 基于token，所以不需要session
-
+                .headers().cacheControl().and().and() // 禁用缓存
                 /**
                  * form 表单登陆配置
                  */
@@ -142,15 +198,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
                 // 允许对于网站静态资源的无授权访问
-                .antMatchers(
-                        HttpMethod.GET,
-                        "/",
-                        "/*.html",
-                        "/favicon.ico",
-                        "/**/*.html",
-                        "/**/*.css",
-                        "/**/*.js"
-                ).permitAll()
+//                .antMatchers(
+//                        HttpMethod.GET,
+//                        "/",
+//                        "/*.html",
+//                        "/favicon.ico",
+//                        "/**/*.html",
+//                        "/**/*.css",
+//                        "/**/*.js"
+//                ).permitAll()
 
                 // 对于获取token的rest api要允许匿名访问
                 .antMatchers("/auth/**").permitAll()
@@ -174,6 +230,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     out.write(om.writeValueAsString(BaseResult.ok("未登录,请先登录")));
                     out.flush();
                     out.close();
+
+                    //response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "授权失败！！！");
                 })
 
                  // 鉴权失败时，自定义返回信息
@@ -186,6 +244,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     out.write(om.writeValueAsString(BaseResult.ok("权限不足,请联系管理员")));
                     out.flush();
                     out.close();
-                });
+                }).and()
+
+                /**
+                 * 添加jwt filter
+                 */
+                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 }

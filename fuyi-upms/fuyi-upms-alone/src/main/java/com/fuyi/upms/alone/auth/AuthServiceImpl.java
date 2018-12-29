@@ -45,7 +45,7 @@ public class AuthServiceImpl implements AuthService {
         //securityConfig中配置的auth允许，所以不会被UsernamePasswordAuthenticationFilter拦截，在此颁发token前，自己执行认证
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
 
-        // 其实现类ProviderManager中List<AuthenticationProvider>只包含一个DaoAuthenticationProvider，
+        // uthenticationManager实现类ProviderManager中List<AuthenticationProvider>只包含一个DaoAuthenticationProvider，
         // 该provider调用UserDetailsService的loadUserByUsername()比对认证
         // 返回填充角色权限的Authentication(其是UsernamePasswordAuthenticationToken类型)
         final Authentication authenticate = authenticationManager.authenticate(token);

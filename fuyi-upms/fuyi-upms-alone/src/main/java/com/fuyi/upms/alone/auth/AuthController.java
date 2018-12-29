@@ -1,5 +1,6 @@
 package com.fuyi.upms.alone.auth;
 
+import com.fuyi.framework.web.base.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class AuthController {
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthRequest request) throws AuthenticationException {
         final String token = authService.login(request.getUsername(), request.getPassword());
 
-        return ResponseEntity.ok(new JwtAuthResponse(token));
+        return ResponseEntity.ok(BaseResult.ok(new JwtAuthResponse(token)));
     }
 
     @RequestMapping(value = "/refreshToken", method = RequestMethod.GET)

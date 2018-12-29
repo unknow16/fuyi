@@ -28,19 +28,19 @@ public class BaseResult {
     }
 
     public static BaseResult ok(String msg, Object obj) {
-        return new BaseResult(200, msg, obj);
+        return new BaseResult(1, msg, obj);
     }
 
     public static BaseResult ok(String msg) {
-        return new BaseResult(200, msg, null);
+        return new BaseResult(1, msg, null);
     }
 
-    public static BaseResult error(String msg, Object obj) {
-        return new BaseResult(500, msg, obj);
+    public static BaseResult ok(Object data) {
+        return new BaseResult(1, "success", data);
     }
 
-    public static BaseResult error(String msg) {
-        return new BaseResult(500, msg, null);
+    public static BaseResult error(int code, String msg) {
+        return new BaseResult(code, msg, null);
     }
 
     public int getCode() {
