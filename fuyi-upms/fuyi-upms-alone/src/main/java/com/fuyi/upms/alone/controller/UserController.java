@@ -1,7 +1,9 @@
 package com.fuyi.upms.alone.controller;
 
+import com.fuyi.framework.web.base.BaseResult;
 import com.fuyi.upms.alone.auth.UserDetailsImpl;
 import com.fuyi.upms.alone.bean.RespBean;
+import com.fuyi.upms.alone.service.PermissionService;
 import com.fuyi.upms.alone.service.UserService;
 import com.fuyi.upms.dao.entity.UpmsOrganization;
 import com.fuyi.upms.dao.entity.UpmsRole;
@@ -13,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,12 +25,19 @@ import java.util.Map;
 
 @RestController
 @Api(value = "用户管理", description = "用户管理")
-@RequestMapping("/manage/user")
+@RequestMapping("/user")
 public class UserController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService upmsUserService;
+
+    @ApiOperation(value = "根据token获取用户信息")
+    @RequestMapping(value = "/getUserInfo")
+    public ResponseEntity getUserInfo() {
+        UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return ResponseEntity.ok(BaseResult.ok(principal));
+    }
 
     @ApiOperation(value = "新增用户")
     @RequestMapping(value = "/create", method = RequestMethod.POST)

@@ -12,7 +12,7 @@ public class BaseResult {
     private int code;
 
     /**
-     * 成功为success，其他为失败原因
+     * 前端请求完成后提示信息
      */
     private String message;
 
@@ -27,16 +27,29 @@ public class BaseResult {
         this.data = data;
     }
 
+    /**
+     * 自定义提示信息和返回数据
+     * @param msg 提示信息
+     * @param obj 返回数据
+     */
     public static BaseResult ok(String msg, Object obj) {
         return new BaseResult(1, msg, obj);
     }
 
+    /**
+     * 仅返回提示信息
+     * @param msg 提示信息
+     */
     public static BaseResult ok(String msg) {
         return new BaseResult(1, msg, null);
     }
 
+    /**
+     * 仅返回数据
+     * @param data 返回数据
+     */
     public static BaseResult ok(Object data) {
-        return new BaseResult(1, "success", data);
+        return new BaseResult(1, null, data);
     }
 
     public static BaseResult error(int code, String msg) {
