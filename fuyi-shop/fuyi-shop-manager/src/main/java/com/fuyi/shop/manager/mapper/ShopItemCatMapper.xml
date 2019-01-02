@@ -12,8 +12,11 @@
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
 
-
-
+  <resultMap id="ResultMapTree" type="com.fuyi.shop.manager.entity.ShopItemCat" extends="BaseResultMap">
+    <collection property="itemCatList" ofType="com.fuyi.shop.manager.entity.ShopItemCat" javaType="ArrayList"
+                select="selectTreeByParentId" column="id">
+    </collection>
+  </resultMap>
 
   <sql id="Example_Where_Clause" >
     <where >
@@ -261,10 +264,10 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <select id="selectTreeByParentId" parameterType="long">
+  <select id="selectTreeByParentId" parameterType="long" resultMap="ResultMapTree">
     select
     <include refid="Base_Column_List" />
     from shop_item_cat
-    where parent_id = #{parent_id,jdbcType=BIGINT}
+    where parent_id = #{parentId,jdbcType=BIGINT} and status = 1
   </select>
 </mapper>

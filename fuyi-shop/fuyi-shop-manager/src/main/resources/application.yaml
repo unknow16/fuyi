@@ -1,2 +1,24 @@
+spring:
+  profiles:
+    active: dev
+  devtools:
+    restart:
+      additional-paths: classpath:application.yaml
+  datasource:
+    url: jdbc:mysql://${host.dbserver}:3306/fuyi?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: fuyi
+    password: 950613
+
+host:
+  zkserver: 127.0.0.1
+  rdserver: 127.0.0.1
+  dbserver: 120.78.193.62
+  mqserver: 127.0.0.1
+
+
 server:
   port: 8091
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:com/fuyi/shop/manager/mapper/*.xml

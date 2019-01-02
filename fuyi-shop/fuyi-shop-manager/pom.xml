@@ -26,10 +26,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>com.fuyi</groupId>
@@ -63,7 +59,6 @@
 
     <build>
         <plugins>
-
             <!-- mybatis generator plugin -->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
@@ -95,7 +90,28 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
         </plugins>
+
+        <resources>
+            <!--<resource>-->
+                <!--<directory>src/main/resources</directory>-->
+                <!--<includes>-->
+                    <!--<include>**/*.properties</include>-->
+                    <!--<include>**/*.xml</include>-->
+                    <!--<include>**/*.tld</include>-->
+                <!--</includes>-->
+                <!--<filtering>false</filtering>-->
+            <!--</resource>-->
+
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.tld</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
     </build>
 </project>
