@@ -18,5 +18,19 @@ public class IndexController {
         return "home/index";
     }
 
+    @RequestMapping(value = "/toLogin", method = RequestMethod.GET)
+    public String toLogin() {
+        return "sso/login";
+    }
+
+    @RequestMapping(value = "toRegister", method = RequestMethod.GET)
+    public String toRegister() {
+        return "sso/register";
+    }
+
+    @RequestMapping(value = "toItem", method = RequestMethod.GET)
+    public String toItem() {
+        return "item/item";
+    }
 }
 

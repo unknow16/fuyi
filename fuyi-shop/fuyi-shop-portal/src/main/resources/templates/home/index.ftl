@@ -9,10 +9,10 @@
     <meta name="Description" content="宜立方商城宜立方旗下全球美食优选网购商城，精选来自60多个国家和地区的进口食品，正品行货，支持货到付款。销售包括进口奶粉、母婴用品、营养保健品、生鲜食品、粮油、酒水、休闲食品等近万种商品。">
     <link rel="dns-prefetch" href="//pic.e3mall.cn">
     <meta property="wb:webmaster" content="3a008ad947166307">
-    <link rel="stylesheet" type="text/css" href="/css/base_w1200.css?v=2016071333">
-    <link rel="stylesheet" type="text/css" href="/css/index.css?v=2016071312">
-    <script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="/js/global_index.js"></script>
+    <link rel="stylesheet" type="text/css" href="/home/css//base_w1200.css?v=2016071333">
+    <link rel="stylesheet" type="text/css" href="/home/css//index.css?v=2016071312">
+    <script type="text/javascript" src="/home/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/home/js/global_index.js"></script>
 
     <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
     .en-markup-crop-options {
@@ -49,59 +49,59 @@
                 <#--</c:forEach>-->
                     <li>
                         <a name="sfbest_hp_hp_focus_1" class="fore_pic trackref" href="/html/activity/1471934470.html" target="_blank">
-                            <img id="lunbo_1" alt="8.30-9.5 月饼"	src="/images/html/aa472cb9f9624d22d1fcfd1c4dffbe42.jpg">
+                            <img id="lunbo_1" alt="8.30-9.5 月饼"	src="/home/images/html/aa472cb9f9624d22d1fcfd1c4dffbe42.jpg">
                         </a>
                     </li>
                     <li><a name="sfbest_hp_hp_focus_2" class="fore_pic trackref"
                            href="/html/activity/1471514387.html" target="_blank"> <img
                             id="lunbo_2" alt="8.23-8.29大闸蟹"
-                            src="/images/html/516e4d058d1d65a3506e179642297b2d.jpg">
+                            src="/home/images/html/516e4d058d1d65a3506e179642297b2d.jpg">
                     </a></li>
                     <li><a name="sfbest_hp_hp_focus_3" class="fore_pic trackref"
                            href="/html/activity/1472204196.html" target="_blank"> <img
                             id="lunbo_3" alt="8.30-9.5 中秋综合"
-                            src="/images/html/e886f76e03f7a3596033eb34ca362339.jpg">
+                            src="/home/images/html/e886f76e03f7a3596033eb34ca362339.jpg">
                     </a></li>
                     <li><a name="sfbest_hp_hp_focus_4" class="fore_pic trackref"
                            href="/html/activity/1471934638.html" target="_blank"> <img
                             id="lunbo_4" alt="8.30-9.5 水果"
-                            src="/images/html/757e35fab995b43c23b4396dc3ba4269.jpg">
+                            src="/home/images/html/757e35fab995b43c23b4396dc3ba4269.jpg">
                     </a></li>
                     <li><a name="sfbest_hp_hp_focus_5" class="fore_pic trackref"
                            href="/html/activity/1472114146.html" target="_blank"> <img
                             id="lunbo_5" alt="8.30-9.5粮油"
-                            src="/images/html/1748dcf682d7f595012e4309695d71d9.jpg">
+                            src="/home/images/html/1748dcf682d7f595012e4309695d71d9.jpg">
                     </a></li>
                     <li><a name="sfbest_hp_hp_focus_6" class="fore_pic trackref"
                            href="/html/activity/1472546864.html" target="_blank"> <img
                             id="lunbo_6" alt="8.30-9.5 酒水"
-                            src="/images/html/de66a063548629c8d4e639523d8c9c6e.jpg">
+                            src="/home/images/html/de66a063548629c8d4e639523d8c9c6e.jpg">
                     </a></li>
                     <li><a name="sfbest_hp_hp_focus_7" class="fore_pic trackref"
                            href="/html/activity/1471935715.html" target="_blank"> <img
                             id="lunbo_7" alt="8.30-9.5牛肉"
-                            src="/images/html/600c425e04b41f49e451d2fdbafb6e45.jpg">
+                            src="/home/images/html/600c425e04b41f49e451d2fdbafb6e45.jpg">
                     </a></li>
                     <li><a name="sfbest_hp_hp_focus_8" class="fore_pic trackref"
                            href="/html/activity/1471944414.html" target="_blank"> <img
                             id="lunbo_8" alt="8.27-8.29一元换购"
-                            src="/images/html/4dd7317569a06a451c1fe7762d6bf928.jpg">
+                            src="/home/images/html/4dd7317569a06a451c1fe7762d6bf928.jpg">
                     </a></li>
                 </ol>
             </div>
             <div class="rSide">
                 <a name="sfbest_hp_hp_focus_right-ad1" class="a-img r-img1 trackref" href="/html/activity/1472440858.html" target="_blank">
-                    <img alt="8.30-9.5 月饼" src="/images/html/ddf3f66b114f3a3bfbbe0b47693cdbf0.jpg">
+                    <img alt="8.30-9.5 月饼" src="/home/images/html/ddf3f66b114f3a3bfbbe0b47693cdbf0.jpg">
                     <div class="rmask"></div>
                 </a>
                 <a name="sfbest_hp_hp_focus_right-ad2" class="a-img r-img2 trackref" href="/html/activity/1472471068.html" target="_blank">
-                    <img s="" alt="8.30-9.5" src="/images/html/51e357022c1f826f13211222831a4b13.jpg">
+                    <img s="" alt="8.30-9.5" src="/home/images/html/51e357022c1f826f13211222831a4b13.jpg">
                     <div class="rmask"></div>
                 </a>
 
 
                 <a name="sfbest_hp_hp_focus_right-ad3" class="a-img r-img3 trackref" href="/html/activity/1473011294.html" target="_blank">
-                    <img alt="9.5中秋菜谱" src="/images/html/838abc2055e36f423701de255bbc9914.jpg">
+                    <img alt="9.5中秋菜谱" src="/home/images/html/838abc2055e36f423701de255bbc9914.jpg">
                     <div class="rmask"></div>
                 </a>
             </div>
@@ -139,12 +139,10 @@
             <div class="b_left">
                 <h2>优选必买<span></span></h2>
                 <ul class="bbig" id="bigPerfect">
-                    <li class="price_list0" goods="215383" eid="b_215383_0"
-                        id="cx_b_215383_0"><a
-                            href="#"
-                            title="红肉火龙果1000g（2个装）" target="_blank"><img class="lazy"
-                                                                         src="/images/html/95256f5b2857ec28914f631532508d76.jpg"
-                                                                         style="display: inline;"></a>
+                    <li class="price_list0" goods="215383" eid="b_215383_0" id="cx_b_215383_0">
+                        <a href="http://localhost:8092/toItem"
+                            title="红肉火龙果1000g（2个装）" target="_blank">
+                        <img class="lazy" src="/home/images/html/95256f5b2857ec28914f631532508d76.jpg" style="display: inline;"></a>
                         <div class="gBtn p-btn bbtn" style="top: 260px;">
                             <a pid="215383"
                                data_url="http://p02.e3mall.cn/2016/1800215383/middle_1800215383_1_1/160x160.jpg"
@@ -157,7 +155,7 @@
                         id="cx_b_57111_0"><a
                             href="#"
                             title="湾仔码头 玉米蔬菜猪肉手工水饺 720g" target="_blank"><img class="lazy"
-                                                                              src="/images/html/49111b8189bf71370cdb145f8fdb1195.jpg"
+                                                                              src="/home/images/html/49111b8189bf71370cdb145f8fdb1195.jpg"
                                                                               style="display: inline;"></a>
                         <div class="gBtn p-btn bbtn" style="top: 260px;">
                             <a pid="57111"
@@ -171,7 +169,7 @@
                             href="#"
                             title="汾酒 53°20年青花瓷  500ml" target="_blank"><img class="lazy"
                                                                              alt="汾酒 53°20年青花瓷  500ml"
-                                                                             src="/images/html/cf33d7d36f1128577782ded21fe812a9.jpg"
+                                                                             src="/home/images/html/cf33d7d36f1128577782ded21fe812a9.jpg"
                                                                              style="display: inline;"></a>
                         <div class="gBtn p-btn bbtn">
                             <a pid="5536"
@@ -185,7 +183,7 @@
                             href="http://www.e3mall.cn/html/products/13/1800012045.html#trackref=sfbest_hp_hp_goods_big-item4"
                             title="佳沛  新西兰阳光金果奇异果6粒" target="_blank"><img class="lazy"
                                                                           alt="佳沛  新西兰阳光金果奇异果6粒"
-                                                                          src="/images/html/2a3ba6ffb33d8fca0dc848f94e3d99d8.jpg"
+                                                                          src="/home/images/html/2a3ba6ffb33d8fca0dc848f94e3d99d8.jpg"
                                                                           style="display: inline;"></a>
                         <div class="gBtn p-btn bbtn">
                             <a pid="12045"
@@ -200,7 +198,7 @@
                         id="cx_b_37194_1"><a
                             href="http://www.e3mall.cn/html/products/38/1800037194.html#trackref=sfbest_hp_hp_goods_small-item1"
                             title="精气神 山黑猪猪蹄 320g" target="_blank"><img class="lazy"
-                                                                        src="/images/html/c3449a684bebe21f5b6c6c79e46791ff.jpg"
+                                                                        src="/home/images/html/c3449a684bebe21f5b6c6c79e46791ff.jpg"
                                                                         style="display: inline;"></a>
                         <div class="gBtn p-btn bbtn" style="top: 210px;">
                             <a pid="37194"
@@ -215,7 +213,7 @@
                             href="http://www.e3mall.cn/html/products/220/1500219085.html#trackref=sfbest_hp_hp_goods_small-item2"
                             title="八马茶业 福鼎白茶(白牡丹）62.5g*2" target="_blank"><img
                             class="lazy"
-                            src="/images/html/042cc65a4fb9899878f2f37235ca1793.jpg"
+                            src="/home/images/html/042cc65a4fb9899878f2f37235ca1793.jpg"
                             style="display: inline;"></a>
                         <div class="gBtn p-btn bbtn" style="top: 210px;">
                             <a pid="219085"
@@ -231,7 +229,7 @@
                             title="爱之湾 桃红莫斯卡托甜起泡酒 750ml" target="_blank"><img class="lazy"
                                                                               data="/images/goods/c11e0d59289782b09ea1cbcb98070017.jpg"
                                                                               alt="爱之湾 桃红莫斯卡托甜起泡酒 750ml"
-                                                                              src="/images/goods/c11e0d59289782b09ea1cbcb98070017.jpg"
+                                                                              src="/home/images/goods/c11e0d59289782b09ea1cbcb98070017.jpg"
                                                                               style="display: inline;"></a>
                         <div class="gBtn p-btn bbtn">
                             <a pid="55213"
@@ -247,7 +245,7 @@
                             title="北纯  有机绿豆 1kg" target="_blank"><img class="lazy"
                                                                       data="/images/goods/7cc96c14e10f6ed8db28b4b1efdfdb07.jpg"
                                                                       alt="北纯  有机绿豆 1kg"
-                                                                      src="/images/goods/7cc96c14e10f6ed8db28b4b1efdfdb07.jpg"
+                                                                      src="/home/images/goods/7cc96c14e10f6ed8db28b4b1efdfdb07.jpg"
                                                                       style="display: inline;"></a>
                         <div class="gBtn p-btn bbtn">
                             <a pid="167461"
@@ -263,7 +261,7 @@
             <div class="rSide1">
 
                 <div class="rImg2">
-                    <a name="sfbest_hp_hp_news_right-ad" class="trackref" href="/html/activity/1472464260.html" target="_blank"><img salt="9.2-9.5" src="/images/goods/751d2091c008c2a49c1934545730f041.jpg"></a>
+                    <a name="sfbest_hp_hp_news_right-ad" class="trackref" href="/html/activity/1472464260.html" target="_blank"><img salt="9.2-9.5" src="/home/images/goods/751d2091c008c2a49c1934545730f041.jpg"></a>
                 </div>
 
                 <div class="sfNews">
@@ -281,7 +279,7 @@
     </div>
     <!--楼层 start-->
     <div class="indexW mt2 full_ad" style="width:1190px;padding-left:10px;"><a name="sfbest_hp_hp_banner_1" class="trackref" href="/html/activity/1472461333.html" target="_blank"><img alt="8.30-9.5" class="lazy"
-                                                                                                                                                                                        src="/images/goods/8f42d6d2deead3da7d50c8a702a3c939.jpg" style="display: inline;"></a>
+                                                                                                                                                                                        src="/home/images/goods/8f42d6d2deead3da7d50c8a702a3c939.jpg" style="display: inline;"></a>
     </div>
     <div class="indexW mt2 ie6 fresh">
         <div class="category">
@@ -295,7 +293,7 @@
                 </li>
             </ul>
             <div class="lCont"><a name="sfbest_hp_hp_floor1_left-ad" class="trackref" href="/html/activity/1472459562.html" target="_blank">
-                <img alt="8.30-9.5" class="lazy" src="/images/goods/26336113289bf7273823080488a9d200.jpg" style="display: inline;"></a></div>
+                <img alt="8.30-9.5" class="lazy" src="/home/images/goods/26336113289bf7273823080488a9d200.jpg" style="display: inline;"></a></div>
         </div>
         <div class="sfRight">
             <div class="subCont">
@@ -307,7 +305,7 @@
                                 target="_blank" title="泰国金柚700-1200g"><img class="lazy"
                                                                            data="/images/goods/160x160.jpg"
                                                                            alt="泰国金柚700-1200g"
-                                                                           src="/images/goods/160x160-1.jpg"
+                                                                           src="/home/images/goods/160x160-1.jpg"
                                                                            style="display: block;"></a>
                         <div class="gBtn p-btn">
                             <a pid="218031"
@@ -331,7 +329,7 @@
                                 class="lazy"
                                 data="/images/goods/160x160.jpg"
                                 alt="天山一号火焰山哈密瓜1.4kg-2kg【下单后3-5天发货】"
-                                src="/images/goods/160x160-2.jpg"
+                                src="/home/images/goods/160x160-2.jpg"
                                 style="display: block;"></a>
                         <div class="gBtn p-btn">
                             <a pid="218155"
@@ -354,7 +352,7 @@
                                 target="_blank" title="一点红冬枣1000g"><img class="lazy"
                                                                         data="/images/goods/160x160.jpg"
                                                                         alt="一点红冬枣1000g"
-                                                                        src="/images/goods/160x160-3.jpg"
+                                                                        src="/home/images/goods/160x160-3.jpg"
                                                                         style="display: block;"></a>
                         <div class="gBtn p-btn">
                             <a pid="236853"
@@ -377,7 +375,7 @@
                                 target="_blank" title="墨西哥牛油果420g（3个装）"><img class="lazy"
                                                                              data="/images/goods/160x160.jpg"
                                                                              alt="墨西哥牛油果420g（3个装）"
-                                                                             src="/images/goods/160x160-4.jpg"
+                                                                             src="/home/images/goods/160x160-4.jpg"
                                                                              style="display: block;"></a>
                         <div class="gBtn p-btn">
                             <a pid="218955"
@@ -401,7 +399,7 @@
                                 class="lazy"
                                 data="/images/goods/160x160.jpg"
                                 alt="佳沛zespri 佳沛新西兰金奇异果12个（36号）"
-                                src="/images/goods/160x160-5.jpg"
+                                src="/home/images/goods/160x160-5.jpg"
                                 style="display: block;"></a>
                         <div class="gBtn p-btn">
                             <a pid="236863"
@@ -424,7 +422,7 @@
                                 target="_blank" title="国产西梅1000g"><img class="lazy"
                                                                        data="/images/goods/160x160.jpg"
                                                                        alt="国产西梅1000g"
-                                                                       src="/images/goods/160x160-6.jpg"
+                                                                       src="/home/images/goods/160x160-6.jpg"
                                                                        style="display: block;"></a>
                         <div class="gBtn p-btn">
                             <a pid="236871"
@@ -447,7 +445,7 @@
                                 target="_blank" title="新西兰红玫瑰苹果720g(4个装)"><img class="lazy"
                                                                                data="/images/goods/160x160.jpg"
                                                                                alt="新西兰红玫瑰苹果720g(4个装)"
-                                                                               src="/images/goods/160x160-7.jpg"
+                                                                               src="/home/images/goods/160x160-7.jpg"
                                                                                style="display: block;"></a>
                         <div class="gBtn p-btn">
                             <a pid="218073"
@@ -470,7 +468,7 @@
                                 target="_blank" title="皇冠蜜梨1000g（4个装）"><img class="lazy"
                                                                             data="/images/goods/160x160.jpg"
                                                                             alt="皇冠蜜梨1000g（4个装）"
-                                                                            src="/images/goods/160x160-8.jpg"
+                                                                            src="/home/images/goods/160x160-8.jpg"
                                                                             style="display: block;"></a>
                         <div class="gBtn p-btn">
                             <a pid="215405"
