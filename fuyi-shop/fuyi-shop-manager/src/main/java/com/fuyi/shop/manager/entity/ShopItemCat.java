@@ -1,7 +1,6 @@
 package com.fuyi.shop.manager.entity;
 
 import java.util.Date;
-import java.util.List;
 
 public class ShopItemCat {
     private Long id;
@@ -19,8 +18,6 @@ public class ShopItemCat {
     private Date created;
 
     private Date updated;
-
-    private List<ShopItemCat> itemCatList;
 
     public Long getId() {
         return id;
@@ -84,13 +81,5 @@ public class ShopItemCat {
 
     public void setUpdated(Date updated) {
         this.updated = updated;
-    }
-
-    public List<ShopItemCat> getItemCatList() {
-        return itemCatList;
-    }
-
-    public void setItemCatList(List<ShopItemCat> itemCatList) {
-        this.itemCatList = itemCatList;
     }
 }
