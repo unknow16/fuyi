@@ -1,4 +1,4 @@
-package com.fuyi.shop.portal;
+package com.fuyi.shop.service;
 
 /**
  * @ClassName AppTest

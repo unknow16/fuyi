@@ -1,12 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>item.title - 宜立方商城</title>
+	<title>${item.title } - 宜立方商城</title>
 	<script>
         var _SF_CFG = {
 	    www_url:'http://www.e3mall.cn',
             m_url:'http://m.e3mall.cn',
-            productId:"item.id",
+            productId:${item.id},
             number: 1600229585,
             minBuy: 1,
             maxBuy: 99,
@@ -29,33 +33,33 @@
 	};
 	</script>
 	
-	<script src="/item/js/jquery-1.5.1.min.js?v=20160713" type="text/javascript"></script>
-    <script src="/item/js/jquery.alerts.js?v=20160713" type="text/javascript"></script>
-    <script src="/item/js/common.js?v=20160713" type="text/javascript"></script>
-    <script src="/item/js/cart.js?v=20160713" type="text/javascript"></script>
-    <script src="/item/js/cloud-zoom.1.0.2.min.js?v=20160713" type="text/javascript"></script>
-    <script src="/item/js/jquery.thickbox.js?v=20160713" type="text/javascript"></script>
-    <script src="/item/js/goods.js?v=20160713" type="text/javascript"></script>
-    <script src="/item/js/NewVersion.js?v=20160713" type="text/javascript"></script>
-    <script src="/item/js/png.js?v=20160713" type="text/javascript"></script>
-    <script src="/item/js/qiangGouPro.js?v=20160713" type="text/javascript"></script>
-    <script src="/item/js/jquery.cookie.js?v=20160713" type="text/javascript"></script>
-    <script src='/item/js/jquery.lazyload.js?v=20160713' type='text/javascript'></script>
-    <script type="text/javascript" src="/item/js/jquery.qrcode.js?v=20160713"></script>
-    <script type="text/javascript" src="/item/js/qrcode.js?v=20160713"></script>
-    <script type="text/javascript" src="/item/js/cookie.js?v=20160416222"></script>
-    <script type="text/javascript" src="/item/js/shadow.js?v=20160416"></script>
-    <script src="/item/js/product.js?v=20160713" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="/item/css/base_w1200.css?v=20160713">
-    <link rel="stylesheet" type="text/css" href="/item/css/product.css?v=20160713">
-    <link rel="stylesheet" type="text/css" href="/item/css/jquery.alerts.css?v=20160713" />
-    <link rel="stylesheet" type="text/css" href="/item/css/common.css?v=20160713" />
+	<script src="/js/jquery-1.5.1.min.js?v=20160713" type="text/javascript"></script>
+<script src="/js/jquery.alerts.js?v=20160713" type="text/javascript"></script>
+<script src="/js/common.js?v=20160713" type="text/javascript"></script>
+<script src="/js/cart.js?v=20160713" type="text/javascript"></script>
+<script src="/js/cloud-zoom.1.0.2.min.js?v=20160713" type="text/javascript"></script>
+<script src="/js/jquery.thickbox.js?v=20160713" type="text/javascript"></script>
+<script src="/js/goods.js?v=20160713" type="text/javascript"></script>
+<script src="/js/NewVersion.js?v=20160713" type="text/javascript"></script>
+<script src="/js/png.js?v=20160713" type="text/javascript"></script>
+<script src="/js/qiangGouPro.js?v=20160713" type="text/javascript"></script>
+<script src="/js/jquery.cookie.js?v=20160713" type="text/javascript"></script>
+<script src='/js/jquery.lazyload.js?v=20160713' type='text/javascript'></script>
+<script type="text/javascript" src="/js/jquery.qrcode.js?v=20160713"></script> 
+<script type="text/javascript" src="/js/qrcode.js?v=20160713"></script>
+<script type="text/javascript" src="/js/cookie.js?v=20160416222"></script>
+<script type="text/javascript" src="/js/shadow.js?v=20160416"></script>
+<script src="/js/product.js?v=20160713" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/css/base_w1200.css?v=20160713">
+<link rel="stylesheet" type="text/css" href="/css/product.css?v=20160713">
+<link rel="stylesheet" type="text/css" href="/css/jquery.alerts.css?v=20160713" />
+<link rel="stylesheet" type="text/css" href="/css/common.css?v=20160713" />
 </head>
 <body >
 <!-- header start -->
-<#--<jsp:include page="commons/header.jsp" />-->
+<jsp:include page="commons/header.jsp" />
 <!-- header end -->
-<#--<jsp:include page="commons/mainmenu.jsp" />-->
+<jsp:include page="commons/mainmenu.jsp" />
 <div class="linknav"><div class="breadcrumb"><strong><a href="/food/6-0-0-0-0-2-0-0-0-0-0.html">休闲食品</a></strong><span> &gt; <a href="/food/7321-0-0-0-0-2-0-0-0-0-0.html">月饼</a> &gt; <a href="/food/7331-0-0-0-0-2-0-0-0-0-0.html">其他月饼</a> &gt; <a href="http://www.e3mall.cn/pinpai/7331-10863.html">我是花吃</a> &gt; 我是花吃 我是花吃鲜花月饼团圆礼盒390g</span></div></div>
 <div class="pWrap">
     <div class="productIntro">
@@ -63,8 +67,8 @@
             <div class="pItemsMain">
                 <div class="pItemsName">
                     <div class="cm">
-                        <h1 id="base_name-sf">item.title </h1><br></br>
-						<strong id="adword-sf" title="" class="">item.sellPoint </strong>
+                        <h1 id="base_name-sf">${item.title }</h1><br></br>
+						<strong id="adword-sf" title="" class="">${item.sellPoint }</strong>
                     </div>
                 </div>
                 <div class="pItemsPrice" id="price-sf">
@@ -96,14 +100,14 @@
                     </div>
                     <div class="chooseBtns" id="buy-btn-sf">
                         <div class="pAmount">
-                            <span><input type="text" id="number_ item.id" class="text" value=""></span>
+                            <span><input type="text" id="number_${item.id}" class="text" value=""></span>
                             <span>
                                 <a href="javascript:;" id="add-sell-num" class="p-add">+</a>
                                 <a href="javascript:;" id="reduce-sell-num" class="p-reduce disable">-</a>
                             </span>
                         </div>
-                        <div class="pBtn" id="cart-add-btn-sf"><a onclick="cartAdd( item.id , 0, 1, 0, 1, this);"><b></b>加入购物车</a></div>
-                        <div class="pBtn quickBuy" style="display: none;" id="quickBuy" title="快速下单，直达填写订单页面"><a onclick="oneKeyBuy( item.id , 0, 1, 0, 1, this);">一键购买</a></div>
+                        <div class="pBtn" id="cart-add-btn-sf"><a onclick="cartAdd(${item.id}, 0, 1, 0, 1, this);"><b></b>加入购物车</a></div>
+                        <div class="pBtn quickBuy" style="display: none;" id="quickBuy" title="快速下单，直达填写订单页面"><a onclick="oneKeyBuy(${item.id}, 0, 1, 0, 1, this);">一键购买</a></div>
 						<div class="yj_time" id="sendTime">预计发货时间：<br>2014-02-28 08:59</div>
 						<div class="phone_client phone_border"><div id="phone_time">扫描下载客户端<br><em>先摇券 后买单</em></div>
 							<!--手机二维码显示层-->
@@ -153,7 +157,7 @@
 		<div class="pView">
                                 <div id="pView">
                 <div id="zoom-jpg" class="jqzoom">
-                <img alt="" width="330" height="330" src=" item.images[0] " jqimg=" item.images[0] "/>
+                <img alt="" width="330" height="330" src="${item.images[0] }" jqimg="${item.images[0] }"/>
                 </div>
                 <div id="pic-list">
                     <a href="javascript:void(0);" class="btn-control disabled" id="btn-forward"><b></b></a>
@@ -161,8 +165,8 @@
         
                     <div class="pic-items" style="position: absolute; width: 50px; height: 300px; overflow: hidden;">
                         <ul style="position: absolute; left: 0px; top: 0px; height: 240px;">
-                           <c:forEach items=" item.images " var="image">
-                           		<li style="float: left;"><img title=" item.title  " alt=" item.title " src=" image "></li>
+                           <c:forEach items="${item.images }" var="image">
+                           		<li style="float: left;"><img title="${item.title } " alt="${item.title }" src="${image }"></li>
                            </c:forEach>
                         </ul>
                     </div>
@@ -204,7 +208,7 @@
                                                 <li>产地：<span><a href="/food/7331-0-45-0-0-2-0-0-0-0-0.html" title="中国" target="_blank">中国</a></span>
                         </li>
 					                                                    <li>重量：1.4kg （含包装）</li>
-                                                <li>商品编号： item.id </li>
+                                                <li>商品编号：${item.id }</li>
                         			<li class="card-pay">
 			<span class="card-pay-left">优选卡</span>
 			<span class="card-pay-right">支持优选卡支付</span>
@@ -237,7 +241,7 @@
                 <li class="curr" pcont-target="div-detail"><a title="商品详情" href="javascript:void(0);">商品介绍</a></li>
                                 <li pcont-target="div-comment"><a title="用户评价" href="javascript:void(0);">评价<b>(<font class="comment-total-sf">0</font>)</b></a></li>
                             </ul>
-            <div id="add-cart-r-btn-sf" class="p-btn"><a href="javascript:void(0);" data_url="http://p02.e3mall.cn/2016/1600229585/thumb_1600229585_1_1.jpg" pid=" item.id ">加入购物车</a></div>
+            <div id="add-cart-r-btn-sf" class="p-btn"><a href="javascript:void(0);" data_url="http://p02.e3mall.cn/2016/1600229585/thumb_1600229585_1_1.jpg" pid="${item.id}">加入购物车</a></div>
         </div>
         <div class="clear" id="flow-layer-sf"></div>
 		<div class="pCont cpjs_box" id="div-detail">
@@ -259,10 +263,10 @@
 			</div>
 			<div class="pJiucuo">
 				如果您发现商品信息存在问题，<a target="_blank"
-					href="http://www.e3mall.cn/ProductCorrection/ProductCorrection/pId/item.id"
+					href="http://www.e3mall.cn/ProductCorrection/ProductCorrection/pId/${item.id}"
 					rel="nofollow">欢迎纠错</a>
 			</div>
-			<div class="product_info"> itemDesc.itemDesc </div>
+			<div class="product_info">${itemDesc.itemDesc }</div>
 		</div>
 			<div class="pCont" id="div-comment">
             <div class="commentList" id="commandp">
@@ -288,7 +292,7 @@
                 </div>
                 <div id="have-none-comments" style="padding-left:10px;">还木有评价额，快抢沙发吧！</div><ul class="pComment" id="comment-lists-sf"></ul>
                 <div class="plpage">
-                    <div class="showAll" style="display: none;"><a target="_blank" href="/reviewlist/0/ item.id ">[查看全部评价]</a></div>
+                    <div class="showAll" style="display: none;"><a target="_blank" href="/reviewlist/0/${item.id}">[查看全部评价]</a></div>
                     <div class="pages" id="comment-ajax-page-sf"><span class="prev disabled"><b class="prevarr"></b>上一页</span><span class="current">1</span><span class="next disabled">下一页<b class="nextarr"></b></span></div>
                 </div>
             </div>
@@ -353,6 +357,6 @@
     <div class="clear"></div>    
 </div>
 <div class="clear1"></div>
-<#--<jsp:include page="commons/footer.jsp" />-->
+<jsp:include page="commons/footer.jsp" />
 </body>
 </html>

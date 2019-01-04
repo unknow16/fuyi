@@ -19,13 +19,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- dubbo -->
-        <dependency>
-            <groupId>com.alibaba.boot</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>${springboot.dubbo.version}</version>
-        </dependency>
-
         <!-- swagger2 -->
         <dependency>
             <groupId>io.springfox</groupId>
