@@ -33,14 +33,20 @@ service:
 # dubbo config
 dubbo:
   scan:
-    base-packages: com.fuyi.shop.rpc.service
+    basePackages: com.fuyi.shop.rpc.service
+
+  ## ApplicationConfig Bean
   application:
     id: ShopServiceApplication
     name: ShopServiceApplication
+
+  ## ProtocolConfig Bean
   protocol:
     id: dubbo
     name: dubbo
     port: 12345
+
+  ## RegistryConfig Bean
   registry:
     id: fuyi-zk-registry
     address: zookeeper://127.0.0.1:2181

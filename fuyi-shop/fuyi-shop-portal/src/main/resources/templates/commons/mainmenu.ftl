@@ -62,7 +62,7 @@
             
         </div>
         <a name="sfbest_Uhead_Uhead_menu_category1-banner" class="trackref" href="http://www.e3mall.cn/fresh/321-0-0-0-0-2-0-0-0-1010-4862.html" target="_blank">
-        <div class="i-img"><img src="/home/images/html/1463455028.jpg"></div>
+        <div class="i-img"><img src="/static/home/images/html/1463455028.jpg"></div>
         </a> </div>
       <div class="i-right"> <span onclick="$('.item').removeClass('hover')" class="i-close"></span> </div>
     </div>
@@ -123,7 +123,7 @@
 		    
         </div>
         <a name="sfbest_hp_hp_menu_category2-banner" class="trackref" href="http://www.e3mall.cn/fresh/60-0-0-0-0-2-0-0-0-0-0.html" target="_blank">
-        <div class="i-img"><img src="/home/images/html/1463456854.jpg"></div>
+        <div class="i-img"><img src="/static/home/images/html/1463456854.jpg"></div>
         </a> </div>
       <div class="i-right"> <span onclick="$('.item').removeClass('hover')" class="i-close"></span> </div>
     </div>
@@ -179,7 +179,7 @@
            </dl>
         </div>
         <a name="sfbest_Uhead_Uhead_menu_category3-banner" class="trackref" href="http://www.e3mall.cn/fresh/52-0-0-0-0-2-0-0-0-0-0.html" target="_blank">
-        <div class="i-img"><img src="/home/images/html/1468837571.jpg"></div>
+        <div class="i-img"><img src="/static/home/images/html/1468837571.jpg"></div>
         </a> </div>
       <div class="i-right"> <span onclick="$('.item').removeClass('hover')" class="i-close"></span> </div>
     </div>
@@ -295,7 +295,7 @@
             </dl>
         </div>
         <a name="sfbest_Uhead_Uhead_menu_category4-banner" class="trackref" href="http://www.e3mall.cn/html/activity/1470971009.html" target="_blank">
-        <div class="i-img"><img src="/home/images/html/1471311447.jpg"></div>
+        <div class="i-img"><img src="/static/home/images/html/1471311447.jpg"></div>
         </a> </div>
       <div class="i-right"> <span onclick="$('.item').removeClass('hover')" class="i-close"></span> </div>
     </div>
@@ -366,7 +366,7 @@
             </dd></dl>
 		  </div>
         <a name="sfbest_Uhead_Uhead_menu_category5-banner" class="trackref" href="http://www.e3mall.cn/html/activity/1471829854.html" target="_blank">
-        <div class="i-img"><img src="/home/images/html/1472521250.jpg"></div>
+        <div class="i-img"><img src="/static/home/images/html/1472521250.jpg"></div>
         </a> </div>
       <div class="i-right"> <span onclick="$('.item').removeClass('hover')" class="i-close"></span> </div>
     </div>
@@ -432,7 +432,7 @@
             </dl>
         </div>
         <a name="sfbest_Uhead_Uhead_menu_category6-banner" class="trackref" href="http://www.e3mall.cn/html/activity/1472106644.html" target="_blank">
-        <div class="i-img"><img src="/home/images/html/1472521203.jpg"></div>
+        <div class="i-img"><img src="/static/home/images/html/1472521203.jpg"></div>
         </a> </div>
       <div class="i-right"> <span onclick="$('.item').removeClass('hover')" class="i-close"></span> </div>
     </div>
@@ -507,7 +507,7 @@
             </dl>
         </div>
         <a name="sfbest_Uhead_Uhead_menu_category7-banner" class="trackref" href="http://www.e3mall.cn/html/activity/1472114146.html" target="_blank">
-        <div class="i-img"><img src="/home/images/html/1472521236.jpg"></div>
+        <div class="i-img"><img src="/static/home/images/html/1472521236.jpg"></div>
         </a> </div>
       <div class="i-right"> <span onclick="$('.item').removeClass('hover')" class="i-close"></span> </div>
     </div>
@@ -600,7 +600,7 @@
             </dl>
 		    </div>
         <a name="sfbest_Uhead_Uhead_menu_category8-banner" class="trackref" href="http://www.e3mall.cn/html/products/219/1100218491.html" target="_blank">
-		<div class="i-img"><img src="/home/images/html/1471311388.jpg"></div>
+		<div class="i-img"><img src="/static/home/images/html/1471311388.jpg"></div>
         </a> </div>
       <div class="i-right"> <span onclick="$('.item').removeClass('hover')" class="i-close"></span> </div>
     </div>
@@ -635,7 +635,7 @@
 			  <a target="_blank" href="/qiye/" rel="nofollow">企业专区</a>
 			</li>
 		 
-		  		  		  <li class="ad"><a name="sfbest_hp_hp_head_ad_1" class="trackref" href="/html/web/card.html?p=1" target="_blank"><img alt="优选卡 送健康" src="/home/images/html/7a80fda907bf5107f6967add2a304a51.jpg" width="196" height="38"></a></li>
+		  		  		  <li class="ad"><a name="sfbest_hp_hp_head_ad_1" class="trackref" href="/html/web/card.html?p=1" target="_blank"><img alt="优选卡 送健康" src="/static/home/images/html/7a80fda907bf5107f6967add2a304a51.jpg" width="196" height="38"></a></li>
 		  		        </ul>
     </div>
     <span class="clear"></span>

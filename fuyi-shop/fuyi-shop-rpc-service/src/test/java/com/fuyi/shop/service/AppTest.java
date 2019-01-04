@@ -36,6 +36,7 @@ public class AppTest {
 
     @Test
     public void test1() {
+        System.out.println("==============" +BASE_PACKAGES_PROPERTY_NAME);
         System.out.println("==============" + environment.getProperty(BASE_PACKAGES_PROPERTY_NAME));
     }
 

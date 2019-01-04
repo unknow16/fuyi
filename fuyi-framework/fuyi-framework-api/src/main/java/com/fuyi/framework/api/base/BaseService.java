@@ -112,7 +112,7 @@ public interface BaseService<Record, Example> {
      * @param id
      * @return
      */
-    Record selectByPrimaryKey(Integer id);
+    Record selectByPrimaryKey(Long id);
 
     /**
      * 根据条件更新有效字段

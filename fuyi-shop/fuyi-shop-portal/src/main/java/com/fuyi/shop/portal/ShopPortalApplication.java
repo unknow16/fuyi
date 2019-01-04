@@ -1,8 +1,7 @@
-package com.fuyi.shop.service;
+package com.fuyi.shop.portal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @ClassName ShopPortalBootApplication
@@ -11,8 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @Date 2018/12/17 16:50
  * @Version 1.0
  */
-@ComponentScan("com.fuyi.shop.service.controller")
-@SpringBootApplication(scanBasePackages = "com.fuyi.shop.service.controller")
+@SpringBootApplication(scanBasePackages = "com.fuyi")
 public class ShopPortalApplication {
     public static void main(String[] args) {
         SpringApplication.run(ShopPortalApplication.class, args);

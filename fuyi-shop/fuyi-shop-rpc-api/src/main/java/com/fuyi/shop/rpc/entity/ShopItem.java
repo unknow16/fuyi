@@ -1,8 +1,9 @@
 package com.fuyi.shop.rpc.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ShopItem {
+public class ShopItem implements Serializable {
     private Long itemId;
 
     private String itemName;

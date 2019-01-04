@@ -14,7 +14,7 @@ import java.util.List;
  * @Date 2018/12/18 16:04
  * @Version 1.0
  */
-public interface IShopItemService {
+public interface IShopItemService extends BaseService<ShopItem, ShopItemExample> {
     /**
      * 根据父id获取子级商品分类列表
      * @param parentId

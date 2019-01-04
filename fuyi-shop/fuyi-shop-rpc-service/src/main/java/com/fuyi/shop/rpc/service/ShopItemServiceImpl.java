@@ -1,6 +1,7 @@
 package com.fuyi.shop.rpc.service;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.fuyi.framework.service.annotation.BaseServiceAnnotation;
 import com.fuyi.framework.service.base.BaseServiceImpl;
 import com.fuyi.shop.rpc.api.IShopItemService;
 import com.fuyi.shop.rpc.entity.ShopItem;
@@ -18,13 +19,9 @@ import java.util.List;
  * @Date: 2019/1/2 21:02
  * @Description:
  */
-@Service(
-        version = "1.0.0",
-        application = "${dubbo.application.id}",
-        protocol = "${dubbo.protocol.id}",
-        registry = "${dubbo.registry.id}"
-)
-public class ShopItemServiceImpl implements IShopItemService {
+@Service
+@BaseServiceAnnotation
+public class ShopItemServiceImpl extends BaseServiceImpl<ShopItemMapper, ShopItem, ShopItemExample> implements IShopItemService {
 
     @Autowired
     private ShopItemCatMapper shopItemCatMapper;

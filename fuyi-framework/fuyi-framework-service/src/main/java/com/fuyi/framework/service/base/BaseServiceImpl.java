@@ -264,7 +264,7 @@ public abstract class BaseServiceImpl<Mapper, Record, Example> implements BaseSe
     }
 
     @Override
-    public Record selectByPrimaryKey(Integer id) {
+    public Record selectByPrimaryKey(Long id) {
         try {
             DynamicDataSource.setDataSource(DataSourceEnum.SLAVE.getName());
             Method selectByPrimaryKey = mapper.getClass().getDeclaredMethod("selectByPrimaryKey", id.getClass());
