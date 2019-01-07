@@ -18,7 +18,7 @@ import java.util.List;
  * @Version 1.0
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ShopManagerBootApplication.class)
+@SpringBootTest(classes = ShopManagerApplication.class)
 public class AppTest {
 
     @Autowired

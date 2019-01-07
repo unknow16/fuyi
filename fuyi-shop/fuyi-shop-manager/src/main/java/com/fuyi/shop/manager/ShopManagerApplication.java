@@ -1,9 +1,7 @@
 package com.fuyi.shop.manager;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @ClassName ShopManagerBootApplication
@@ -12,11 +10,9 @@ import org.springframework.context.annotation.ComponentScan;
  * @Date 2018/12/17 16:48
  * @Version 1.0
  */
-@SpringBootApplication
-@ComponentScan("com.fuyi.**")
-@MapperScan("com.fuyi.shop.manager.mapper")
-public class ShopManagerBootApplication {
+@SpringBootApplication(scanBasePackages = "com.fuyi")
+public class ShopManagerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ShopManagerBootApplication.class, args);
+        SpringApplication.run(ShopManagerApplication.class, args);
     }
 }
