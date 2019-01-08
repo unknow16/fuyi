@@ -1,11 +1,6 @@
 package com.fuyi.shop.service;
 
-import com.alibaba.dubbo.config.ApplicationConfig;
-import com.alibaba.dubbo.config.ServiceConfig;
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.alibaba.dubbo.config.annotation.Service;
 import com.fuyi.shop.rpc.ShopServiceApplication;
-import com.fuyi.shop.rpc.api.IShopItemService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

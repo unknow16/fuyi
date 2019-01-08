@@ -17,9 +17,9 @@
     </parent>
 
     <modules>
+        <module>fuyi-framework-api</module>
         <module>fuyi-framework-service</module>
         <module>fuyi-framework-web</module>
-        <module>fuyi-framework-api</module>
     </modules>
 
     <properties>
@@ -98,6 +98,11 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--</plugin>-->
         </plugins>
 
         <resources>

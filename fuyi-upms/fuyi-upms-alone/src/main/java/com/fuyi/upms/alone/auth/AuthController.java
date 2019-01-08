@@ -1,6 +1,6 @@
 package com.fuyi.upms.alone.auth;
 
-import com.fuyi.framework.web.base.BaseResult;
+import com.fuyi.framework.api.base.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

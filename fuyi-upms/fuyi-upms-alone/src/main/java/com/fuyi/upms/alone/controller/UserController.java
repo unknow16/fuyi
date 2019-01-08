@@ -1,9 +1,8 @@
 package com.fuyi.upms.alone.controller;
 
-import com.fuyi.framework.web.base.BaseResult;
+import com.fuyi.framework.api.base.BaseResult;
 import com.fuyi.upms.alone.auth.UserDetailsImpl;
 import com.fuyi.upms.alone.bean.RespBean;
-import com.fuyi.upms.alone.service.PermissionService;
 import com.fuyi.upms.alone.service.UserService;
 import com.fuyi.upms.dao.entity.UpmsOrganization;
 import com.fuyi.upms.dao.entity.UpmsRole;

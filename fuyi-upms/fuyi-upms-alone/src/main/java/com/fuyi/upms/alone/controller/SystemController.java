@@ -1,6 +1,6 @@
 package com.fuyi.upms.alone.controller;
 
-import com.fuyi.framework.web.base.BaseResult;
+import com.fuyi.framework.api.base.BaseResult;
 import com.fuyi.upms.alone.bean.RespBean;
 import com.fuyi.upms.alone.service.SystemService;
 import com.fuyi.upms.dao.entity.UpmsSystem;

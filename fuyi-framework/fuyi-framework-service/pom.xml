@@ -16,6 +16,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>com.fuyi</groupId>
             <artifactId>fuyi-framework-api</artifactId>

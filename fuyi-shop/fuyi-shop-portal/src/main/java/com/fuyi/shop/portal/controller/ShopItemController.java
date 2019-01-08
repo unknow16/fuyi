@@ -1,14 +1,11 @@
 package com.fuyi.shop.portal.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.fuyi.framework.web.base.BaseResult;
+import com.fuyi.framework.api.base.BaseResult;
 import com.fuyi.shop.rpc.api.IShopItemService;
 import com.fuyi.shop.rpc.entity.ShopItem;
 import com.fuyi.shop.rpc.entity.ShopItemCat;
-import io.swagger.models.auth.In;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 

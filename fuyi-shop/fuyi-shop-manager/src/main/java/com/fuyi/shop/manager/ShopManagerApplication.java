@@ -2,6 +2,7 @@ package com.fuyi.shop.manager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 /**
  * @ClassName ShopManagerBootApplication
@@ -10,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date 2018/12/17 16:48
  * @Version 1.0
  */
-@SpringBootApplication(scanBasePackages = "com.fuyi")
+@SpringBootApplication(scanBasePackages = "com.fuyi.shop.manager", exclude = {DataSourceAutoConfiguration.class} )
 public class ShopManagerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ShopManagerApplication.class, args);

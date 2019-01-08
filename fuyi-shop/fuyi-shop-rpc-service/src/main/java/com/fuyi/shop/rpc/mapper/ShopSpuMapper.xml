@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fuyi.shop.rpc.mapper.ShopSpuMapper" >
+  <resultMap id="BaseResultMap" type="com.fuyi.shop.rpc.entity.ShopSpu" >
+    <id column="spu_id" property="spuId" jdbcType="BIGINT" />
+    <result column="spu_name" property="spuName" jdbcType="VARCHAR" />
+    <result column="sell_point" property="sellPoint" jdbcType="VARCHAR" />
+    <result column="tag" property="tag" jdbcType="INTEGER" />
+    <result column="cat_id" property="catId" jdbcType="INTEGER" />
+    <result column="spu_price" property="spuPrice" jdbcType="BIGINT" />
+    <result column="sale_num" property="saleNum" jdbcType="BIGINT" />
+    <result column="audit_status" property="auditStatus" jdbcType="TINYINT" />
+    <result column="show_status" property="showStatus" jdbcType="TINYINT" />
+    <result column="imgs" property="imgs" jdbcType="VARCHAR" />
+    <result column="on_sale_time" property="onSaleTime" jdbcType="TIMESTAMP" />
+    <result column="check_time" property="checkTime" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="BIGINT" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    spu_id, spu_name, sell_point, tag, cat_id, spu_price, sale_num, audit_status, show_status, 
+    imgs, on_sale_time, check_time, update_user_id, sort, status, created, updated
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fuyi.shop.rpc.entity.ShopSpuExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from shop_spu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from shop_spu
+    where spu_id = #{spuId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from shop_spu
+    where spu_id = #{spuId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fuyi.shop.rpc.entity.ShopSpuExample" >
+    delete from shop_spu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fuyi.shop.rpc.entity.ShopSpu" >
+    insert into shop_spu (spu_id, spu_name, sell_point, 
+      tag, cat_id, spu_price, 
+      sale_num, audit_status, show_status, 
+      imgs, on_sale_time, check_time, 
+      update_user_id, sort, status, 
+      created, updated)
+    values (#{spuId,jdbcType=BIGINT}, #{spuName,jdbcType=VARCHAR}, #{sellPoint,jdbcType=VARCHAR}, 
+      #{tag,jdbcType=INTEGER}, #{catId,jdbcType=INTEGER}, #{spuPrice,jdbcType=BIGINT}, 
+      #{saleNum,jdbcType=BIGINT}, #{auditStatus,jdbcType=TINYINT}, #{showStatus,jdbcType=TINYINT}, 
+      #{imgs,jdbcType=VARCHAR}, #{onSaleTime,jdbcType=TIMESTAMP}, #{checkTime,jdbcType=TIMESTAMP}, 
+      #{updateUserId,jdbcType=BIGINT}, #{sort,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fuyi.shop.rpc.entity.ShopSpu" >
+    insert into shop_spu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="spuId != null" >
+        spu_id,
+      </if>
+      <if test="spuName != null" >
+        spu_name,
+      </if>
+      <if test="sellPoint != null" >
+        sell_point,
+      </if>
+      <if test="tag != null" >
+        tag,
+      </if>
+      <if test="catId != null" >
+        cat_id,
+      </if>
+      <if test="spuPrice != null" >
+        spu_price,
+      </if>
+      <if test="saleNum != null" >
+        sale_num,
+      </if>
+      <if test="auditStatus != null" >
+        audit_status,
+      </if>
+      <if test="showStatus != null" >
+        show_status,
+      </if>
+      <if test="imgs != null" >
+        imgs,
+      </if>
+      <if test="onSaleTime != null" >
+        on_sale_time,
+      </if>
+      <if test="checkTime != null" >
+        check_time,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="spuId != null" >
+        #{spuId,jdbcType=BIGINT},
+      </if>
+      <if test="spuName != null" >
+        #{spuName,jdbcType=VARCHAR},
+      </if>
+      <if test="sellPoint != null" >
+        #{sellPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null" >
+        #{tag,jdbcType=INTEGER},
+      </if>
+      <if test="catId != null" >
+        #{catId,jdbcType=INTEGER},
+      </if>
+      <if test="spuPrice != null" >
+        #{spuPrice,jdbcType=BIGINT},
+      </if>
+      <if test="saleNum != null" >
+        #{saleNum,jdbcType=BIGINT},
+      </if>
+      <if test="auditStatus != null" >
+        #{auditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="showStatus != null" >
+        #{showStatus,jdbcType=TINYINT},
+      </if>
+      <if test="imgs != null" >
+        #{imgs,jdbcType=VARCHAR},
+      </if>
+      <if test="onSaleTime != null" >
+        #{onSaleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkTime != null" >
+        #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fuyi.shop.rpc.entity.ShopSpuExample" resultType="java.lang.Integer" >
+    select count(*) from shop_spu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update shop_spu
+    <set >
+      <if test="record.spuId != null" >
+        spu_id = #{record.spuId,jdbcType=BIGINT},
+      </if>
+      <if test="record.spuName != null" >
+        spu_name = #{record.spuName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellPoint != null" >
+        sell_point = #{record.sellPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tag != null" >
+        tag = #{record.tag,jdbcType=INTEGER},
+      </if>
+      <if test="record.catId != null" >
+        cat_id = #{record.catId,jdbcType=INTEGER},
+      </if>
+      <if test="record.spuPrice != null" >
+        spu_price = #{record.spuPrice,jdbcType=BIGINT},
+      </if>
+      <if test="record.saleNum != null" >
+        sale_num = #{record.saleNum,jdbcType=BIGINT},
+      </if>
+      <if test="record.auditStatus != null" >
+        audit_status = #{record.auditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="record.showStatus != null" >
+        show_status = #{record.showStatus,jdbcType=TINYINT},
+      </if>
+      <if test="record.imgs != null" >
+        imgs = #{record.imgs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.onSaleTime != null" >
+        on_sale_time = #{record.onSaleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.checkTime != null" >
+        check_time = #{record.checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUserId != null" >
+        update_user_id = #{record.updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="record.sort != null" >
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update shop_spu
+    set spu_id = #{record.spuId,jdbcType=BIGINT},
+      spu_name = #{record.spuName,jdbcType=VARCHAR},
+      sell_point = #{record.sellPoint,jdbcType=VARCHAR},
+      tag = #{record.tag,jdbcType=INTEGER},
+      cat_id = #{record.catId,jdbcType=INTEGER},
+      spu_price = #{record.spuPrice,jdbcType=BIGINT},
+      sale_num = #{record.saleNum,jdbcType=BIGINT},
+      audit_status = #{record.auditStatus,jdbcType=TINYINT},
+      show_status = #{record.showStatus,jdbcType=TINYINT},
+      imgs = #{record.imgs,jdbcType=VARCHAR},
+      on_sale_time = #{record.onSaleTime,jdbcType=TIMESTAMP},
+      check_time = #{record.checkTime,jdbcType=TIMESTAMP},
+      update_user_id = #{record.updateUserId,jdbcType=BIGINT},
+      sort = #{record.sort,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fuyi.shop.rpc.entity.ShopSpu" >
+    update shop_spu
+    <set >
+      <if test="spuName != null" >
+        spu_name = #{spuName,jdbcType=VARCHAR},
+      </if>
+      <if test="sellPoint != null" >
+        sell_point = #{sellPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null" >
+        tag = #{tag,jdbcType=INTEGER},
+      </if>
+      <if test="catId != null" >
+        cat_id = #{catId,jdbcType=INTEGER},
+      </if>
+      <if test="spuPrice != null" >
+        spu_price = #{spuPrice,jdbcType=BIGINT},
+      </if>
+      <if test="saleNum != null" >
+        sale_num = #{saleNum,jdbcType=BIGINT},
+      </if>
+      <if test="auditStatus != null" >
+        audit_status = #{auditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="showStatus != null" >
+        show_status = #{showStatus,jdbcType=TINYINT},
+      </if>
+      <if test="imgs != null" >
+        imgs = #{imgs,jdbcType=VARCHAR},
+      </if>
+      <if test="onSaleTime != null" >
+        on_sale_time = #{onSaleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkTime != null" >
+        check_time = #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where spu_id = #{spuId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fuyi.shop.rpc.entity.ShopSpu" >
+    update shop_spu
+    set spu_name = #{spuName,jdbcType=VARCHAR},
+      sell_point = #{sellPoint,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=INTEGER},
+      cat_id = #{catId,jdbcType=INTEGER},
+      spu_price = #{spuPrice,jdbcType=BIGINT},
+      sale_num = #{saleNum,jdbcType=BIGINT},
+      audit_status = #{auditStatus,jdbcType=TINYINT},
+      show_status = #{showStatus,jdbcType=TINYINT},
+      imgs = #{imgs,jdbcType=VARCHAR},
+      on_sale_time = #{onSaleTime,jdbcType=TIMESTAMP},
+      check_time = #{checkTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=BIGINT},
+      sort = #{sort,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP}
+    where spu_id = #{spuId,jdbcType=BIGINT}
+  </update>
+</mapper>

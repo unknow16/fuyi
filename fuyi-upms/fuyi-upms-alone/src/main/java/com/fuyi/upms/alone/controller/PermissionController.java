@@ -1,13 +1,11 @@
 package com.fuyi.upms.alone.controller;
 
-import com.fuyi.framework.web.base.BaseResult;
+import com.fuyi.framework.api.base.BaseResult;
 import com.fuyi.upms.alone.auth.UserDetailsImpl;
 import com.fuyi.upms.alone.bean.RespBean;
 import com.fuyi.upms.alone.service.PermissionService;
 import com.fuyi.upms.dao.entity.UpmsPermission;
 import com.fuyi.upms.dao.entity.UpmsPermissionExample;
-import com.fuyi.upms.dao.entity.UpmsRole;
-import com.fuyi.upms.dao.entity.UpmsRoleExample;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;

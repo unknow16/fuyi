@@ -18,17 +18,9 @@ host:
   dbserver: 120.78.193.62
   mqserver: 127.0.0.1
 
-server:
-  port: 8091
-
 mybatis:
   config-location: classpath:mybatis-config.xml
   mapper-locations: classpath:com/fuyi/shop/manager/mapper/*.xml
-
-# service version declare
-service:
-  shopItemService:
-    version: 1.0.0
 
 # dubbo config
 dubbo:
@@ -39,12 +31,13 @@ dubbo:
   application:
     id: ShopServiceApplication
     name: ShopServiceApplication
+    qos-port: 22222
 
   ## ProtocolConfig Bean
   protocol:
     id: dubbo
     name: dubbo
-    port: 12345
+    port: 20880
 
   ## RegistryConfig Bean
   registry:
