@@ -1,31 +1,38 @@
-<table class="easyui-datagrid" id="itemList" title="商品列表"
-       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/item/list',method:'get',pageSize:30,toolbar:toolbar">
+<table class="easyui-datagrid" id="spuList" title="商品列表"
+       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/spu/list',method:'get',pageSize:30,toolbar:toolbar">
     <thead>
         <tr>
         	<th data-options="field:'ck',checkbox:true"></th>
-        	<th data-options="field:'id',width:60">商品ID</th>
-            <th data-options="field:'title',width:200">商品标题</th>
-            <th data-options="field:'cid',width:100">叶子类目</th>
+        	<th data-options="field:'spuId',width:60">商品ID</th>
+        	<th data-options="field:'imgs',width:60">商品图片</th>
+            <th data-options="field:'spuName',width:200">商品标题</th>
+            <th data-options="field:'catId',width:100">叶子类目</th>
             <th data-options="field:'sellPoint',width:100">卖点</th>
-            <th data-options="field:'price',width:70,align:'right',formatter:E3.formatPrice">价格</th>
-            <th data-options="field:'num',width:70,align:'right'">库存数量</th>
-            <th data-options="field:'barcode',width:100">条形码</th>
+            <th data-options="field:'spuPrice',width:70,align:'right',formatter:E3.formatPrice">价格</th>
+            <th data-options="field:'saleNum',width:70,align:'right'">销量(虚拟+实际)</th>
+            <th data-options="field:'auditStatus',width:60">审核状态</th>
+            <th data-options="field:'showStatus',width:60">上架状态</th>
+            <th data-options="field:'showTime',width:130,align:'center',formatter:E3.formatDateTime">上架日期</th>
+            <th data-options="field:'auditTime',width:130,align:'center',formatter:E3.formatDateTime">审核日期</th>
+            <th data-options="field:'auditUserId',width:60">修改人</th>
+            <th data-options="field:'sort',width:60">排序</th>
             <th data-options="field:'status',width:60,align:'center',formatter:E3.formatItemStatus">状态</th>
             <th data-options="field:'created',width:130,align:'center',formatter:E3.formatDateTime">创建日期</th>
             <th data-options="field:'updated',width:130,align:'center',formatter:E3.formatDateTime">更新日期</th>
         </tr>
     </thead>
 </table>
-<div id="itemEditWindow" class="easyui-window" title="编辑商品" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/rest/page/item-edit'" style="width:80%;height:80%;padding:10px;">
+<div id="itemEditWindow" class="easyui-window" title="编辑商品" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/spu-edit'" style="width:80%;height:80%;padding:10px;">
 </div>
 <script>
 
     function getSelectionsIds(){
-    	var itemList = $("#itemList");
-    	var sels = itemList.datagrid("getSelections");
+    	var spuList = $("#spuList");
+    	var selectedRows = spuList.datagrid("getSelections");
+    	console.log('selectedRows', selectedRows);
     	var ids = [];
-    	for(var i in sels){
-    		ids.push(sels[i].id);
+    	for(var i in selectedRows){
+    		ids.push(selectedRows[i].spuId);
     	}
     	ids = ids.join(",");
     	return ids;
@@ -42,6 +49,7 @@
         iconCls:'icon-edit',
         handler:function(){
         	var ids = getSelectionsIds();
+        	console.log('ids', ids);
         	if(ids.length == 0){
         		$.messager.alert('提示','必须选择一个商品才能编辑!');
         		return ;
@@ -54,9 +62,9 @@
         	$("#itemEditWindow").window({
         		onLoad :function(){
         			//回显数据
-        			var data = $("#itemList").datagrid("getSelections")[0];
-        			data.priceView = E3.formatPrice(data.price);
-        			$("#itemeEditForm").form("load",data);
+        			var data = $("#spuList").datagrid("getSelections")[0];
+        			//data.priceView = E3.formatPrice(data.price);
+        			$("#spuEditForm").form("load",data);
         			
         			// 加载商品描述
         			$.getJSON('/rest/item/query/item/desc/'+data.id,function(_data){
@@ -67,32 +75,32 @@
         			});
         			
         			//加载商品规格
-        			$.getJSON('/rest/item/param/item/query/'+data.id,function(_data){
-        				if(_data && _data.status == 200 && _data.data && _data.data.paramData){
-        					$("#itemeEditForm .params").show();
-        					$("#itemeEditForm [name=itemParams]").val(_data.data.paramData);
-        					$("#itemeEditForm [name=itemParamId]").val(_data.data.id);
-        					
-        					//回显商品规格
-        					 var paramData = JSON.parse(_data.data.paramData);
-        					
-        					 var html = "<ul>";
-        					 for(var i in paramData){
-        						 var pd = paramData[i];
-        						 html+="<li><table>";
-        						 html+="<tr><td colspan=\"2\" class=\"group\">"+pd.group+"</td></tr>";
-        						 
-        						 for(var j in pd.params){
-        							 var ps = pd.params[j];
-        							 html+="<tr><td class=\"param\"><span>"+ps.k+"</span>: </td><td><input autocomplete=\"off\" type=\"text\" value='"+ps.v+"'/></td></tr>";
-        						 }
-        						 
-        						 html+="</li></table>";
-        					 }
-        					 html+= "</ul>";
-        					 $("#itemeEditForm .params td").eq(1).html(html);
-        				}
-        			});
+//        			$.getJSON('/rest/item/param/item/query/'+data.id,function(_data){
+//        				if(_data && _data.status == 200 && _data.data && _data.data.paramData){
+//        					$("#itemeEditForm .params").show();
+//        					$("#itemeEditForm [name=itemParams]").val(_data.data.paramData);
+//        					$("#itemeEditForm [name=itemParamId]").val(_data.data.id);
+//
+//        					//回显商品规格
+//        					 var paramData = JSON.parse(_data.data.paramData);
+//
+//        					 var html = "<ul>";
+//        					 for(var i in paramData){
+//        						 var pd = paramData[i];
+//        						 html+="<li><table>";
+//        						 html+="<tr><td colspan=\"2\" class=\"group\">"+pd.group+"</td></tr>";
+//
+//        						 for(var j in pd.params){
+//        							 var ps = pd.params[j];
+//        							 html+="<tr><td class=\"param\"><span>"+ps.k+"</span>: </td><td><input autocomplete=\"off\" type=\"text\" value='"+ps.v+"'/></td></tr>";
+//        						 }
+//
+//        						 html+="</li></table>";
+//        					 }
+//        					 html+= "</ul>";
+//        					 $("#itemeEditForm .params td").eq(1).html(html);
+//        				}
+//        			});
         			
         			E3.init({
         				"pics" : data.image,

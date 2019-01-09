@@ -25,7 +25,7 @@ var E3 = {
 		//指定上传文件参数名称
 		filePostName  : "uploadFile",
 		//指定上传文件请求的url。
-		uploadJson : '/pic/upload',
+		uploadJson : '/upload/pic',
 		//上传类型，分别为image、flash、media、file
 		dir : "image"
 	},
@@ -55,7 +55,14 @@ var E3 = {
         	return '未知';
         }
     },
-    
+
+    // E3.init({
+    // "pics" : data.image,
+    // "cid" : data.cid,
+    // fun:function(node){
+     //    E3.changeItemParam(node, "itemeEditForm");
+	// 	}
+	// });
     init : function(data){
     	// 初始化图片上传组件
     	this.initPicUpload(data);
@@ -93,7 +100,7 @@ var E3 = {
 								imgArray.push(data.url);
 								form.find(".pics ul").append("<li><a href='"+data.url+"' target='_blank'><img src='"+data.url+"' width='80' height='50' /></a></li>");
 							});
-							form.find("[name=image]").val(imgArray.join(","));
+							form.find("[name=imgs]").val(imgArray.join(","));
 							editor.hideDialog();
 						}
 					});
@@ -123,7 +130,7 @@ var E3 = {
     			    onOpen : function(){
     			    	var _win = this;
     			    	$("ul",_win).tree({
-    			    		url:'/spu/list',
+    			    		url:'/spu/cat/list',
     			    		animate:true,
     			    		onClick : function(node){
     			    			if($(this).tree("isLeaf",node.target)){

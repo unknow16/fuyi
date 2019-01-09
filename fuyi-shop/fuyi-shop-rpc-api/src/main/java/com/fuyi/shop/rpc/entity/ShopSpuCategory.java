@@ -1,8 +1,9 @@
 package com.fuyi.shop.rpc.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ShopSpuCategory {
+public class ShopSpuCategory implements Serializable {
     private Long catId;
 
     private Long parentId;

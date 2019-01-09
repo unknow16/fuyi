@@ -1,8 +1,9 @@
 package com.fuyi.shop.rpc.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ShopSpu {
+public class ShopSpu implements Serializable {
     private Long spuId;
 
     private String spuName;
@@ -17,17 +18,17 @@ public class ShopSpu {
 
     private Long saleNum;
 
-    private Byte auditStatus;
+    private Boolean auditStatus;
 
-    private Byte showStatus;
+    private Boolean showStatus;
 
     private String imgs;
 
-    private Date onSaleTime;
+    private Date showTime;
 
-    private Date checkTime;
+    private Date auditTime;
 
-    private Long updateUserId;
+    private Long auditUserId;
 
     private Integer sort;
 
@@ -93,19 +94,19 @@ public class ShopSpu {
         this.saleNum = saleNum;
     }
 
-    public Byte getAuditStatus() {
+    public Boolean getAuditStatus() {
         return auditStatus;
     }
 
-    public void setAuditStatus(Byte auditStatus) {
+    public void setAuditStatus(Boolean auditStatus) {
         this.auditStatus = auditStatus;
     }
 
-    public Byte getShowStatus() {
+    public Boolean getShowStatus() {
         return showStatus;
     }
 
-    public void setShowStatus(Byte showStatus) {
+    public void setShowStatus(Boolean showStatus) {
         this.showStatus = showStatus;
     }
 
@@ -117,28 +118,28 @@ public class ShopSpu {
         this.imgs = imgs == null ? null : imgs.trim();
     }
 
-    public Date getOnSaleTime() {
-        return onSaleTime;
+    public Date getShowTime() {
+        return showTime;
     }
 
-    public void setOnSaleTime(Date onSaleTime) {
-        this.onSaleTime = onSaleTime;
+    public void setShowTime(Date showTime) {
+        this.showTime = showTime;
     }
 
-    public Date getCheckTime() {
-        return checkTime;
+    public Date getAuditTime() {
+        return auditTime;
     }
 
-    public void setCheckTime(Date checkTime) {
-        this.checkTime = checkTime;
+    public void setAuditTime(Date auditTime) {
+        this.auditTime = auditTime;
     }
 
-    public Long getUpdateUserId() {
-        return updateUserId;
+    public Long getAuditUserId() {
+        return auditUserId;
     }
 
-    public void setUpdateUserId(Long updateUserId) {
-        this.updateUserId = updateUserId;
+    public void setAuditUserId(Long auditUserId) {
+        this.auditUserId = auditUserId;
     }
 
     public Integer getSort() {

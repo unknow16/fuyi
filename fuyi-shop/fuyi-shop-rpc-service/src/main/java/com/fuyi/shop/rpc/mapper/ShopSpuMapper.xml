@@ -9,12 +9,12 @@
     <result column="cat_id" property="catId" jdbcType="INTEGER" />
     <result column="spu_price" property="spuPrice" jdbcType="BIGINT" />
     <result column="sale_num" property="saleNum" jdbcType="BIGINT" />
-    <result column="audit_status" property="auditStatus" jdbcType="TINYINT" />
-    <result column="show_status" property="showStatus" jdbcType="TINYINT" />
+    <result column="audit_status" property="auditStatus" jdbcType="BIT" />
+    <result column="show_status" property="showStatus" jdbcType="BIT" />
     <result column="imgs" property="imgs" jdbcType="VARCHAR" />
-    <result column="on_sale_time" property="onSaleTime" jdbcType="TIMESTAMP" />
-    <result column="check_time" property="checkTime" jdbcType="TIMESTAMP" />
-    <result column="update_user_id" property="updateUserId" jdbcType="BIGINT" />
+    <result column="show_time" property="showTime" jdbcType="TIMESTAMP" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="audit_user_id" property="auditUserId" jdbcType="BIGINT" />
     <result column="sort" property="sort" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
@@ -80,7 +80,7 @@
   </sql>
   <sql id="Base_Column_List" >
     spu_id, spu_name, sell_point, tag, cat_id, spu_price, sale_num, audit_status, show_status, 
-    imgs, on_sale_time, check_time, update_user_id, sort, status, created, updated
+    imgs, show_time, audit_time, audit_user_id, sort, status, created, updated
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fuyi.shop.rpc.entity.ShopSpuExample" >
     select
@@ -117,14 +117,14 @@
     insert into shop_spu (spu_id, spu_name, sell_point, 
       tag, cat_id, spu_price, 
       sale_num, audit_status, show_status, 
-      imgs, on_sale_time, check_time, 
-      update_user_id, sort, status, 
+      imgs, show_time, audit_time, 
+      audit_user_id, sort, status, 
       created, updated)
     values (#{spuId,jdbcType=BIGINT}, #{spuName,jdbcType=VARCHAR}, #{sellPoint,jdbcType=VARCHAR}, 
       #{tag,jdbcType=INTEGER}, #{catId,jdbcType=INTEGER}, #{spuPrice,jdbcType=BIGINT}, 
-      #{saleNum,jdbcType=BIGINT}, #{auditStatus,jdbcType=TINYINT}, #{showStatus,jdbcType=TINYINT}, 
-      #{imgs,jdbcType=VARCHAR}, #{onSaleTime,jdbcType=TIMESTAMP}, #{checkTime,jdbcType=TIMESTAMP}, 
-      #{updateUserId,jdbcType=BIGINT}, #{sort,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{saleNum,jdbcType=BIGINT}, #{auditStatus,jdbcType=BIT}, #{showStatus,jdbcType=BIT}, 
+      #{imgs,jdbcType=VARCHAR}, #{showTime,jdbcType=TIMESTAMP}, #{auditTime,jdbcType=TIMESTAMP}, 
+      #{auditUserId,jdbcType=BIGINT}, #{sort,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
       #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.fuyi.shop.rpc.entity.ShopSpu" >
@@ -160,14 +160,14 @@
       <if test="imgs != null" >
         imgs,
       </if>
-      <if test="onSaleTime != null" >
-        on_sale_time,
+      <if test="showTime != null" >
+        show_time,
       </if>
-      <if test="checkTime != null" >
-        check_time,
+      <if test="auditTime != null" >
+        audit_time,
       </if>
-      <if test="updateUserId != null" >
-        update_user_id,
+      <if test="auditUserId != null" >
+        audit_user_id,
       </if>
       <if test="sort != null" >
         sort,
@@ -205,22 +205,22 @@
         #{saleNum,jdbcType=BIGINT},
       </if>
       <if test="auditStatus != null" >
-        #{auditStatus,jdbcType=TINYINT},
+        #{auditStatus,jdbcType=BIT},
       </if>
       <if test="showStatus != null" >
-        #{showStatus,jdbcType=TINYINT},
+        #{showStatus,jdbcType=BIT},
       </if>
       <if test="imgs != null" >
         #{imgs,jdbcType=VARCHAR},
       </if>
-      <if test="onSaleTime != null" >
-        #{onSaleTime,jdbcType=TIMESTAMP},
+      <if test="showTime != null" >
+        #{showTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="checkTime != null" >
-        #{checkTime,jdbcType=TIMESTAMP},
+      <if test="auditTime != null" >
+        #{auditTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateUserId != null" >
-        #{updateUserId,jdbcType=BIGINT},
+      <if test="auditUserId != null" >
+        #{auditUserId,jdbcType=BIGINT},
       </if>
       <if test="sort != null" >
         #{sort,jdbcType=INTEGER},
@@ -267,22 +267,22 @@
         sale_num = #{record.saleNum,jdbcType=BIGINT},
       </if>
       <if test="record.auditStatus != null" >
-        audit_status = #{record.auditStatus,jdbcType=TINYINT},
+        audit_status = #{record.auditStatus,jdbcType=BIT},
       </if>
       <if test="record.showStatus != null" >
-        show_status = #{record.showStatus,jdbcType=TINYINT},
+        show_status = #{record.showStatus,jdbcType=BIT},
       </if>
       <if test="record.imgs != null" >
         imgs = #{record.imgs,jdbcType=VARCHAR},
       </if>
-      <if test="record.onSaleTime != null" >
-        on_sale_time = #{record.onSaleTime,jdbcType=TIMESTAMP},
+      <if test="record.showTime != null" >
+        show_time = #{record.showTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.checkTime != null" >
-        check_time = #{record.checkTime,jdbcType=TIMESTAMP},
+      <if test="record.auditTime != null" >
+        audit_time = #{record.auditTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.updateUserId != null" >
-        update_user_id = #{record.updateUserId,jdbcType=BIGINT},
+      <if test="record.auditUserId != null" >
+        audit_user_id = #{record.auditUserId,jdbcType=BIGINT},
       </if>
       <if test="record.sort != null" >
         sort = #{record.sort,jdbcType=INTEGER},
@@ -310,12 +310,12 @@
       cat_id = #{record.catId,jdbcType=INTEGER},
       spu_price = #{record.spuPrice,jdbcType=BIGINT},
       sale_num = #{record.saleNum,jdbcType=BIGINT},
-      audit_status = #{record.auditStatus,jdbcType=TINYINT},
-      show_status = #{record.showStatus,jdbcType=TINYINT},
+      audit_status = #{record.auditStatus,jdbcType=BIT},
+      show_status = #{record.showStatus,jdbcType=BIT},
       imgs = #{record.imgs,jdbcType=VARCHAR},
-      on_sale_time = #{record.onSaleTime,jdbcType=TIMESTAMP},
-      check_time = #{record.checkTime,jdbcType=TIMESTAMP},
-      update_user_id = #{record.updateUserId,jdbcType=BIGINT},
+      show_time = #{record.showTime,jdbcType=TIMESTAMP},
+      audit_time = #{record.auditTime,jdbcType=TIMESTAMP},
+      audit_user_id = #{record.auditUserId,jdbcType=BIGINT},
       sort = #{record.sort,jdbcType=INTEGER},
       status = #{record.status,jdbcType=INTEGER},
       created = #{record.created,jdbcType=TIMESTAMP},
@@ -346,22 +346,22 @@
         sale_num = #{saleNum,jdbcType=BIGINT},
       </if>
       <if test="auditStatus != null" >
-        audit_status = #{auditStatus,jdbcType=TINYINT},
+        audit_status = #{auditStatus,jdbcType=BIT},
       </if>
       <if test="showStatus != null" >
-        show_status = #{showStatus,jdbcType=TINYINT},
+        show_status = #{showStatus,jdbcType=BIT},
       </if>
       <if test="imgs != null" >
         imgs = #{imgs,jdbcType=VARCHAR},
       </if>
-      <if test="onSaleTime != null" >
-        on_sale_time = #{onSaleTime,jdbcType=TIMESTAMP},
+      <if test="showTime != null" >
+        show_time = #{showTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="checkTime != null" >
-        check_time = #{checkTime,jdbcType=TIMESTAMP},
+      <if test="auditTime != null" >
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateUserId != null" >
-        update_user_id = #{updateUserId,jdbcType=BIGINT},
+      <if test="auditUserId != null" >
+        audit_user_id = #{auditUserId,jdbcType=BIGINT},
       </if>
       <if test="sort != null" >
         sort = #{sort,jdbcType=INTEGER},
@@ -386,12 +386,12 @@
       cat_id = #{catId,jdbcType=INTEGER},
       spu_price = #{spuPrice,jdbcType=BIGINT},
       sale_num = #{saleNum,jdbcType=BIGINT},
-      audit_status = #{auditStatus,jdbcType=TINYINT},
-      show_status = #{showStatus,jdbcType=TINYINT},
+      audit_status = #{auditStatus,jdbcType=BIT},
+      show_status = #{showStatus,jdbcType=BIT},
       imgs = #{imgs,jdbcType=VARCHAR},
-      on_sale_time = #{onSaleTime,jdbcType=TIMESTAMP},
-      check_time = #{checkTime,jdbcType=TIMESTAMP},
-      update_user_id = #{updateUserId,jdbcType=BIGINT},
+      show_time = #{showTime,jdbcType=TIMESTAMP},
+      audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      audit_user_id = #{auditUserId,jdbcType=BIGINT},
       sort = #{sort,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       created = #{created,jdbcType=TIMESTAMP},

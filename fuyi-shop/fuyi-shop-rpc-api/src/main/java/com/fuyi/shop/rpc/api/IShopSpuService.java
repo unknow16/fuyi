@@ -1,7 +1,7 @@
 package com.fuyi.shop.rpc.api;
 
+import com.fuyi.common.base.BaseService;
 import com.fuyi.common.vo.EasyUITreeNode;
-import com.fuyi.framework.api.base.BaseService;
 import com.fuyi.shop.rpc.entity.ShopSpu;
 import com.fuyi.shop.rpc.entity.ShopSpuExample;
 

@@ -30,9 +30,10 @@
          	<li>
          		<span>商品管理</span>
          		<ul>
-	         		<li data-options="attributes:{'url':'item-add'}">新增商品</li>
-	         		<li data-options="attributes:{'url':'item-list'}">查询商品</li>
+	         		<li data-options="attributes:{'url':'spu-add'}">新增商品</li>
+	         		<li data-options="attributes:{'url':'spu-list'}">查询商品</li>
 	         		<li data-options="attributes:{'url':'item-param-list'}">规格参数</li>
+                    <li data-options="attributes:{'url':'brand-list'}">品牌管理</li>
 	         	</ul>
          	</li>
          	<li>

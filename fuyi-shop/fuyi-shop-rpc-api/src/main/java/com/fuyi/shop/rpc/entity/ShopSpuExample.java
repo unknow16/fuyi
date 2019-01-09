@@ -1,10 +1,11 @@
 package com.fuyi.shop.rpc.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ShopSpuExample {
+public class ShopSpuExample implements Serializable {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -555,52 +556,52 @@ public class ShopSpuExample {
             return (Criteria) this;
         }
 
-        public Criteria andAuditStatusEqualTo(Byte value) {
+        public Criteria andAuditStatusEqualTo(Boolean value) {
             addCriterion("audit_status =", value, "auditStatus");
             return (Criteria) this;
         }
 
-        public Criteria andAuditStatusNotEqualTo(Byte value) {
+        public Criteria andAuditStatusNotEqualTo(Boolean value) {
             addCriterion("audit_status <>", value, "auditStatus");
             return (Criteria) this;
         }
 
-        public Criteria andAuditStatusGreaterThan(Byte value) {
+        public Criteria andAuditStatusGreaterThan(Boolean value) {
             addCriterion("audit_status >", value, "auditStatus");
             return (Criteria) this;
         }
 
-        public Criteria andAuditStatusGreaterThanOrEqualTo(Byte value) {
+        public Criteria andAuditStatusGreaterThanOrEqualTo(Boolean value) {
             addCriterion("audit_status >=", value, "auditStatus");
             return (Criteria) this;
         }
 
-        public Criteria andAuditStatusLessThan(Byte value) {
+        public Criteria andAuditStatusLessThan(Boolean value) {
             addCriterion("audit_status <", value, "auditStatus");
             return (Criteria) this;
         }
 
-        public Criteria andAuditStatusLessThanOrEqualTo(Byte value) {
+        public Criteria andAuditStatusLessThanOrEqualTo(Boolean value) {
             addCriterion("audit_status <=", value, "auditStatus");
             return (Criteria) this;
         }
 
-        public Criteria andAuditStatusIn(List<Byte> values) {
+        public Criteria andAuditStatusIn(List<Boolean> values) {
             addCriterion("audit_status in", values, "auditStatus");
             return (Criteria) this;
         }
 
-        public Criteria andAuditStatusNotIn(List<Byte> values) {
+        public Criteria andAuditStatusNotIn(List<Boolean> values) {
             addCriterion("audit_status not in", values, "auditStatus");
             return (Criteria) this;
         }
 
-        public Criteria andAuditStatusBetween(Byte value1, Byte value2) {
+        public Criteria andAuditStatusBetween(Boolean value1, Boolean value2) {
             addCriterion("audit_status between", value1, value2, "auditStatus");
             return (Criteria) this;
         }
 
-        public Criteria andAuditStatusNotBetween(Byte value1, Byte value2) {
+        public Criteria andAuditStatusNotBetween(Boolean value1, Boolean value2) {
             addCriterion("audit_status not between", value1, value2, "auditStatus");
             return (Criteria) this;
         }
@@ -615,52 +616,52 @@ public class ShopSpuExample {
             return (Criteria) this;
         }
 
-        public Criteria andShowStatusEqualTo(Byte value) {
+        public Criteria andShowStatusEqualTo(Boolean value) {
             addCriterion("show_status =", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andShowStatusNotEqualTo(Byte value) {
+        public Criteria andShowStatusNotEqualTo(Boolean value) {
             addCriterion("show_status <>", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andShowStatusGreaterThan(Byte value) {
+        public Criteria andShowStatusGreaterThan(Boolean value) {
             addCriterion("show_status >", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andShowStatusGreaterThanOrEqualTo(Byte value) {
+        public Criteria andShowStatusGreaterThanOrEqualTo(Boolean value) {
             addCriterion("show_status >=", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andShowStatusLessThan(Byte value) {
+        public Criteria andShowStatusLessThan(Boolean value) {
             addCriterion("show_status <", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andShowStatusLessThanOrEqualTo(Byte value) {
+        public Criteria andShowStatusLessThanOrEqualTo(Boolean value) {
             addCriterion("show_status <=", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andShowStatusIn(List<Byte> values) {
+        public Criteria andShowStatusIn(List<Boolean> values) {
             addCriterion("show_status in", values, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andShowStatusNotIn(List<Byte> values) {
+        public Criteria andShowStatusNotIn(List<Boolean> values) {
             addCriterion("show_status not in", values, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andShowStatusBetween(Byte value1, Byte value2) {
+        public Criteria andShowStatusBetween(Boolean value1, Boolean value2) {
             addCriterion("show_status between", value1, value2, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andShowStatusNotBetween(Byte value1, Byte value2) {
+        public Criteria andShowStatusNotBetween(Boolean value1, Boolean value2) {
             addCriterion("show_status not between", value1, value2, "showStatus");
             return (Criteria) this;
         }
@@ -735,183 +736,183 @@ public class ShopSpuExample {
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleTimeIsNull() {
-            addCriterion("on_sale_time is null");
+        public Criteria andShowTimeIsNull() {
+            addCriterion("show_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleTimeIsNotNull() {
-            addCriterion("on_sale_time is not null");
+        public Criteria andShowTimeIsNotNull() {
+            addCriterion("show_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleTimeEqualTo(Date value) {
-            addCriterion("on_sale_time =", value, "onSaleTime");
+        public Criteria andShowTimeEqualTo(Date value) {
+            addCriterion("show_time =", value, "showTime");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleTimeNotEqualTo(Date value) {
-            addCriterion("on_sale_time <>", value, "onSaleTime");
+        public Criteria andShowTimeNotEqualTo(Date value) {
+            addCriterion("show_time <>", value, "showTime");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleTimeGreaterThan(Date value) {
-            addCriterion("on_sale_time >", value, "onSaleTime");
+        public Criteria andShowTimeGreaterThan(Date value) {
+            addCriterion("show_time >", value, "showTime");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("on_sale_time >=", value, "onSaleTime");
+        public Criteria andShowTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("show_time >=", value, "showTime");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleTimeLessThan(Date value) {
-            addCriterion("on_sale_time <", value, "onSaleTime");
+        public Criteria andShowTimeLessThan(Date value) {
+            addCriterion("show_time <", value, "showTime");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleTimeLessThanOrEqualTo(Date value) {
-            addCriterion("on_sale_time <=", value, "onSaleTime");
+        public Criteria andShowTimeLessThanOrEqualTo(Date value) {
+            addCriterion("show_time <=", value, "showTime");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleTimeIn(List<Date> values) {
-            addCriterion("on_sale_time in", values, "onSaleTime");
+        public Criteria andShowTimeIn(List<Date> values) {
+            addCriterion("show_time in", values, "showTime");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleTimeNotIn(List<Date> values) {
-            addCriterion("on_sale_time not in", values, "onSaleTime");
+        public Criteria andShowTimeNotIn(List<Date> values) {
+            addCriterion("show_time not in", values, "showTime");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleTimeBetween(Date value1, Date value2) {
-            addCriterion("on_sale_time between", value1, value2, "onSaleTime");
+        public Criteria andShowTimeBetween(Date value1, Date value2) {
+            addCriterion("show_time between", value1, value2, "showTime");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleTimeNotBetween(Date value1, Date value2) {
-            addCriterion("on_sale_time not between", value1, value2, "onSaleTime");
+        public Criteria andShowTimeNotBetween(Date value1, Date value2) {
+            addCriterion("show_time not between", value1, value2, "showTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeIsNull() {
-            addCriterion("check_time is null");
+        public Criteria andAuditTimeIsNull() {
+            addCriterion("audit_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeIsNotNull() {
-            addCriterion("check_time is not null");
+        public Criteria andAuditTimeIsNotNull() {
+            addCriterion("audit_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeEqualTo(Date value) {
-            addCriterion("check_time =", value, "checkTime");
+        public Criteria andAuditTimeEqualTo(Date value) {
+            addCriterion("audit_time =", value, "auditTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeNotEqualTo(Date value) {
-            addCriterion("check_time <>", value, "checkTime");
+        public Criteria andAuditTimeNotEqualTo(Date value) {
+            addCriterion("audit_time <>", value, "auditTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeGreaterThan(Date value) {
-            addCriterion("check_time >", value, "checkTime");
+        public Criteria andAuditTimeGreaterThan(Date value) {
+            addCriterion("audit_time >", value, "auditTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("check_time >=", value, "checkTime");
+        public Criteria andAuditTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("audit_time >=", value, "auditTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeLessThan(Date value) {
-            addCriterion("check_time <", value, "checkTime");
+        public Criteria andAuditTimeLessThan(Date value) {
+            addCriterion("audit_time <", value, "auditTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeLessThanOrEqualTo(Date value) {
-            addCriterion("check_time <=", value, "checkTime");
+        public Criteria andAuditTimeLessThanOrEqualTo(Date value) {
+            addCriterion("audit_time <=", value, "auditTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeIn(List<Date> values) {
-            addCriterion("check_time in", values, "checkTime");
+        public Criteria andAuditTimeIn(List<Date> values) {
+            addCriterion("audit_time in", values, "auditTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeNotIn(List<Date> values) {
-            addCriterion("check_time not in", values, "checkTime");
+        public Criteria andAuditTimeNotIn(List<Date> values) {
+            addCriterion("audit_time not in", values, "auditTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeBetween(Date value1, Date value2) {
-            addCriterion("check_time between", value1, value2, "checkTime");
+        public Criteria andAuditTimeBetween(Date value1, Date value2) {
+            addCriterion("audit_time between", value1, value2, "auditTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeNotBetween(Date value1, Date value2) {
-            addCriterion("check_time not between", value1, value2, "checkTime");
+        public Criteria andAuditTimeNotBetween(Date value1, Date value2) {
+            addCriterion("audit_time not between", value1, value2, "auditTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateUserIdIsNull() {
-            addCriterion("update_user_id is null");
+        public Criteria andAuditUserIdIsNull() {
+            addCriterion("audit_user_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateUserIdIsNotNull() {
-            addCriterion("update_user_id is not null");
+        public Criteria andAuditUserIdIsNotNull() {
+            addCriterion("audit_user_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateUserIdEqualTo(Long value) {
-            addCriterion("update_user_id =", value, "updateUserId");
+        public Criteria andAuditUserIdEqualTo(Long value) {
+            addCriterion("audit_user_id =", value, "auditUserId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateUserIdNotEqualTo(Long value) {
-            addCriterion("update_user_id <>", value, "updateUserId");
+        public Criteria andAuditUserIdNotEqualTo(Long value) {
+            addCriterion("audit_user_id <>", value, "auditUserId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateUserIdGreaterThan(Long value) {
-            addCriterion("update_user_id >", value, "updateUserId");
+        public Criteria andAuditUserIdGreaterThan(Long value) {
+            addCriterion("audit_user_id >", value, "auditUserId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateUserIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("update_user_id >=", value, "updateUserId");
+        public Criteria andAuditUserIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("audit_user_id >=", value, "auditUserId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateUserIdLessThan(Long value) {
-            addCriterion("update_user_id <", value, "updateUserId");
+        public Criteria andAuditUserIdLessThan(Long value) {
+            addCriterion("audit_user_id <", value, "auditUserId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateUserIdLessThanOrEqualTo(Long value) {
-            addCriterion("update_user_id <=", value, "updateUserId");
+        public Criteria andAuditUserIdLessThanOrEqualTo(Long value) {
+            addCriterion("audit_user_id <=", value, "auditUserId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateUserIdIn(List<Long> values) {
-            addCriterion("update_user_id in", values, "updateUserId");
+        public Criteria andAuditUserIdIn(List<Long> values) {
+            addCriterion("audit_user_id in", values, "auditUserId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateUserIdNotIn(List<Long> values) {
-            addCriterion("update_user_id not in", values, "updateUserId");
+        public Criteria andAuditUserIdNotIn(List<Long> values) {
+            addCriterion("audit_user_id not in", values, "auditUserId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateUserIdBetween(Long value1, Long value2) {
-            addCriterion("update_user_id between", value1, value2, "updateUserId");
+        public Criteria andAuditUserIdBetween(Long value1, Long value2) {
+            addCriterion("audit_user_id between", value1, value2, "auditUserId");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateUserIdNotBetween(Long value1, Long value2) {
-            addCriterion("update_user_id not between", value1, value2, "updateUserId");
+        public Criteria andAuditUserIdNotBetween(Long value1, Long value2) {
+            addCriterion("audit_user_id not between", value1, value2, "auditUserId");
             return (Criteria) this;
         }
 

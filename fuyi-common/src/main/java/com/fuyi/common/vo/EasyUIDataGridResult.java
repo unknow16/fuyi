@@ -6,19 +6,28 @@ import java.util.List;
 /**
  * EasyUI dataGrid 返回数据封装bean
  */
-public class EasyUIResult implements Serializable {
+public class EasyUIDataGridResult implements Serializable {
 
 	private static final long serialVersionUID = -9033455226856573945L;
 
-	private Long total;
+	private Integer total;
 	
 	private List<?> rows;
 
-	public Long getTotal() {
+	public static EasyUIDataGridResult build(Integer total, List rows) {
+		return new EasyUIDataGridResult(total, rows);
+	}
+
+	private EasyUIDataGridResult(Integer total, List<?> rows) {
+		this.total = total;
+		this.rows = rows;
+	}
+
+	public Integer getTotal() {
 		return total;
 	}
 
-	public void setTotal(Long total) {
+	public void setTotal(Integer total) {
 		this.total = total;
 	}
 

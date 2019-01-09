@@ -31,8 +31,8 @@ public class BaseResult {
      * @param msg 提示信息
      * @param obj 返回数据
      */
-    public static BaseResult ok(String msg, Object obj) {
-        return new BaseResult(1, msg, obj);
+    public static BaseResult ok(String msg, Object data) {
+        return new BaseResult(1, msg, data);
     }
 
     /**
