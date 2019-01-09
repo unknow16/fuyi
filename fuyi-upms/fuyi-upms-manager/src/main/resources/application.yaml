@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: ShopManagerWeb
+  profiles:
+    active: dev
+
+server:
+  port: 8091
+
+# dubbo config
+dubbo:
+
+  ## ApplicationConfig Bean
+  application:
+    id: ShopManagerlWeb
+    name: ShopManagerlWeb
+    qos-port: 22223
+
+  ## ProtocolConfig Bean
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20880
+
+  ## RegistryConfig Bean
+  registry:
+    id: shop-zk-registry
+    address: zookeeper://127.0.0.1:2181

@@ -62,12 +62,12 @@
 
     <!-- 商品详情文案 -->
     <div title="商品详情文案" iconCls="icon-reload" style="padding:10px;">
-        <form id="spuDescAddForm" class="itemForm" method="post">
+        <form id="spuDescAddForm" method="post">
             <table cellpadding="5">
                 <tr>
                     <td>商品描述:</td>
                     <td>
-                        <textarea style="width:800px;height:300px;visibility:hidden;" name="desc"></textarea>
+                        <textarea style="width:800px;height:300px;visibility:hidden;" name="spuDesc"></textarea>
                     </td>
                 </tr>
             </table>
@@ -95,7 +95,7 @@
 	//页面初始化完毕后执行此方法
 	$(function(){
 		//1. 创建富文本编辑器
-        spuDescAddEditor = E3.createEditor("#spuDescAddForm [name=desc]");
+        spuDescAddEditor = E3.createEditor("#spuDescAddForm [name=spuDesc]");
 		//2. 初始化类目选择和图片上传器
         E3.initItemCat();
         E3.initPicUpload();
@@ -144,7 +144,6 @@
 		$.post("/spu/save",$("#spuBasicAddForm").serialize(), function(data){
 			if(data.code == 1){
 		        $.messager.alert('提示','新增商品成功!');
-                clearForm();
             }
 		});
 	}

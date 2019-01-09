@@ -19,6 +19,7 @@
         <module>fuyi-upms-dao-entity</module>
         <module>fuyi-upms-web</module>
         <module>fuyi-upms-alone</module>
+        <module>fuyi-upms-manager</module>
     </modules>
 
 
