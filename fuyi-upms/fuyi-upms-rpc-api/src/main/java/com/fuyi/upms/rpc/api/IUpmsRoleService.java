@@ -12,9 +12,9 @@ public interface IUpmsRoleService extends BaseService<UpmsRole, UpmsRoleExample>
     int updateRolePermissin(Integer roleId, Integer[] ids);
 
     /**
-     * 查询包含该权限的角色列表
-     * @param permissionId 权限
-     * @return 权限列表
+     * 查询访问该uri所需要的角色列表
+     * @param targetRequestUri 请求目标url
+     * @return 角色名列表
      */
-    List<UpmsRolePermission> selectRolesByPermissionId(Integer permissionId);
+    String[] selectRolesByRequestUri(String targetRequestUri);
 }

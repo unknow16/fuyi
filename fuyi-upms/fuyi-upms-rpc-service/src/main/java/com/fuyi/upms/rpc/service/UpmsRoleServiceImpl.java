@@ -5,10 +5,12 @@ import com.fuyi.common.annotation.BaseServiceAnnotation;
 import com.fuyi.common.base.BaseServiceImpl;
 import com.fuyi.upms.rpc.api.IUpmsRoleService;
 import com.fuyi.upms.rpc.entity.*;
+import com.fuyi.upms.rpc.mapper.UpmsPermissionMapper;
 import com.fuyi.upms.rpc.mapper.UpmsRoleMapper;
 import com.fuyi.upms.rpc.mapper.UpmsRolePermissionMapper;
 import com.fuyi.upms.rpc.mapper.UpmsSystemMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.AntPathMatcher;
 
 import java.util.HashSet;
 import java.util.List;
@@ -19,7 +21,13 @@ import java.util.Set;
 public class UpmsRoleServiceImpl extends BaseServiceImpl<UpmsRoleMapper, UpmsRole, UpmsRoleExample> implements IUpmsRoleService {
 
     @Autowired
+    private UpmsPermissionMapper upmsPermissionMapper;
+
+    @Autowired
     private UpmsRolePermissionMapper upmsRolePermissionMapper;
+
+    @Autowired
+    private UpmsRoleMapper upmsRoleMapper;
 
     @Autowired
     private UpmsSystemMapper upmsSystemMapper;
@@ -63,10 +71,29 @@ public class UpmsRoleServiceImpl extends BaseServiceImpl<UpmsRoleMapper, UpmsRol
     }
 
     @Override
-    public List<UpmsRolePermission> selectRolesByPermissionId(Integer permissionId) {
-        UpmsRolePermissionExample upmsRolePermissionExample = new UpmsRolePermissionExample();
-        upmsRolePermissionExample.createCriteria().andPermissionIdEqualTo(permissionId);
-        List<UpmsRolePermission> upmsRolePermissions = upmsRolePermissionMapper.selectByExample(upmsRolePermissionExample);
-        return upmsRolePermissions;
+    public String[] selectRolesByRequestUri(String targetRequestUri) {
+        // 1. 查出所有权限
+        UpmsPermissionExample upmsPermissionExample = new UpmsPermissionExample();
+        upmsPermissionExample.createCriteria().andStatusEqualTo((byte) 1);
+        List<UpmsPermission> upmsPermissions = upmsPermissionMapper.selectByExample(upmsPermissionExample);
+
+        AntPathMatcher antPathMatcher = new AntPathMatcher();
+        for(UpmsPermission upmsPermission : upmsPermissions) {
+
+            // 2. 去匹配目标uri
+            if (antPathMatcher.match(upmsPermission.getUri(), targetRequestUri)) {
+                UpmsRolePermissionExample upmsRolePermissionExample = new UpmsRolePermissionExample();
+                upmsRolePermissionExample.createCriteria().andPermissionIdEqualTo(upmsPermission.getPermissionId());
+                List<UpmsRolePermission> upmsRolePermissions = upmsRolePermissionMapper.selectByExample(upmsRolePermissionExample);
+
+                String[] roleNames = new String[upmsRolePermissions.size()];
+                for (int i = 0; i < upmsRolePermissions.size(); i++) {
+                    UpmsRole upmsRole = upmsRoleMapper.selectByPrimaryKey(upmsRolePermissions.get(i).getRoleId());
+                    roleNames[i] = upmsRole.getName();
+                }
+                return roleNames;
+            }
+        }
+        return new String[0];
     }
 }

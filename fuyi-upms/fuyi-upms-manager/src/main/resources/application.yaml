@@ -4,8 +4,11 @@ spring:
   profiles:
     active: dev
 
+
 server:
   port: 8090
+  servlet:
+    context-path: /upms
 
 jwt:
   header: Authorization

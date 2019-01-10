@@ -1,5 +1,7 @@
 package com.fuyi.upms.rpc.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -29,6 +31,7 @@ public class UpmsUser implements Serializable {
 
     private String username;
 
+    @JsonIgnore
     private String password;
 
     private String salt;
