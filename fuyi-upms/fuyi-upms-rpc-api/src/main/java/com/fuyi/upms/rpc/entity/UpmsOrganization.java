@@ -1,6 +1,8 @@
 package com.fuyi.upms.rpc.entity;
 
-public class UpmsOrganization {
+import java.io.Serializable;
+
+public class UpmsOrganization implements Serializable {
     private Integer organizationId;
 
     private Integer pid;

@@ -1,6 +1,8 @@
 package com.fuyi.upms.rpc.entity;
 
-public class UpmsRole {
+import java.io.Serializable;
+
+public class UpmsRole implements Serializable {
     private Integer roleId;
 
     private String name;

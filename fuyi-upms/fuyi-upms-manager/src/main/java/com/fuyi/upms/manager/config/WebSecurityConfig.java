@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.*;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -20,6 +20,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
@@ -126,10 +127,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js"
-                    )
-
-                    // jwt 认证接口
-                    .antMatchers("/auth/**");
+                    );
     }
 
     @Override
@@ -196,15 +194,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
                 // 允许对于网站静态资源的无授权访问
-//                .antMatchers(
-//                        HttpMethod.GET,
-//                        "/",
-//                        "/*.html",
-//                        "/favicon.ico",
-//                        "/**/*.html",
-//                        "/**/*.css",
-//                        "/**/*.js"
-//                ).permitAll()
+                .antMatchers(
+                        HttpMethod.GET,
+                        "/",
+                        "/*.html",
+                        "/favicon.ico",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js"
+                ).permitAll()
 
                 // 对于获取token的rest api要允许匿名访问
                 .antMatchers("/auth/**").permitAll()
@@ -220,12 +218,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                  // 出现AuthenticationException异常，即登录认证失败时，自定义返回信息
                  // 当用户没有权限访问某个资源的时候，你可以在这里自定义返回内容。
                 .authenticationEntryPoint((request, response, authException) -> {
+                    BaseResult baseResult = null;
+                    if (authException instanceof BadCredentialsException ||
+                                authException instanceof UsernameNotFoundException) {
+                        baseResult = BaseResult.ok("账户名或者密码输入错误!");
+                    } else if (authException instanceof LockedException) {
+                        baseResult = BaseResult.ok("账户被锁定，请联系管理员!");
+                    } else if (authException instanceof CredentialsExpiredException) {
+                        baseResult = BaseResult.ok("密码过期，请联系管理员!");
+                    } else if (authException instanceof AccountExpiredException) {
+                        baseResult = BaseResult.ok("账户过期，请联系管理员!");
+                    } else if (authException instanceof DisabledException) {
+                        baseResult = BaseResult.ok("账户被禁用，请联系管理员!");
+                    } else {
+                        baseResult = BaseResult.ok("authentication fail, please get the token first!");
+                    }
                     response.setContentType("application/json;charset=utf-8");
                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // 401
 
                     ObjectMapper om = new ObjectMapper();
                     PrintWriter out = response.getWriter();
-                    out.write(om.writeValueAsString(BaseResult.ok("未登录,请先登录")));
+                    out.write(om.writeValueAsString(baseResult));
                     out.flush();
                     out.close();
 

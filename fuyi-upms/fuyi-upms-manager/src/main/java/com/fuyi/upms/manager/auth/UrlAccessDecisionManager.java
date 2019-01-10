@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * 接受FilterInvocationSecurityMetadataSource传递来的访问当前url所需要的角色列表，然后与当前登陆用户拥有的角色比较，符合则允许访问，否则拒绝访问
+ * 2. 接受FilterInvocationSecurityMetadataSource传递来的访问当前url所需要的角色列表，然后与当前登陆用户拥有的角色比较，符合则允许访问，否则拒绝访问
  */
 public class UrlAccessDecisionManager implements AccessDecisionManager {
     @Override

@@ -1,9 +1,10 @@
 package com.fuyi.upms.rpc.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UpmsRolePermissionExample {
+public class UpmsRolePermissionExample implements Serializable {
     protected String orderByClause;
 
     protected boolean distinct;

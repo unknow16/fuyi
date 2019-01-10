@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 /**
- * @ClassName ShopManagerBootApplication
+ * @ClassName ShopManagerApplication
  * @Description 电商后台管理系统启动类
  * @Author fuyi
  * @Date 2018/12/17 16:48

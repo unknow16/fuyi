@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface IUpmsUserService extends BaseService<UpmsUser, UpmsUserExample> {
 
+    UpmsUser selectUserByUsername(String username);
     /**
      * 新增用户
      * @param upmsUser

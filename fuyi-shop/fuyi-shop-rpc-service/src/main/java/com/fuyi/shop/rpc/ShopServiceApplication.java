@@ -5,13 +5,6 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-/**
- * @ClassName ShopServiceApplication
- * @Description TODO
- * @Author Administrator
- * @Date 2019/1/4 16:13
- * @Version 1.0
- */
 @MapperScan("com.fuyi.shop.rpc.mapper")
 @SpringBootApplication(scanBasePackages = "com.fuyi")
 public class ShopServiceApplication {

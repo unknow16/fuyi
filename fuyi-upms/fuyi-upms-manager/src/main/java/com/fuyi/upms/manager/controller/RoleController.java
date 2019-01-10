@@ -1,5 +1,6 @@
 package com.fuyi.upms.manager.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.fuyi.common.base.BaseResult;
 import com.fuyi.upms.rpc.api.IUpmsPermissionService;
 import com.fuyi.upms.rpc.api.IUpmsRoleService;
@@ -10,7 +11,6 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -25,10 +25,10 @@ public class RoleController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RoleController.class);
 
-    @Autowired
+    @Reference
     private IUpmsRoleService roleService;
 
-    @Autowired
+    @Reference
     private IUpmsPermissionService permissionService;
 
     @ApiOperation(value = "新增角色")

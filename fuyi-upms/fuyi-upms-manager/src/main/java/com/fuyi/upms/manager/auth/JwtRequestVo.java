@@ -1,20 +1,9 @@
 package com.fuyi.upms.manager.auth;
 
-import java.io.Serializable;
-
-public class JwtAuthRequest implements Serializable {
+public class JwtRequestVo {
 
     private String username;
     private String password;
-
-    public JwtAuthRequest() {
-        super();
-    }
-
-    public JwtAuthRequest(String username, String password){
-        this.username = username;
-        this.password = password;
-    }
 
     public String getUsername() {
         return username;

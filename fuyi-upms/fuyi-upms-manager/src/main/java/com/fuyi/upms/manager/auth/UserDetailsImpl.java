@@ -53,7 +53,7 @@ public class UserDetailsImpl extends UpmsUser implements UserDetails {
     @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return super.getLocked() != 1;
     }
 
     @JsonIgnore

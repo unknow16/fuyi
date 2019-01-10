@@ -12,13 +12,8 @@
     <artifactId>fuyi-upms</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>fuyi-upms-common</module>
         <module>fuyi-upms-rpc-api</module>
         <module>fuyi-upms-rpc-service</module>
-        <module>fuyi-upms-dao-mapper</module>
-        <module>fuyi-upms-dao-entity</module>
-        <module>fuyi-upms-web</module>
-        <module>fuyi-upms-alone</module>
         <module>fuyi-upms-manager</module>
     </modules>
 

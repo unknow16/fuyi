@@ -1,5 +1,6 @@
 package com.fuyi.upms.manager.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.fuyi.common.base.BaseResult;
 import com.fuyi.upms.manager.auth.UserDetailsImpl;
 import com.fuyi.upms.rpc.api.IUpmsPermissionService;
@@ -8,7 +9,6 @@ import com.fuyi.upms.rpc.entity.UpmsPermissionExample;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +21,7 @@ import java.util.Map;
 @RequestMapping("/permission")
 public class PermissionController {
 
-    @Autowired
+    @Reference
     private IUpmsPermissionService permissionService;
 
     @ApiOperation(value = "获取用户权限")

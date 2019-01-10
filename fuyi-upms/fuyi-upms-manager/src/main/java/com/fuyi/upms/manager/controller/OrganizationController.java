@@ -1,5 +1,6 @@
 package com.fuyi.upms.manager.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.fuyi.common.base.BaseResult;
 import com.fuyi.upms.rpc.api.IUpmsOrganizationService;
 import com.fuyi.upms.rpc.entity.UpmsOrganization;
@@ -9,7 +10,6 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -23,7 +23,7 @@ public class OrganizationController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrganizationController.class);
 
-    @Autowired
+    @Reference
     private IUpmsOrganizationService organizationService;
 
     @ApiOperation(value = "新增组织")

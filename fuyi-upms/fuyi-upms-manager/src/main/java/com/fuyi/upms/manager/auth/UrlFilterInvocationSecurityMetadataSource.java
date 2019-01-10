@@ -1,5 +1,12 @@
 package com.fuyi.upms.manager.auth;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.fuyi.upms.rpc.api.IUpmsPermissionService;
+import com.fuyi.upms.rpc.api.IUpmsRoleService;
+import com.fuyi.upms.rpc.entity.UpmsPermission;
+import com.fuyi.upms.rpc.entity.UpmsPermissionExample;
+import com.fuyi.upms.rpc.entity.UpmsRole;
+import com.fuyi.upms.rpc.entity.UpmsRolePermission;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
@@ -7,44 +14,42 @@ import org.springframework.security.web.access.intercept.FilterInvocationSecurit
 import org.springframework.util.AntPathMatcher;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
- * 获取访问当前请求需要的角色（可能有多个），传递到AccessDecisionManager，在AccessDecisionManager中与当前登陆用户拥有的角色比较
+ * 1. 获取访问当前请求需要的角色（可能有多个），传递到AccessDecisionManager，在AccessDecisionManager中与当前登陆用户拥有的角色比较
  */
 public class UrlFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
-//    @Autowired
-//    private UpmsPermissionMapper upmsPermissionMapper;
-//
-//    @Autowired
-//    private UpmsRolePermissionMapper upmsRolePermissionMapper;
-//
-//    @Autowired
-//    private UpmsRoleMapper upmsRoleMapper;
+    @Reference
+    private IUpmsPermissionService upmsPermissionService;
+
+    @Reference
+    private IUpmsRoleService upmsRoleService;
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
         String requestUrl = ((FilterInvocation) o).getRequestUrl();
         AntPathMatcher antPathMatcher = new AntPathMatcher();
-//        if (antPathMatcher.match("/auth/**", requestUrl)) {
-//
-//        }
+        if (antPathMatcher.match("/auth/**", requestUrl)) {
+            return SecurityConfig.createList("ROLE_LOGIN");
+        }
 
-//        List<UpmsPermission> upmsPermissions = upmsPermissionMapper.selectByExample(new UpmsPermissionExample());
-//        for(UpmsPermission upmsPermission : upmsPermissions) {
-//            if (antPathMatcher.match(upmsPermission.getUri(), requestUrl)) {
-//                UpmsRolePermissionExample upmsRolePermissionExample = new UpmsRolePermissionExample();
-//                upmsRolePermissionExample.createCriteria().andPermissionIdEqualTo(upmsPermission.getPermissionId());
-//                List<UpmsRolePermission> upmsRolePermissions = upmsRolePermissionMapper.selectByExample(upmsRolePermissionExample);
-//
-//                String[] roleNames = new String[upmsRolePermissions.size()];
-//                for (int i = 0; i < upmsRolePermissions.size(); i++) {
-//                    UpmsRole upmsRole = upmsRoleMapper.selectByPrimaryKey(upmsRolePermissions.get(i).getRoleId());
-//                    roleNames[i] = upmsRole.getName();
-//                }
-//                return SecurityConfig.createList(roleNames);
-//            }
-//        }
+        UpmsPermissionExample upmsPermissionExample = new UpmsPermissionExample();
+        upmsPermissionExample.createCriteria().andStatusEqualTo((byte) 1);
+        List<UpmsPermission> upmsPermissions = upmsPermissionService.selectByExample(upmsPermissionExample);
+        for(UpmsPermission upmsPermission : upmsPermissions) {
+            if (antPathMatcher.match(upmsPermission.getUri(), requestUrl)) {
+                List<UpmsRolePermission> upmsRolePermissions = upmsRoleService.selectRolesByPermissionId(upmsPermission.getPermissionId());
+
+                String[] roleNames = new String[upmsRolePermissions.size()];
+                for (int i = 0; i < upmsRolePermissions.size(); i++) {
+                    UpmsRole upmsRole = upmsRoleService.selectByPrimaryKey(upmsRolePermissions.get(i).getRoleId().longValue());
+                    roleNames[i] = upmsRole.getName();
+                }
+                return SecurityConfig.createList(roleNames);
+            }
+        }
         //没有匹配上的资源，都是登录访问
         return SecurityConfig.createList("ROLE_LOGIN");
     }

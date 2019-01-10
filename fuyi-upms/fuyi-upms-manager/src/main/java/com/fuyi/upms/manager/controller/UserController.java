@@ -1,5 +1,6 @@
 package com.fuyi.upms.manager.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.fuyi.common.base.BaseResult;
 import com.fuyi.upms.manager.auth.UserDetailsImpl;
 import com.fuyi.upms.rpc.api.IUpmsUserService;
@@ -12,7 +13,6 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +27,7 @@ import java.util.Map;
 public class UserController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
-    @Autowired
+    @Reference
     private IUpmsUserService upmsUserService;
 
     @ApiOperation(value = "根据token获取用户信息")

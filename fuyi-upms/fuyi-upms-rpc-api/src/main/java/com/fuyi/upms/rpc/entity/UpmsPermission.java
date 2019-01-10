@@ -1,8 +1,9 @@
 package com.fuyi.upms.rpc.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class UpmsPermission {
+public class UpmsPermission implements Serializable {
     private Integer permissionId;
 
     private Integer systemId;

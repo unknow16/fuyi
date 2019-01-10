@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ShopManagerWeb
+    name: ShopManagerApplication
   profiles:
     active: dev
 
@@ -12,17 +12,17 @@ dubbo:
 
   ## ApplicationConfig Bean
   application:
-    id: ShopManagerlWeb
-    name: ShopManagerlWeb
-    qos-port: 22223
+    id: ShopManagerlApplication
+    name: ShopManagerlApplication
+    qos-port: 22232
 
   ## ProtocolConfig Bean
   protocol:
     id: dubbo
     name: dubbo
-    port: 20880
+    port: 20881
 
   ## RegistryConfig Bean
   registry:
-    id: shop-zk-registry
+    id: fuyi-zk-registry
     address: zookeeper://127.0.0.1:2181

@@ -6,15 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
-@MapperScan("com.fuyi.upms.dao.mapper")
-@ComponentScan("com.fuyi.*")
-public class UpmsServiceBootApplication {
+@MapperScan("com.fuyi.upms.rpc.mapper")
+@SpringBootApplication(scanBasePackages = "com.fuyi")
+public class UpmsServiceApplication {
     public static void main(String[] args) {
-
-        new SpringApplicationBuilder(UpmsServiceBootApplication.class)
+        new SpringApplicationBuilder(UpmsServiceApplication.class)
                 .web(WebApplicationType.NONE) // 非 Web 应用
                 .run(args);
-
     }
 }

@@ -61,4 +61,12 @@ public class UpmsRoleServiceImpl extends BaseServiceImpl<UpmsRoleMapper, UpmsRol
 
         return count;
     }
+
+    @Override
+    public List<UpmsRolePermission> selectRolesByPermissionId(Integer permissionId) {
+        UpmsRolePermissionExample upmsRolePermissionExample = new UpmsRolePermissionExample();
+        upmsRolePermissionExample.createCriteria().andPermissionIdEqualTo(permissionId);
+        List<UpmsRolePermission> upmsRolePermissions = upmsRolePermissionMapper.selectByExample(upmsRolePermissionExample);
+        return upmsRolePermissions;
+    }
 }

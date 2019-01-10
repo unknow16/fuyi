@@ -1,20 +1,26 @@
 spring:
   application:
-    name: ShopManagerWeb
+    name: UpmsManagerApplication
   profiles:
     active: dev
 
 server:
-  port: 8091
+  port: 8090
+
+jwt:
+  header: Authorization
+  tokenHead: "Bearer "
+  secret: mySecret
+  expiration: 86400 # 单位秒=24小时
 
 # dubbo config
 dubbo:
 
   ## ApplicationConfig Bean
   application:
-    id: ShopManagerlWeb
-    name: ShopManagerlWeb
-    qos-port: 22223
+    id: UpmsManagerApplication
+    name: UpmsManagerApplication
+    qos-port: 22222
 
   ## ProtocolConfig Bean
   protocol:
@@ -24,5 +30,6 @@ dubbo:
 
   ## RegistryConfig Bean
   registry:
-    id: shop-zk-registry
+    id: fuyi-zk-registry
     address: zookeeper://127.0.0.1:2181
+    timeout: 9000

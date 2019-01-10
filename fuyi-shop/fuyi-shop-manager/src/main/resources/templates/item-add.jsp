@@ -3,14 +3,13 @@
 <script type="text/javascript" charset="utf-8" src="/js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
 <script type="text/javascript" charset="utf-8" src="/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 <div style="padding:10px 10px 10px 10px">
-	<form id="itemeEditForm" class="itemForm" method="post">
-		<input type="hidden" name="id"/>
+	<form id="itemAddForm" class="itemForm" method="post">
 	    <table cellpadding="5">
 	        <tr>
 	            <td>商品类目:</td>
 	            <td>
 	            	<a href="javascript:void(0)" class="easyui-linkbutton selectItemCat">选择类目</a>
-	            	<input type="hidden" name="cid" style="width: 280px;"></input>	
+	            	<input type="hidden" name="cid" style="width: 280px;"></input>
 	            </td>
 	        </tr>
 	        <tr>
@@ -40,8 +39,8 @@
 	        <tr>
 	            <td>商品图片:</td>
 	            <td>
-	            	<a href="javascript:void(0)" class="easyui-linkbutton picFileUpload">上传图片</a>
-	                <input type="hidden" name="image"/>
+	            	 <a href="javascript:void(0)" class="easyui-linkbutton picFileUpload">上传图片</a>
+	                 <input type="hidden" name="image"/>
 	            </td>
 	        </tr>
 	        <tr>
@@ -58,29 +57,39 @@
 	        </tr>
 	    </table>
 	    <input type="hidden" name="itemParams"/>
-	    <input type="hidden" name="itemParamId"/>
 	</form>
 	<div style="padding:5px">
 	    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>
+	    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
 	</div>
 </div>
 <script type="text/javascript">
-	var itemEditEditor ;
+	var itemAddEditor ;
+	//页面初始化完毕后执行此方法
 	$(function(){
-		//实例化编辑器
-		itemEditEditor = E3.createEditor("#itemeEditForm [name=desc]");
+		//创建富文本编辑器
+		itemAddEditor = E3.createEditor("#itemAddForm [name=desc]");
+		//初始化类目选择和图片上传器
+		E3.init({fun:function(node){
+			//根据商品的分类id取商品 的规格模板，生成规格信息。第四天内容。
+			//E3.changeItemParam(node, "itemAddForm");
+		}});
 	});
-	
+	//提交表单
 	function submitForm(){
-		if(!$('#itemeEditForm').form('validate')){
+		//有效性验证
+		if(!$('#itemAddForm').form('validate')){
 			$.messager.alert('提示','表单还未填写完成!');
 			return ;
 		}
-		$("#itemeEditForm [name=price]").val(eval($("#itemeEditForm [name=priceView]").val()) * 1000);
-		itemEditEditor.sync();
-		
+		//取商品价格，单位为“分”
+		$("#itemAddForm [name=price]").val(eval($("#itemAddForm [name=priceView]").val()) * 100);
+		//同步文本框中的商品描述
+		itemAddEditor.sync();
+		//取商品的规格
+		/*
 		var paramJson = [];
-		$("#itemeEditForm .params li").each(function(i,e){
+		$("#itemAddForm .params li").each(function(i,e){
 			var trs = $(e).find("tr");
 			var group = trs.eq(0).text();
 			var ps = [];
@@ -96,17 +105,21 @@
 				"params": ps
 			});
 		});
+		//把json对象转换成字符串
 		paramJson = JSON.stringify(paramJson);
-		
-		$("#itemeEditForm [name=itemParams]").val(paramJson);
-		
-		$.post("/rest/item/update",$("#itemeEditForm").serialize(), function(data){
+		$("#itemAddForm [name=itemParams]").val(paramJson);
+		*/
+		//ajax的post方式提交表单
+		//$("#itemAddForm").serialize()将表单序列号为key-value形式的字符串
+		$.post("/item/save",$("#itemAddForm").serialize(), function(data){
 			if(data.status == 200){
-				$.messager.alert('提示','修改商品成功!','info',function(){
-					$("#itemEditWindow").window('close');
-					$("#itemList").datagrid("reload");
-				});
+				$.messager.alert('提示','新增商品成功!');
 			}
 		});
+	}
+	
+	function clearForm(){
+		$('#itemAddForm').form('reset');
+		itemAddEditor.html('');
 	}
 </script>

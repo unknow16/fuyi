@@ -1,9 +1,10 @@
 package com.fuyi.upms.rpc.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UpmsUserOrganizationExample {
+public class UpmsUserOrganizationExample implements Serializable {
     protected String orderByClause;
 
     protected boolean distinct;

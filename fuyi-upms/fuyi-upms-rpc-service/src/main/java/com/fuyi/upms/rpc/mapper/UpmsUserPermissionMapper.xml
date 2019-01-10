@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fuyi.upms.dao.mapper.UpmsUserPermissionMapper" >
-  <resultMap id="BaseResultMap" type="com.fuyi.upms.dao.entity.UpmsUserPermission" >
+<mapper namespace="com.fuyi.upms.rpc.mapper.UpmsUserPermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.fuyi.upms.rpc.entity.UpmsUserPermission" >
     <id column="user_permission_id" property="userPermissionId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="permission_id" property="permissionId" jdbcType="INTEGER" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List" >
     user_permission_id, user_id, permission_id, type
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fuyi.upms.dao.entity.UpmsUserPermissionExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fuyi.upms.rpc.entity.UpmsUserPermissionExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,19 +93,19 @@
     delete from upms_user_permission
     where user_permission_id = #{userPermissionId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fuyi.upms.dao.entity.UpmsUserPermissionExample" >
+  <delete id="deleteByExample" parameterType="com.fuyi.upms.rpc.entity.UpmsUserPermissionExample" >
     delete from upms_user_permission
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fuyi.upms.dao.entity.UpmsUserPermission" >
+  <insert id="insert" parameterType="com.fuyi.upms.rpc.entity.UpmsUserPermission" >
     insert into upms_user_permission (user_permission_id, user_id, permission_id, 
       type)
     values (#{userPermissionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{permissionId,jdbcType=INTEGER}, 
       #{type,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.fuyi.upms.dao.entity.UpmsUserPermission" >
+  <insert id="insertSelective" parameterType="com.fuyi.upms.rpc.entity.UpmsUserPermission" >
     insert into upms_user_permission
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userPermissionId != null" >
@@ -136,7 +136,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fuyi.upms.dao.entity.UpmsUserPermissionExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.fuyi.upms.rpc.entity.UpmsUserPermissionExample" resultType="java.lang.Integer" >
     select count(*) from upms_user_permission
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -172,7 +172,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fuyi.upms.dao.entity.UpmsUserPermission" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fuyi.upms.rpc.entity.UpmsUserPermission" >
     update upms_user_permission
     <set >
       <if test="userId != null" >
@@ -187,7 +187,7 @@
     </set>
     where user_permission_id = #{userPermissionId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fuyi.upms.dao.entity.UpmsUserPermission" >
+  <update id="updateByPrimaryKey" parameterType="com.fuyi.upms.rpc.entity.UpmsUserPermission" >
     update upms_user_permission
     set user_id = #{userId,jdbcType=INTEGER},
       permission_id = #{permissionId,jdbcType=INTEGER},

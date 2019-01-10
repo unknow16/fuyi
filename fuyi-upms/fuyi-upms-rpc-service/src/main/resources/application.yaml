@@ -6,7 +6,7 @@ host:
 
 spring:
   application:
-    name: ShopServiceApplication
+    name: UpmsServiceApplication
   profiles:
     active: dev
   datasource:
@@ -17,19 +17,19 @@ spring:
 # dubbo config
 dubbo:
   scan:
-    basePackages: com.fuyi.shop.rpc.service
+    basePackages: com.fuyi.upms.rpc.service
 
   ## ApplicationConfig Bean
   application:
     id: ShopServiceApplication
     name: ShopServiceApplication
-    qos-port: 22231
+    qos-port: 22221
 
   ## ProtocolConfig Bean
   protocol:
     id: dubbo
     name: dubbo
-    port: 20881
+    port: 20880
 
   ## RegistryConfig Bean
   registry:

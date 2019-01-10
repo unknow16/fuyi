@@ -1,6 +1,8 @@
 package com.fuyi.upms.rpc.entity;
 
-public class UpmsUserPermission {
+import java.io.Serializable;
+
+public class UpmsUserPermission implements Serializable {
     private Integer userPermissionId;
 
     private Integer userId;

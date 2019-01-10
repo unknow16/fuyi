@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- 设置上下文名称，每个logger都关联到logger上下文，默认上下文名称为default -->
+    <contextName>default</contextName>
+
+    <!-- 文件输出格式 -->
+    <property name="log_pattern" value="%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) |-%-5level [%thread] %c [%L] -| %msg%n" />
+    <!-- test文件路径 -->
+    <property name="test_file_path" value="F:/ws_idea/fuyi/logs" />
+    <!-- pro文件路径 -->
+    <property name="prod_file_path" value="F:/ws_idea/fuyi/logs" />
+
+    <!-- 开发环境 -->
+    <springProfile name="dev">
+
+        <!-- 控制台日志 -->
+        <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>${log_pattern}</pattern>
+            </encoder>
+        </appender>
+
+        <!-- 本项目类日志级别 -->
+        <logger name="com.fuyi" level="debug"/>
+
+        <!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
+        <!--<logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" />-->
+        <!--<logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="DEBUG" />-->
+        <!--<logger name="org.hibernate.SQL" level="DEBUG" />-->
+        <!--<logger name="org.hibernate.engine.QueryParameters" level="DEBUG" />-->
+        <!--<logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG" />-->
+
+        <!--myibatis log configure-->
+        <logger name="com.apache.ibatis" level="TRACE"/>
+        <logger name="java.sql.Connection" level="DEBUG"/>
+        <logger name="java.sql.Statement" level="DEBUG"/>
+        <logger name="java.sql.PreparedStatement" level="DEBUG"/>
+
+        <!-- dubbo -->
+        <!--<logger name="com.alibaba.dubbo" level="DEBUG"/>-->
+
+        <!-- 默认日志级别 -->
+        <root level="info">
+            <appender-ref ref="consoleAppender" />
+        </root>
+    </springProfile>
+
+    <!-- 测试环境 -->
+    <springProfile name="test">
+
+        <!-- 控制台日志 -->
+        <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>${log_pattern}</pattern>
+            </encoder>
+        </appender>
+
+        <!-- 每天产生一个文件 -->
+        <appender name="testFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!-- 文件路径 -->
+            <!--<file>${test_file_path}</file>-->
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!-- 文件名称 -->
+                <fileNamePattern>${test_file_path}/info.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <!-- 文件最大保存历史数量 -->
+                <MaxHistory>100</MaxHistory>
+            </rollingPolicy>
+
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${log_pattern}</pattern>
+            </layout>
+        </appender>
+
+        <!-- 本项目类日志级别 -->
+        <logger name="com.fuyi" level="debug"/>
+
+        <!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
+        <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" />
+        <logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="DEBUG" />
+        <logger name="org.hibernate.SQL" level="DEBUG" />
+        <logger name="org.hibernate.engine.QueryParameters" level="DEBUG" />
+        <logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG" />
+
+        <!--myibatis log configure-->
+        <logger name="com.apache.ibatis" level="TRACE"/>
+        <logger name="java.sql.Connection" level="DEBUG"/>
+        <logger name="java.sql.Statement" level="DEBUG"/>
+        <logger name="java.sql.PreparedStatement" level="DEBUG"/>
+
+        <!-- 默认日志级别 -->
+        <root level="error">
+            <appender-ref ref="testFileAppender" />
+            <appender-ref ref="consoleAppender" />
+        </root>
+    </springProfile>
+
+    <!-- 生产环境 -->
+    <springProfile name="prod">
+        <appender name="prodFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <!--<file>${prod_file_path}</file>-->
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${prod_file_path}/warn.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <MaxHistory>100</MaxHistory>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${log_pattern}</pattern>
+            </layout>
+        </appender>
+
+        <root level="warn">
+            <appender-ref ref="prodFileAppender" />
+        </root>
+    </springProfile>
+</configuration>

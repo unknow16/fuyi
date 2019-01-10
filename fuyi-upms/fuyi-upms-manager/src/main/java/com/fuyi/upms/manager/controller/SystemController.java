@@ -1,5 +1,6 @@
 package com.fuyi.upms.manager.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.fuyi.common.base.BaseResult;
 import com.fuyi.upms.rpc.api.IUpmsSystemService;
 import com.fuyi.upms.rpc.entity.UpmsSystem;
@@ -9,7 +10,6 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -22,7 +22,7 @@ import java.util.Map;
 public class SystemController {
     private static final Logger LOGGER = LoggerFactory.getLogger(SystemController.class);
 
-    @Autowired
+    @Reference
     private IUpmsSystemService systemService;
 
     @ApiOperation(value = "新增系统")

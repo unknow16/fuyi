@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fuyi.upms.dao.mapper.UpmsSystemMapper" >
-  <resultMap id="BaseResultMap" type="com.fuyi.upms.dao.entity.UpmsSystem" >
+<mapper namespace="com.fuyi.upms.rpc.mapper.UpmsSystemMapper" >
+  <resultMap id="BaseResultMap" type="com.fuyi.upms.rpc.entity.UpmsSystem" >
     <id column="system_id" property="systemId" jdbcType="INTEGER" />
     <result column="icon" property="icon" jdbcType="VARCHAR" />
     <result column="banner" property="banner" jdbcType="VARCHAR" />
@@ -76,7 +76,7 @@
     system_id, icon, banner, theme, basepath, status, name, title, description, ctime, 
     orders
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fuyi.upms.dao.entity.UpmsSystemExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fuyi.upms.rpc.entity.UpmsSystemExample" >
     select
     <if test="distinct" >
       distinct
@@ -101,13 +101,13 @@
     delete from upms_system
     where system_id = #{systemId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fuyi.upms.dao.entity.UpmsSystemExample" >
+  <delete id="deleteByExample" parameterType="com.fuyi.upms.rpc.entity.UpmsSystemExample" >
     delete from upms_system
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fuyi.upms.dao.entity.UpmsSystem" >
+  <insert id="insert" parameterType="com.fuyi.upms.rpc.entity.UpmsSystem" >
     insert into upms_system (system_id, icon, banner, 
       theme, basepath, status, 
       name, title, description, 
@@ -117,7 +117,7 @@
       #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
       #{ctime,jdbcType=BIGINT}, #{orders,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.fuyi.upms.dao.entity.UpmsSystem" >
+  <insert id="insertSelective" parameterType="com.fuyi.upms.rpc.entity.UpmsSystem" >
     insert into upms_system
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="systemId != null" >
@@ -190,7 +190,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fuyi.upms.dao.entity.UpmsSystemExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.fuyi.upms.rpc.entity.UpmsSystemExample" resultType="java.lang.Integer" >
     select count(*) from upms_system
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -254,7 +254,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fuyi.upms.dao.entity.UpmsSystem" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fuyi.upms.rpc.entity.UpmsSystem" >
     update upms_system
     <set >
       <if test="icon != null" >
@@ -290,7 +290,7 @@
     </set>
     where system_id = #{systemId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fuyi.upms.dao.entity.UpmsSystem" >
+  <update id="updateByPrimaryKey" parameterType="com.fuyi.upms.rpc.entity.UpmsSystem" >
     update upms_system
     set icon = #{icon,jdbcType=VARCHAR},
       banner = #{banner,jdbcType=VARCHAR},

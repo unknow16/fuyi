@@ -1,6 +1,8 @@
 package com.fuyi.upms.rpc.entity;
 
-public class UpmsSystem {
+import java.io.Serializable;
+
+public class UpmsSystem implements Serializable {
     private Integer systemId;
 
     private String icon;

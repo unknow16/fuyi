@@ -7,7 +7,6 @@ import com.fuyi.upms.rpc.api.IUpmsUserService;
 import com.fuyi.upms.rpc.entity.*;
 import com.fuyi.upms.rpc.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -32,6 +31,19 @@ public class UpmsUserServiceImpl extends BaseServiceImpl<UpmsUserMapper, UpmsUse
     @Autowired
     private UpmsOrganizationMapper upmsOrganizationMapper;
 
+
+    @Override
+    public UpmsUser selectUserByUsername(String username) {
+        UpmsUserExample upmsUserExample = new UpmsUserExample();
+        upmsUserExample.createCriteria().andUsernameEqualTo(username).andLockedEqualTo((byte)0);
+        List<UpmsUser> upmsUsers = upmsUserMapper.selectByExample(upmsUserExample);
+
+        if (upmsUsers != null && upmsUsers.size() >= 1) {
+            return upmsUsers.get(0);
+        }
+        return null;
+    }
+
     @Override
     public UpmsUser createUser(UpmsUser upmsUser) {
         UpmsUserExample upmsUserExample = new UpmsUserExample();
@@ -41,14 +53,14 @@ public class UpmsUserServiceImpl extends BaseServiceImpl<UpmsUserMapper, UpmsUse
             return null;
         }
 
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        long time = System.currentTimeMillis();
+        //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        //long time = System.currentTimeMillis();
 
         //String salt = UUID.randomUUID().toString().replaceAll("-", "");
         //upmsUser.setSalt(salt);
         //upmsUser.setPassword(MD5Util.md5(upmsUser.getPassword() + upmsUser.getSalt()));
-        upmsUser.setPassword(encoder.encode(upmsUser.getPassword()));
-        upmsUser.setCtime(time);
+        //upmsUser.setPassword(encoder.encode(upmsUser.getPassword()));
+        //upmsUser.setCtime(time);
         upmsUserMapper.insertSelective(upmsUser);
         return upmsUser;
     }

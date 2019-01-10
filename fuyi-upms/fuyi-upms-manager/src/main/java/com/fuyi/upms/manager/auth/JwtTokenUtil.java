@@ -89,8 +89,9 @@ public class JwtTokenUtil {
         final String usernameFromToken = getUsernameFromToken(authToken);
         final Date createdDate = getCreatedDateFromToken(authToken);
         return usernameFromToken.equals(jwtUser.getUsername())
+                && (jwtUser.getLocked() != 1) // no lock
                 && !isTokenExpired(authToken)
-                && !isCreatedBeforeLastPasswordReset(createdDate, new Date(jwtUser.getCtime())); // jwtUser.getLastPasswordResetDate() TODO--
+                && !isCreatedBeforeLastPasswordReset(createdDate, new Date(jwtUser.getCtime())); // jwtUser.getLastPasswordResetDate() TODO
     }
 
     /**
