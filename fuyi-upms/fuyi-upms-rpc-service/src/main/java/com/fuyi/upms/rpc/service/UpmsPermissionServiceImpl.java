@@ -1,8 +1,8 @@
 package com.fuyi.upms.rpc.service;
 
-import com.alibaba.dubbo.common.json.JSONArray;
-import com.alibaba.dubbo.common.json.JSONObject;
 import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.fuyi.common.annotation.BaseServiceAnnotation;
 import com.fuyi.common.base.BaseServiceImpl;
 import com.fuyi.upms.rpc.api.IUpmsPermissionService;

@@ -21,7 +21,7 @@ import java.util.Map;
 @RequestMapping("/permission")
 public class PermissionController {
 
-    @Reference
+    @Reference(timeout = 9000)
     private IUpmsPermissionService permissionService;
 
     @ApiOperation(value = "获取用户权限")
