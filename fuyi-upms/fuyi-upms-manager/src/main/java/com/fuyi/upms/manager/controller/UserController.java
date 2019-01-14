@@ -13,8 +13,8 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -32,14 +32,20 @@ public class UserController {
 
     @ApiOperation(value = "根据token获取用户信息")
     @RequestMapping(value = "/getUserInfo")
-    public ResponseEntity getUserInfo() {
+    public BaseResult getUserInfo() {
         UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return ResponseEntity.ok(BaseResult.ok(principal));
+        return BaseResult.ok(principal);
     }
 
     @ApiOperation(value = "新增用户")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Object create(@RequestBody UpmsUser upmsUser) {
+    public BaseResult create(@RequestBody UpmsUser upmsUser) {
+        //String salt = UUID.randomUUID().toString().replaceAll("-", "");
+        //upmsUser.setSalt(salt);
+        //upmsUser.setPassword(MD5Util.md5(upmsUser.getPassword() + upmsUser.getSalt()));
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        upmsUser.setPassword(encoder.encode(upmsUser.getPassword()));
         upmsUser = upmsUserService.createUser(upmsUser);
         if (null == upmsUser) {
             return BaseResult.ok("该用户名已经存在");
@@ -50,7 +56,7 @@ public class UserController {
 
     @ApiOperation(value = "删除用户")
     @RequestMapping(value = "/delete/{ids}", method = RequestMethod.GET)
-    public Object delete(@PathVariable String ids) {
+    public BaseResult delete(@PathVariable String ids) {
         int count = upmsUserService.deleteByPrimaryKeys(ids);
         LOGGER.info("删除用户，主键：userId={}", ids);
         return BaseResult.ok("用户删除成功", count);
@@ -58,7 +64,7 @@ public class UserController {
 
     @ApiOperation(value = "更新用户")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public Object delete(@PathVariable int id, @RequestBody UpmsUser upmsUser) {
+    public BaseResult delete(@PathVariable int id, @RequestBody UpmsUser upmsUser) {
         // 不允许直接改密码
         upmsUser.setPassword(null);
         upmsUser.setUserId(id);
@@ -69,7 +75,7 @@ public class UserController {
 
     @ApiOperation(value = "用户列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public Object list(
+    public BaseResult list(
             @RequestParam(required = false, defaultValue = "0", value = "pageNum") int pageNum,
             @RequestParam(required = false, defaultValue = "10", value = "pageSize") int pageSize,
             @RequestParam(required = false, defaultValue = "", value = "query") String query,
@@ -90,20 +96,20 @@ public class UserController {
         Map<String, Object> result = new HashMap<>();
         result.put("rows", rows);
         result.put("total", total);
-        return result;
+        return BaseResult.ok("获取用户列表成功！", result);
     }
 
     @ApiOperation(value = "用户角色")
     @RequestMapping(value = "/roles", method = RequestMethod.GET)
-    public Object roles() {
+    public BaseResult roles() {
         UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<UpmsRole> roles = upmsUserService.selectUserRoles(principal.getUserId());
-        return roles;
+        return BaseResult.ok(roles);
     }
 
     @ApiOperation(value = "分配角色")
     @RequestMapping(value = "/assignRoles", method = RequestMethod.POST)
-    public Object assignRoles(@RequestBody Integer[] roleIds) {
+    public BaseResult assignRoles(@RequestBody Integer[] roleIds) {
         UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         int count = upmsUserService.assignRoles(principal.getUserId(), roleIds);
         return BaseResult.ok("分配角色成功", count);
@@ -111,10 +117,10 @@ public class UserController {
 
     @ApiOperation(value = "用户组织")
     @RequestMapping(value = "/orgs", method = RequestMethod.GET)
-    public Object orgs() {
+    public BaseResult orgs() {
         UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<UpmsOrganization> organizations = upmsUserService.selectUserOrganizations(principal.getUserId());
-        return organizations;
+        return BaseResult.ok(organizations);
     }
 
 
