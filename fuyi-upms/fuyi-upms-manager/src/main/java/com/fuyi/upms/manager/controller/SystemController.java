@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Api(value = "系统管理", description = "系统管理")
 @RestController
-@RequestMapping("/upms/system")
+@RequestMapping("/system")
 public class SystemController {
     private static final Logger LOGGER = LoggerFactory.getLogger(SystemController.class);
 
@@ -27,7 +27,7 @@ public class SystemController {
 
     @ApiOperation(value = "新增系统")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Object create(@RequestBody UpmsSystem upmsSystem) {
+    public BaseResult create(@RequestBody UpmsSystem upmsSystem) {
         long time = System.currentTimeMillis();
         upmsSystem.setCtime(time);
         upmsSystem.setOrders(time);
@@ -37,14 +37,14 @@ public class SystemController {
 
     @ApiOperation(value = "删除系统")
     @RequestMapping(value = "/delete/{ids}", method = RequestMethod.GET)
-    public Object delete(@PathVariable String ids) {
+    public BaseResult delete(@PathVariable String ids) {
         int count = systemService.deleteByPrimaryKeys(ids);
         return BaseResult.ok("系统删除成功", count);
     }
 
     @ApiOperation(value = "更新系统")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public Object delete(@PathVariable int id, @RequestBody UpmsSystem upmsSystem) {
+    public BaseResult delete(@PathVariable int id, @RequestBody UpmsSystem upmsSystem) {
         upmsSystem.setSystemId(id);
         int count = systemService.updateByPrimaryKeySelective(upmsSystem);
         return BaseResult.ok("系统更新成功", count);

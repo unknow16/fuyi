@@ -34,7 +34,7 @@ public class PermissionController {
 
     @ApiOperation(value = "新增权限")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Object create(@RequestBody UpmsPermission upmsPermission) {
+    public BaseResult create(@RequestBody UpmsPermission upmsPermission) {
         long time = System.currentTimeMillis();
         upmsPermission.setCtime(time);
         upmsPermission.setOrders(time);
@@ -44,21 +44,21 @@ public class PermissionController {
 
     @ApiOperation(value = "删除权限")
     @RequestMapping(value = "/delete/{ids}", method = RequestMethod.GET)
-    public Object delete(@PathVariable String ids) {
+    public BaseResult delete(@PathVariable String ids) {
         int count = permissionService.deleteByPrimaryKeys(ids);
         return BaseResult.ok("权限删除成功", count);
     }
 
     @ApiOperation(value = "更新权限")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public Object delete(@PathVariable int id, @RequestBody UpmsPermission upmsPermission) {
+    public BaseResult delete(@PathVariable int id, @RequestBody UpmsPermission upmsPermission) {
         int count = permissionService.updateByPrimaryKeySelective(upmsPermission);
         return BaseResult.ok("权限更新成功", count);
     }
 
     @ApiOperation(value = "权限列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public Object list(
+    public BaseResult list(
             @RequestParam(required = false, defaultValue = "0", value = "pageNum") int pageNum,
             @RequestParam(required = false, defaultValue = "10", value = "pageSize") int pageSize,
             @RequestParam(required = false, defaultValue = "", value = "query") String query,
@@ -77,6 +77,6 @@ public class PermissionController {
         Map<String, Object> result = new HashMap<>();
         result.put("rows", rows);
         result.put("total", total);
-        return result;
+        return BaseResult.ok("获取权限列表成功", result);
     }
 }
