@@ -53,14 +53,8 @@ public class UpmsUserServiceImpl extends BaseServiceImpl<UpmsUserMapper, UpmsUse
             return null;
         }
 
-        //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        //long time = System.currentTimeMillis();
-
-        //String salt = UUID.randomUUID().toString().replaceAll("-", "");
-        //upmsUser.setSalt(salt);
-        //upmsUser.setPassword(MD5Util.md5(upmsUser.getPassword() + upmsUser.getSalt()));
-        //upmsUser.setPassword(encoder.encode(upmsUser.getPassword()));
-        //upmsUser.setCtime(time);
+        long time = System.currentTimeMillis();
+        upmsUser.setCtime(time);
         upmsUserMapper.insertSelective(upmsUser);
         return upmsUser;
     }

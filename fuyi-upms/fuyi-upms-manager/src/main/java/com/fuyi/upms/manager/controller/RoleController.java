@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Api(value = "角色管理", description = "角色管理")
 @RestController
-@RequestMapping("/manage/role")
+@RequestMapping("/role")
 public class RoleController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RoleController.class);
@@ -33,7 +33,7 @@ public class RoleController {
 
     @ApiOperation(value = "新增角色")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Object create(@RequestBody UpmsRole upmsRole) {
+    public BaseResult create(@RequestBody UpmsRole upmsRole) {
         long time = System.currentTimeMillis();
         upmsRole.setCtime(time);
         upmsRole.setOrders(time);
@@ -43,14 +43,14 @@ public class RoleController {
 
     @ApiOperation(value = "删除角色")
     @RequestMapping(value = "/delete/{ids}", method = RequestMethod.GET)
-    public Object delete(@PathVariable String ids) {
+    public BaseResult delete(@PathVariable String ids) {
         int count = roleService.deleteByPrimaryKeys(ids);
         return BaseResult.ok("角色删除成功", count);
     }
 
     @ApiOperation(value = "更新角色")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public Object delete(@PathVariable int id, @RequestBody UpmsRole upmsRole) {
+    public BaseResult delete(@PathVariable int id, @RequestBody UpmsRole upmsRole) {
         upmsRole.setRoleId(id);
         int count = roleService.updateByPrimaryKeySelective(upmsRole);
         return BaseResult.ok("角色更新成功", count);
@@ -58,7 +58,7 @@ public class RoleController {
 
     @ApiOperation(value = "角色列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public Object list(
+    public BaseResult list(
             @RequestParam(required = false, defaultValue = "0", value = "pageNum") int pageNum,
             @RequestParam(required = false, defaultValue = "10", value = "pageSize") int pageSize,
             @RequestParam(required = false, defaultValue = "", value = "query") String query,
@@ -79,12 +79,12 @@ public class RoleController {
         Map<String, Object> result = new HashMap<>();
         result.put("rows", rows);
         result.put("total", total);
-        return result;
+        return BaseResult.ok("获取角色列表成功", result);
     }
 
     @ApiOperation(value = "该角色拥有的权限")
     @RequestMapping(value = "/permission/{id}", method = RequestMethod.GET)
-    public Object permissions(@PathVariable int id) {
+    public BaseResult permissions(@PathVariable int id) {
         Map<String, Object> result = new HashMap<>();
 
         Object checkedPermission = permissionService.selectPermissionListByRoleId(id);
@@ -92,12 +92,12 @@ public class RoleController {
 
         Object allPermission = permissionService.selectPermissionTree();
         result.put("allPermission", allPermission);
-        return result;
+        return BaseResult.ok(result);
     }
 
     @ApiOperation(value = "更新该角色拥有的权限")
     @RequestMapping(value = "/permission/{roleId}", method = RequestMethod.POST)
-    public Object permissions(@PathVariable int roleId, @RequestBody Integer[] ids) {
+    public BaseResult permissions(@PathVariable int roleId, @RequestBody Integer[] ids) {
         int count = roleService.updateRolePermissin(roleId, ids);
         return BaseResult.ok("角色权限更新成功", count);
     }
