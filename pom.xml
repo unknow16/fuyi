@@ -14,6 +14,7 @@
         <module>fuyi-upms</module>
         <module>fuyi-pay</module>
         <module>fuyi-shop</module>
+        <module>fuyi-demo</module>
     </modules>
 
     <!-- 华为Maven镜像 当然你也可以用阿里的-->

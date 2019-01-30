@@ -9,15 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>fuyi-pay</artifactId>
+    <artifactId>fuyi-demo</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>fuyi-pay-merchant</module>
-        <module>fuyi-pay-manager</module>
-        <module>fuyi-pay-gateway</module>
-        <module>fuyi-pay-rpc-api</module>
-        <module>fuyi-pay-rpc-service</module>
-        <module>fuyi-pay-simple-shop</module>
+        <module>sentinel-demo</module>
     </modules>
 
 
