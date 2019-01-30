@@ -1,15 +1,7 @@
 package com.fuyi.shop.portal.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.fuyi.framework.api.base.BaseResult;
-import com.fuyi.shop.rpc.api.IShopItemService;
-import com.fuyi.shop.rpc.entity.ShopItem;
-import com.fuyi.shop.rpc.entity.ShopItemCat;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @ClassName ShopItemController
@@ -22,31 +14,31 @@ import java.util.List;
 @RequestMapping("/item")
 public class ShopItemController {
 
-    @Reference
-    private IShopItemService shopItemService;
-
-    @RequestMapping("/getItemCatListByParentId")
-    @ResponseBody
-    public BaseResult getItemCatListByParentId(Long parentId) {
-        List<ShopItemCat> itemCatList = shopItemService.getItemCatListByParentId(parentId);
-        return BaseResult.ok(itemCatList);
-    }
-
-    @RequestMapping("/getItemCatList")
-    @ResponseBody
-    public BaseResult getItemCatList() {
-        List<ShopItemCat> itemCatList = shopItemService.getItemCatList();
-        return BaseResult.ok(itemCatList);
-    }
-
-
-    @RequestMapping(value = "/toItem/{id}")
-    public ModelAndView toItem(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("item/item");
-
-        ShopItem shopItem = shopItemService.selectByPrimaryKey(id);
-        modelAndView.addObject("item", shopItem);
-        return modelAndView;
-    }
+//    @Reference
+//    private IShopItemService shopItemService;
+//
+//    @RequestMapping("/getItemCatListByParentId")
+//    @ResponseBody
+//    public BaseResult getItemCatListByParentId(Long parentId) {
+//        List<ShopItemCat> itemCatList = shopItemService.getItemCatListByParentId(parentId);
+//        return BaseResult.ok(itemCatList);
+//    }
+//
+//    @RequestMapping("/getItemCatList")
+//    @ResponseBody
+//    public BaseResult getItemCatList() {
+//        List<ShopItemCat> itemCatList = shopItemService.getItemCatList();
+//        return BaseResult.ok(itemCatList);
+//    }
+//
+//
+//    @RequestMapping(value = "/toItem/{id}")
+//    public ModelAndView toItem(@PathVariable Long id) {
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.setViewName("item/item");
+//
+//        ShopItem shopItem = shopItemService.selectByPrimaryKey(id);
+//        modelAndView.addObject("item", shopItem);
+//        return modelAndView;
+//    }
 }
