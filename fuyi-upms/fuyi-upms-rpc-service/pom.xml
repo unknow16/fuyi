@@ -91,6 +91,12 @@
                 </configuration>
             </plugin>
 
+            <!-- 打成spring boot jar包 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
             <!-- mybatis generator plugin -->
             <!--<plugin>-->
                 <!--<groupId>org.mybatis.generator</groupId>-->
