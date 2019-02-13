@@ -8,7 +8,7 @@ spring:
   application:
     name: UpmsServiceApplication
   profiles:
-    active: dev
+    active: prod
   datasource:
     url: jdbc:mysql://${host.dbserver}:3306/fuyi?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
     username: fuyi

@@ -7,9 +7,11 @@
     <!-- 文件输出格式 -->
     <property name="log_pattern" value="%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) |-%-5level [%thread] %c [%L] -| %msg%n" />
     <!-- test文件路径 -->
-    <property name="test_file_path" value="F:/ws_idea/fuyi/logs" />
+    <property name="test_file_path" value="/home/fuyi/deploy/upms" />
     <!-- pro文件路径 -->
-    <property name="prod_file_path" value="F:/ws_idea/fuyi/logs" />
+    <property name="prod_file_path" value="/home/fuyi/deploy/upms" />
+    <!-- 文件名称 -->
+    <property name="file_name" value="upms-manager" />
 
     <!-- 开发环境 -->
     <springProfile name="dev">
@@ -59,7 +61,7 @@
             <!--<file>${test_file_path}</file>-->
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
                 <!-- 文件名称 -->
-                <fileNamePattern>${test_file_path}/info.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <fileNamePattern>${test_file_path}/${file_name}.info.%d{yyyy-MM-dd}.log</fileNamePattern>
                 <!-- 文件最大保存历史数量 -->
                 <MaxHistory>100</MaxHistory>
             </rollingPolicy>
@@ -97,7 +99,7 @@
         <appender name="prodFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <!--<file>${prod_file_path}</file>-->
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <fileNamePattern>${prod_file_path}/warn.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <fileNamePattern>${prod_file_path}/${file_name}.warn.%d{yyyy-MM-dd}.log</fileNamePattern>
                 <MaxHistory>100</MaxHistory>
             </rollingPolicy>
             <layout class="ch.qos.logback.classic.PatternLayout">

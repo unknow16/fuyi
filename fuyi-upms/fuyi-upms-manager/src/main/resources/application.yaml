@@ -2,7 +2,7 @@ spring:
   application:
     name: UpmsManagerApplication
   profiles:
-    active: dev
+    active: prod
 
 
 server:
